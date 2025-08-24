@@ -1,0 +1,566 @@
+[
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.AuthController",
+    "Method": "ConfirmEmail",
+    "RelativePath": "api/Auth/confirm-email",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "token",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.AuthController",
+    "Method": "ForgotPassword",
+    "RelativePath": "api/Auth/forgot-password",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "GrowDay.Domain.DTO.ForgotPasswordDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.AuthController",
+    "Method": "Login",
+    "RelativePath": "api/Auth/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "GrowDay.Domain.DTO.LoginDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.AuthController",
+    "Method": "RefreshToken",
+    "RelativePath": "api/Auth/refresh-token",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.AuthController",
+    "Method": "Register",
+    "RelativePath": "api/Auth/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "GrowDay.Domain.DTO.RegisterDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.AuthController",
+    "Method": "ResetPassword",
+    "RelativePath": "api/Auth/reset-password",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "token",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "dto",
+        "Type": "GrowDay.Domain.DTO.ResetPasswordDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.HabitController",
+    "Method": "GetHabitById",
+    "RelativePath": "api/Habit/{habitId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "habitId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.HabitController",
+    "Method": "DeleteHabit",
+    "RelativePath": "api/Habit/{habitId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "habitId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.HabitController",
+    "Method": "ClearHabits",
+    "RelativePath": "api/Habit/ClearAllHabits",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.HabitController",
+    "Method": "CreateHabit",
+    "RelativePath": "api/Habit/CreateHabit",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "GrowDay.Domain.DTO.CreateHabitDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.HabitController",
+    "Method": "GetAllHabits",
+    "RelativePath": "api/Habit/GetAllHabits",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.HabitController",
+    "Method": "UpdateHabit",
+    "RelativePath": "api/Habit/UpdateHabit",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "GrowDay.Domain.DTO.UpdateHabitDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.HabitRecordController",
+    "Method": "GetHabitRecordById",
+    "RelativePath": "api/HabitRecord/{habitRecordId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "habitRecordId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.HabitRecordController",
+    "Method": "DeleteHabitRecord",
+    "RelativePath": "api/HabitRecord/{habitRecordId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "habitRecordId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.HabitRecordController",
+    "Method": "UpdateHabitRecord",
+    "RelativePath": "api/HabitRecord/{habitRecordId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "habitRecordId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "updateHabitRecordDTO",
+        "Type": "GrowDay.Domain.DTO.UpdateHabitRecordDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.HabitRecordController",
+    "Method": "CreateHabitRecord",
+    "RelativePath": "api/HabitRecord/CreateHabitRecord",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "addHabitRecordDTO",
+        "Type": "GrowDay.Domain.DTO.AddHabitRecordDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.HabitRecordController",
+    "Method": "GetHabitRecords",
+    "RelativePath": "api/HabitRecord/GetHabitRecords",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.NotificationController",
+    "Method": "GetNotificationById",
+    "RelativePath": "api/Notification/{notificationId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "notificationId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.NotificationController",
+    "Method": "DeleteNotification",
+    "RelativePath": "api/Notification/{notificationId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "notificationId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.NotificationController",
+    "Method": "ClearAllNotifications",
+    "RelativePath": "api/Notification/ClearAllNotifications",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.NotificationController",
+    "Method": "CreateNotification",
+    "RelativePath": "api/Notification/CreateNotification",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createNotificationDTO",
+        "Type": "GrowDay.Domain.DTO.CreateNotificationDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.NotificationController",
+    "Method": "GetNotificationsByUser",
+    "RelativePath": "api/Notification/getnotification",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pageIndex",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.NotificationController",
+    "Method": "MarkNotificationAsRead",
+    "RelativePath": "api/Notification/read/{notificationId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "notificationId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.NotificationController",
+    "Method": "SetNotificationTime",
+    "RelativePath": "api/Notification/SetNotificationTime",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "setNotificationTimeDTO",
+        "Type": "GrowDay.Domain.DTO.SetNotificationTimeDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.StatisticController",
+    "Method": "GetCustomStatistics",
+    "RelativePath": "api/Statistic/custom",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "startDate",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "endDate",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.StatisticController",
+    "Method": "GetMonthlyStatistics",
+    "RelativePath": "api/Statistic/monthly",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "month",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.StatisticController",
+    "Method": "GetWeeklyStatistics",
+    "RelativePath": "api/Statistic/weekly",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "weekStart",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.UserHabitController",
+    "Method": "GetUserHabitById",
+    "RelativePath": "api/UserHabit/{userHabitId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userHabitId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.UserHabitController",
+    "Method": "RemoveUserHabit",
+    "RelativePath": "api/UserHabit/{userHabitId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userHabitId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.UserHabitController",
+    "Method": "UpdateUserHabit",
+    "RelativePath": "api/UserHabit/{userHabitId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userHabitId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "updateUserHabitDTO",
+        "Type": "GrowDay.Domain.DTO.UpdateUserHabitDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.UserHabitController",
+    "Method": "ClearUserHabits",
+    "RelativePath": "api/UserHabit/ClearMyHabits",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.UserHabitController",
+    "Method": "CompleteUserHabit",
+    "RelativePath": "api/UserHabit/Complete/{userHabitId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userHabitId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.UserHabitController",
+    "Method": "AddUserOwnHabit",
+    "RelativePath": "api/UserHabit/CreateMyOwnHabit",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "addUserOwnHabitDTO",
+        "Type": "GrowDay.Domain.DTO.AddUserOwnHabitDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.UserHabitController",
+    "Method": "AddUserHabit",
+    "RelativePath": "api/UserHabit/CreateSharedHabit",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "addUserHabitDTO",
+        "Type": "GrowDay.Domain.DTO.AddUserHabitDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.UserHabitController",
+    "Method": "IsUserHabitExists",
+    "RelativePath": "api/UserHabit/exists/{userHabitId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userHabitId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.UserHabitController",
+    "Method": "GetAllUserHabits",
+    "RelativePath": "api/UserHabit/GetMyHabits",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]

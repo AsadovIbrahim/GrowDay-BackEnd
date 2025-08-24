@@ -1,0 +1,126 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ASUS\\source\\repos\\Habit Tracker\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|c:\\users\\asus\\source\\repos\\habit tracker\\growday.persistance\\repositories\\common\\writegenericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|solutionrelative:growday.persistance\\repositories\\common\\writegenericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|c:\\users\\asus\\source\\repos\\habit tracker\\growday.persistance\\repositories\\common\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|solutionrelative:growday.persistance\\repositories\\common\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|c:\\users\\asus\\source\\repos\\habit tracker\\growday.persistance\\repositories\\common\\readgenericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|solutionrelative:growday.persistance\\repositories\\common\\readgenericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E031645-A37F-4EFC-A49C-8EDD14EC21AB}|GrowDay.Application\\GrowDay.Application.csproj|c:\\users\\asus\\source\\repos\\habit tracker\\growday.application\\repositories\\common\\iwritegenericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E031645-A37F-4EFC-A49C-8EDD14EC21AB}|GrowDay.Application\\GrowDay.Application.csproj|solutionrelative:growday.application\\repositories\\common\\iwritegenericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E031645-A37F-4EFC-A49C-8EDD14EC21AB}|GrowDay.Application\\GrowDay.Application.csproj|c:\\users\\asus\\source\\repos\\habit tracker\\growday.application\\repositories\\common\\ireadgenericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E031645-A37F-4EFC-A49C-8EDD14EC21AB}|GrowDay.Application\\GrowDay.Application.csproj|solutionrelative:growday.application\\repositories\\common\\ireadgenericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E031645-A37F-4EFC-A49C-8EDD14EC21AB}|GrowDay.Application\\GrowDay.Application.csproj|c:\\users\\asus\\source\\repos\\habit tracker\\growday.application\\repositories\\common\\igenericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E031645-A37F-4EFC-A49C-8EDD14EC21AB}|GrowDay.Application\\GrowDay.Application.csproj|solutionrelative:growday.application\\repositories\\common\\igenericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "WriteGenericRepository.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\Habit Tracker\\GrowDay.Persistance\\Repositories\\Common\\WriteGenericRepository.cs",
+              "RelativeDocumentMoniker": "GrowDay.Persistance\\Repositories\\Common\\WriteGenericRepository.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\Habit Tracker\\GrowDay.Persistance\\Repositories\\Common\\WriteGenericRepository.cs",
+              "RelativeToolTip": "GrowDay.Persistance\\Repositories\\Common\\WriteGenericRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-13T18:11:21.916Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ReadGenericRepository.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\Habit Tracker\\GrowDay.Persistance\\Repositories\\Common\\ReadGenericRepository.cs",
+              "RelativeDocumentMoniker": "GrowDay.Persistance\\Repositories\\Common\\ReadGenericRepository.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\Habit Tracker\\GrowDay.Persistance\\Repositories\\Common\\ReadGenericRepository.cs",
+              "RelativeToolTip": "GrowDay.Persistance\\Repositories\\Common\\ReadGenericRepository.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-13T18:06:56.749Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GenericRepository.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\Habit Tracker\\GrowDay.Persistance\\Repositories\\Common\\GenericRepository.cs",
+              "RelativeDocumentMoniker": "GrowDay.Persistance\\Repositories\\Common\\GenericRepository.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\Habit Tracker\\GrowDay.Persistance\\Repositories\\Common\\GenericRepository.cs",
+              "RelativeToolTip": "GrowDay.Persistance\\Repositories\\Common\\GenericRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-13T18:03:05.568Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IWriteGenericRepository.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\Habit Tracker\\GrowDay.Application\\Repositories\\Common\\IWriteGenericRepository.cs",
+              "RelativeDocumentMoniker": "GrowDay.Application\\Repositories\\Common\\IWriteGenericRepository.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\Habit Tracker\\GrowDay.Application\\Repositories\\Common\\IWriteGenericRepository.cs",
+              "RelativeToolTip": "GrowDay.Application\\Repositories\\Common\\IWriteGenericRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-13T18:00:40.289Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IReadGenericRepository.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\Habit Tracker\\GrowDay.Application\\Repositories\\Common\\IReadGenericRepository.cs",
+              "RelativeDocumentMoniker": "GrowDay.Application\\Repositories\\Common\\IReadGenericRepository.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\Habit Tracker\\GrowDay.Application\\Repositories\\Common\\IReadGenericRepository.cs",
+              "RelativeToolTip": "GrowDay.Application\\Repositories\\Common\\IReadGenericRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-13T17:59:01.159Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IGenericRepository.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\Habit Tracker\\GrowDay.Application\\Repositories\\Common\\IGenericRepository.cs",
+              "RelativeDocumentMoniker": "GrowDay.Application\\Repositories\\Common\\IGenericRepository.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\Habit Tracker\\GrowDay.Application\\Repositories\\Common\\IGenericRepository.cs",
+              "RelativeToolTip": "GrowDay.Application\\Repositories\\Common\\IGenericRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-13T17:57:31.539Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
