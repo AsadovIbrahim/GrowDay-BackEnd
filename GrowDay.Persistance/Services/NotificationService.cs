@@ -2,7 +2,6 @@
 using GrowDay.Application.Services;
 using GrowDay.Domain.DTO;
 using GrowDay.Domain.Entities.Concretes;
-using GrowDay.Domain.Enums;
 using GrowDay.Domain.Helpers;
 using GrowDay.Infrastructure.Hubs;
 using Microsoft.AspNetCore.SignalR;

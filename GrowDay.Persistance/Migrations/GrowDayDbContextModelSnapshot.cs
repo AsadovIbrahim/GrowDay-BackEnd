@@ -348,7 +348,47 @@ namespace GrowDay.Persistance.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserHabit");
+                    b.ToTable("UserHabits");
+                });
+
+            modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.UserPreferences", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("FocusDifficulty")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("LastModifiedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("MotivationalFactors")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProcrestinateFrequency")
+                        .HasColumnType("int");
+
+                    b.Property<TimeSpan>("SleepTime")
+                        .HasColumnType("time");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<TimeSpan>("WakeUpTime")
+                        .HasColumnType("time");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserPreferences");
                 });
 
             modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.UserToken", b =>
@@ -576,6 +616,17 @@ namespace GrowDay.Persistance.Migrations
                         .IsRequired();
 
                     b.Navigation("Habit");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.UserPreferences", b =>
+                {
+                    b.HasOne("GrowDay.Domain.Entities.Concretes.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("User");
                 });

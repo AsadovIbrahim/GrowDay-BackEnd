@@ -562,5 +562,47 @@
     "Order": 0,
     "Parameters": [],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.UserPreferencesController",
+    "Method": "CreateUserPreferences",
+    "RelativePath": "api/UserPreferences/CreateUserPreferences",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "GrowDay.Domain.DTO.CreateUserPreferenceDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.UserPreferencesController",
+    "Method": "GetUserPreferences",
+    "RelativePath": "api/UserPreferences/GetUserPreferences",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.UserPreferencesController",
+    "Method": "UpdateUserPreferences",
+    "RelativePath": "api/UserPreferences/UpdateUserPreferences",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "GrowDay.Domain.DTO.UpdateUserPreferenceDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

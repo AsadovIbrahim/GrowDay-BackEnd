@@ -885,6 +885,80 @@
           }
         }
       }
+    },
+    "/api/UserPreferences/GetUserPreferences": {
+      "get": {
+        "tags": [
+          "UserPreferences"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/UserPreferences/CreateUserPreferences": {
+      "post": {
+        "tags": [
+          "UserPreferences"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserPreferenceDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserPreferenceDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserPreferenceDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/UserPreferences/UpdateUserPreferences": {
+      "put": {
+        "tags": [
+          "UserPreferences"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserPreferenceDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserPreferenceDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserPreferenceDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1027,6 +1101,38 @@
         },
         "additionalProperties": false
       },
+      "CreateUserPreferenceDTO": {
+        "type": "object",
+        "properties": {
+          "wakeUpTime": {
+            "type": "string",
+            "format": "date-span"
+          },
+          "sleepTime": {
+            "type": "string",
+            "format": "date-span"
+          },
+          "procrestinateFrequency": {
+            "$ref": "#/components/schemas/ProcrastinateFrequency"
+          },
+          "focusDifficulty": {
+            "$ref": "#/components/schemas/FocusDifficulty"
+          },
+          "motivationalFactors": {
+            "$ref": "#/components/schemas/MotivationalFactors"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FocusDifficulty": {
+        "enum": [
+          "Constantly",
+          "Occasionally",
+          "Rarely",
+          "Never"
+        ],
+        "type": "string"
+      },
       "ForgotPasswordDTO": {
         "type": "object",
         "properties": {
@@ -1061,11 +1167,32 @@
         },
         "additionalProperties": false
       },
+      "MotivationalFactors": {
+        "enum": [
+          "None",
+          "LackOfMotivation",
+          "WorkOverload",
+          "ClutteredEnvironment",
+          "DigitalDistractions",
+          "LackOfTimeManagement",
+          "Other"
+        ],
+        "type": "string"
+      },
       "NotificationType": {
         "enum": [
           "Reminder",
           "Alert",
           "Achievement"
+        ],
+        "type": "string"
+      },
+      "ProcrastinateFrequency": {
+        "enum": [
+          "Always",
+          "Sometimes",
+          "Rarely",
+          "Never"
         ],
         "type": "string"
       },
@@ -1209,6 +1336,31 @@
             "type": "integer",
             "format": "int32",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateUserPreferenceDTO": {
+        "type": "object",
+        "properties": {
+          "wakeUpTime": {
+            "type": "string",
+            "format": "date-span",
+            "nullable": true
+          },
+          "sleepTime": {
+            "type": "string",
+            "format": "date-span",
+            "nullable": true
+          },
+          "procrestinateFrequency": {
+            "$ref": "#/components/schemas/ProcrastinateFrequency"
+          },
+          "focusDifficulty": {
+            "$ref": "#/components/schemas/FocusDifficulty"
+          },
+          "motivationalFactors": {
+            "$ref": "#/components/schemas/MotivationalFactors"
           }
         },
         "additionalProperties": false

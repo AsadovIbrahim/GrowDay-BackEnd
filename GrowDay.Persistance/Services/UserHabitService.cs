@@ -13,17 +13,19 @@ namespace GrowDay.Persistance.Services
         protected readonly IWriteHabitRepository _writeHabitRepository;
         protected readonly IReadHabitRepository _readHabitRepository;
         protected readonly IReadUserHabitRepository _readUserHabitRepository;
+        protected readonly INotificationService _notificationService;
 
         protected readonly ILogger<UserHabitService> _logger;
 
         public UserHabitService(IWriteUserHabitRepository userHabitRepository, ILogger<UserHabitService> logger, IReadUserHabitRepository readUserHabitRepository,
-            IWriteHabitRepository writeHabitRepository, IReadHabitRepository readHabitRepository)
+            IWriteHabitRepository writeHabitRepository, IReadHabitRepository readHabitRepository, INotificationService notificationService)
         {
             _writeUserHabitRepository = userHabitRepository;
             _logger = logger;
             _readUserHabitRepository = readUserHabitRepository;
             _writeHabitRepository = writeHabitRepository;
             _readHabitRepository = readHabitRepository;
+            _notificationService = notificationService;
         }
         public async Task<Result> AddUserHabitAsync(string userId, AddUserHabitDTO dto)
         {
@@ -57,6 +59,14 @@ namespace GrowDay.Persistance.Services
                 };
 
                 await _writeUserHabitRepository.AddAsync(userHabit);
+                if (dto.NotificationTime.HasValue)
+                {
+                    var notificationResult = await _notificationService.CreateAndSendNotificationAsync(
+                        userHabit.Id,
+                        userId,
+                        habit.Title,
+                        "Time to complete it.");
+                }
                 return Result.SuccessResult("Admin habit added to user successfully.");
             }
             catch (Exception ex)

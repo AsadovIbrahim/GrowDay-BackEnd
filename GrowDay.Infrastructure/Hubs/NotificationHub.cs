@@ -1,5 +1,4 @@
-﻿using GrowDay.Domain.Entities.Concretes;
-using Microsoft.AspNetCore.SignalR;
+﻿using Microsoft.AspNetCore.SignalR;
 
 namespace GrowDay.Infrastructure.Hubs
 {

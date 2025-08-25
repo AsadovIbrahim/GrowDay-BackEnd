@@ -24,6 +24,9 @@ namespace GrowDay.Persistance.DbContexts
         public virtual DbSet<HabitRecord> HabitRecords { get; set; }
         public virtual DbSet<Statistic>Statistics { get; set; }
         public virtual DbSet<Notification> Notifications { get; set; }
+        public virtual DbSet<UserHabit> UserHabits { get; set; }
+        public virtual DbSet<UserPreferences>UserPreferences { get; set; }
+
         public virtual DbSet<UserToken> UserTokens { get; set; }
 
     }

@@ -21,6 +21,8 @@ namespace GrowDay.Persistance
             services.AddScoped<IHabitRecordService, HabitRecordService>();
             services.AddScoped<IStatisticService, StatisticService>();
             services.AddScoped<INotificationService, NotificationService>();
+            services.AddScoped<IUserPreferencesService, UserPreferencesService>();
+
             // Context
 
             services.AddDbContext<GrowDayDbContext>(options =>
@@ -40,6 +42,7 @@ namespace GrowDay.Persistance
             services.AddScoped<IWriteHabitRecordRepository, WriteHabitRecordRepository>();
             services.AddScoped<IWriteStatisticRepository, WriteStatisticRepository>();
             services.AddScoped<IWriteNotificationRepository, WriteNotificationRepository>();
+            services.AddScoped<IWriteUserPreferencesRepository, WriteUserPreferencesRepository>();
 
 
 
@@ -51,6 +54,7 @@ namespace GrowDay.Persistance
             services.AddScoped<IReadHabitRecordRepository, ReadHabitRecordRepository>();
             services.AddScoped<IReadStatisticRepository, ReadStatisticRepository>();
             services.AddScoped<IReadNotificationRepository, ReadNotificationRepository>();
+            services.AddScoped<IReadUserPreferencesRepository, ReadUserPreferencesRepository>();
         }
     }
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ASUS\\source\\repos\\GrowUp-BackEnd\\GrowDay.Domain\\GrowDay.Domain.csproj": {}
+    "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Domain\\GrowDay.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ASUS\\source\\repos\\GrowUp-BackEnd\\GrowDay.Domain\\GrowDay.Domain.csproj": {
+    "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Domain\\GrowDay.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ASUS\\source\\repos\\GrowUp-BackEnd\\GrowDay.Domain\\GrowDay.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Domain\\GrowDay.Domain.csproj",
         "projectName": "GrowDay.Domain",
-        "projectPath": "C:\\Users\\ASUS\\source\\repos\\GrowUp-BackEnd\\GrowDay.Domain\\GrowDay.Domain.csproj",
+        "projectPath": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Domain\\GrowDay.Domain.csproj",
         "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ASUS\\source\\repos\\GrowUp-BackEnd\\GrowDay.Domain\\obj\\",
+        "outputPath": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
