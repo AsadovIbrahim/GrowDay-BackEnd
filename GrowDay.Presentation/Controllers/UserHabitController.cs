@@ -50,6 +50,22 @@ namespace GrowDay.Presentation.Controllers
             }
             return Ok(result);
         }
+        [HttpPost("AddSuggestedHabitToUser")]
+        public async Task<IActionResult> AddFromSuggestedHabit([FromBody]AddSuggestedHabitDTO addSuggestedHabitDTO)
+        {
+            var userId = GetUserId();
+            if (string.IsNullOrEmpty(userId))
+            {
+                return BadRequest("User ID is required.");
+            }
+            var result = await _userHabitService.AddFromSuggestedHabitAsync(userId, addSuggestedHabitDTO);
+            if (!result.Success)
+            {
+                return BadRequest(result.Message);
+            }
+            return Ok(result);
+        }
+
         [HttpPost("CreateMyOwnHabit")]
         public async Task<IActionResult> AddUserOwnHabit([FromBody]AddUserOwnHabitDTO addUserOwnHabitDTO)
         {

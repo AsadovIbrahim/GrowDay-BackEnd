@@ -27,5 +27,7 @@ namespace GrowDay.Domain.Entities.Concretes
         public virtual User? User { get; set; }
         public virtual Habit? Habit { get; set; }
 
+        public virtual ICollection<SuggestedHabit>? SuggestedHabits { get; set; }
+
     }
 }

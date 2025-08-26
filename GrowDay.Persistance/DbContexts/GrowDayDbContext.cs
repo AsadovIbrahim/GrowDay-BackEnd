@@ -1,6 +1,6 @@
-﻿using GrowDay.Domain.Entities.Concretes;
+﻿using Microsoft.EntityFrameworkCore;
+using GrowDay.Domain.Entities.Concretes;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
 
 namespace GrowDay.Persistance.DbContexts
 {
@@ -22,11 +22,11 @@ namespace GrowDay.Persistance.DbContexts
 
         public virtual DbSet<Habit> Habits { get; set; }
         public virtual DbSet<HabitRecord> HabitRecords { get; set; }
-        public virtual DbSet<Statistic>Statistics { get; set; }
+        public virtual DbSet<Statistic> Statistics { get; set; }
         public virtual DbSet<Notification> Notifications { get; set; }
         public virtual DbSet<UserHabit> UserHabits { get; set; }
-        public virtual DbSet<UserPreferences>UserPreferences { get; set; }
-
+        public virtual DbSet<UserPreferences> UserPreferences { get; set; }
+        public virtual DbSet<SuggestedHabit> SuggestedHabits { get; set; }
         public virtual DbSet<UserToken> UserTokens { get; set; }
 
     }

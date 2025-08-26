@@ -15,5 +15,7 @@ namespace GrowDay.Application.Services
         Task<Result<UserHabitDTO>> CompleteHabitAsync(string userId, string userHabitId);
         Task<Result<List<UserHabitDTO>>>GetAllUserHabitAsync();
 
+        Task<Result>AddFromSuggestedHabitAsync(string userId, AddSuggestedHabitDTO addSuggestedHabitDTO);
+
     }
 }

@@ -201,6 +201,62 @@ namespace GrowDay.Persistance.Migrations
                     b.ToTable("Statistics");
                 });
 
+            modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.SuggestedHabit", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Criteria")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("DurationInMinutes")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("Frequency")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsSelected")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("LastModifiedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<TimeSpan?>("NotificationTime")
+                        .HasColumnType("time");
+
+                    b.Property<DateTime?>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserHabitId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserHabitId");
+
+                    b.ToTable("SuggestedHabits");
+                });
+
             modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.User", b =>
                 {
                     b.Property<string>("Id")
@@ -602,6 +658,15 @@ namespace GrowDay.Persistance.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.SuggestedHabit", b =>
+                {
+                    b.HasOne("GrowDay.Domain.Entities.Concretes.UserHabit", "UserHabit")
+                        .WithMany("SuggestedHabits")
+                        .HasForeignKey("UserHabitId");
+
+                    b.Navigation("UserHabit");
+                });
+
             modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.UserHabit", b =>
                 {
                     b.HasOne("GrowDay.Domain.Entities.Concretes.Habit", "Habit")
@@ -705,6 +770,11 @@ namespace GrowDay.Persistance.Migrations
                     b.Navigation("UserHabits");
 
                     b.Navigation("UserTokens");
+                });
+
+            modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.UserHabit", b =>
+                {
+                    b.Navigation("SuggestedHabits");
                 });
 #pragma warning restore 612, 618
         }

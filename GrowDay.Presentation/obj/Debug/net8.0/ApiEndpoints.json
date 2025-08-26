@@ -427,6 +427,90 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "GrowDay.Presentation.Controllers.SuggestedHabitController",
+    "Method": "GetSuggestedHabitById",
+    "RelativePath": "api/SuggestedHabit/{suggestedHabitId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "suggestedHabitId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.SuggestedHabitController",
+    "Method": "CreateSuggestedHabit",
+    "RelativePath": "api/SuggestedHabit/CreateSuggestedHabit",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createSuggestedHabitDTO",
+        "Type": "GrowDay.Domain.DTO.CreateSuggestedHabitDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.SuggestedHabitController",
+    "Method": "DeleteSuggestedHabit",
+    "RelativePath": "api/SuggestedHabit/DeleteSuggestedHabit/{suggestedHabitId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "suggestedHabitId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.SuggestedHabitController",
+    "Method": "GetAllSuggestedHabits",
+    "RelativePath": "api/SuggestedHabit/GetAllSuggestedHabits",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.SuggestedHabitController",
+    "Method": "GetUserSuggestedHabits",
+    "RelativePath": "api/SuggestedHabit/GetUserSuggestedHabits",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.SuggestedHabitController",
+    "Method": "UpdateSuggestedHabit",
+    "RelativePath": "api/SuggestedHabit/UpdateSuggestedHabit",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "updateSuggestedHabitDTO",
+        "Type": "GrowDay.Domain.DTO.UpdateSuggestedHabitDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "GrowDay.Presentation.Controllers.UserHabitController",
     "Method": "GetUserHabitById",
     "RelativePath": "api/UserHabit/{userHabitId}",
@@ -474,6 +558,22 @@
       {
         "Name": "updateUserHabitDTO",
         "Type": "GrowDay.Domain.DTO.UpdateUserHabitDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.UserHabitController",
+    "Method": "AddFromSuggestedHabit",
+    "RelativePath": "api/UserHabit/AddSuggestedHabitToUser",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "addSuggestedHabitDTO",
+        "Type": "GrowDay.Domain.DTO.AddSuggestedHabitDTO",
         "IsRequired": true
       }
     ],

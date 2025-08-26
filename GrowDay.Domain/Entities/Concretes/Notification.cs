@@ -16,6 +16,8 @@ namespace GrowDay.Domain.Entities.Concretes
         public string UserId { get; set; }
         public string? UserHabitId { get; set; }
 
+
+
         public virtual User User { get; set; }
         public virtual UserHabit? UserHabit { get; set; }
 

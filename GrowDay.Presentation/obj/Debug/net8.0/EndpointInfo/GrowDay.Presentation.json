@@ -675,6 +675,136 @@
         }
       }
     },
+    "/api/SuggestedHabit/GetUserSuggestedHabits": {
+      "get": {
+        "tags": [
+          "SuggestedHabit"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/SuggestedHabit/GetAllSuggestedHabits": {
+      "get": {
+        "tags": [
+          "SuggestedHabit"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/SuggestedHabit/{suggestedHabitId}": {
+      "get": {
+        "tags": [
+          "SuggestedHabit"
+        ],
+        "parameters": [
+          {
+            "name": "suggestedHabitId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/SuggestedHabit/CreateSuggestedHabit": {
+      "post": {
+        "tags": [
+          "SuggestedHabit"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSuggestedHabitDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSuggestedHabitDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSuggestedHabitDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/SuggestedHabit/UpdateSuggestedHabit": {
+      "put": {
+        "tags": [
+          "SuggestedHabit"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSuggestedHabitDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSuggestedHabitDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSuggestedHabitDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/SuggestedHabit/DeleteSuggestedHabit/{suggestedHabitId}": {
+      "delete": {
+        "tags": [
+          "SuggestedHabit"
+        ],
+        "parameters": [
+          {
+            "name": "suggestedHabitId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/UserHabit/GetMyHabits": {
       "get": {
         "tags": [
@@ -788,6 +918,37 @@
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/AddUserHabitDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/UserHabit/AddSuggestedHabitToUser": {
+      "post": {
+        "tags": [
+          "UserHabit"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddSuggestedHabitDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddSuggestedHabitDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddSuggestedHabitDTO"
               }
             }
           }
@@ -984,6 +1145,36 @@
         },
         "additionalProperties": false
       },
+      "AddSuggestedHabitDTO": {
+        "type": "object",
+        "properties": {
+          "suggestedHabitId": {
+            "type": "string",
+            "nullable": true
+          },
+          "notificationTime": {
+            "type": "string",
+            "format": "date-span",
+            "nullable": true
+          },
+          "durationInMinutes": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "AddUserHabitDTO": {
         "type": "object",
         "properties": {
@@ -1101,6 +1292,46 @@
         },
         "additionalProperties": false
       },
+      "CreateSuggestedHabitDTO": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "frequency": {
+            "$ref": "#/components/schemas/HabitFrequency"
+          },
+          "criteria": {
+            "$ref": "#/components/schemas/HabitCriteria"
+          },
+          "notificationTime": {
+            "type": "string",
+            "format": "date-span",
+            "nullable": true
+          },
+          "durationInMinutes": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "CreateUserPreferenceDTO": {
         "type": "object",
         "properties": {
@@ -1142,6 +1373,19 @@
           }
         },
         "additionalProperties": false
+      },
+      "HabitCriteria": {
+        "enum": [
+          "None",
+          "MorningPerson",
+          "NightOwl",
+          "HighProcrastination",
+          "LowProcrastination",
+          "FocusDifficultyHigh",
+          "LowMotivation",
+          "DigitalDistractions"
+        ],
+        "type": "string"
       },
       "HabitFrequency": {
         "enum": [
@@ -1308,6 +1552,50 @@
           },
           "habitId": {
             "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateSuggestedHabitDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "frequency": {
+            "$ref": "#/components/schemas/HabitFrequency"
+          },
+          "criteria": {
+            "$ref": "#/components/schemas/HabitCriteria"
+          },
+          "notificationTime": {
+            "type": "string",
+            "format": "date-span",
+            "nullable": true
+          },
+          "durationInMinutes": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time",
             "nullable": true
           }
         },

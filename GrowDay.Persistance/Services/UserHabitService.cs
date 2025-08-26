@@ -13,12 +13,14 @@ namespace GrowDay.Persistance.Services
         protected readonly IWriteHabitRepository _writeHabitRepository;
         protected readonly IReadHabitRepository _readHabitRepository;
         protected readonly IReadUserHabitRepository _readUserHabitRepository;
+        protected readonly IReadSuggestedHabitRepository _readSuggestedHabitRepository;
         protected readonly INotificationService _notificationService;
 
         protected readonly ILogger<UserHabitService> _logger;
 
         public UserHabitService(IWriteUserHabitRepository userHabitRepository, ILogger<UserHabitService> logger, IReadUserHabitRepository readUserHabitRepository,
-            IWriteHabitRepository writeHabitRepository, IReadHabitRepository readHabitRepository, INotificationService notificationService)
+            IWriteHabitRepository writeHabitRepository, IReadHabitRepository readHabitRepository, INotificationService notificationService, 
+            IReadSuggestedHabitRepository readSuggestedHabitRepository)
         {
             _writeUserHabitRepository = userHabitRepository;
             _logger = logger;
@@ -26,7 +28,50 @@ namespace GrowDay.Persistance.Services
             _writeHabitRepository = writeHabitRepository;
             _readHabitRepository = readHabitRepository;
             _notificationService = notificationService;
+            _readSuggestedHabitRepository = readSuggestedHabitRepository;
         }
+
+        public async Task<Result> AddFromSuggestedHabitAsync(string userId, AddSuggestedHabitDTO addSuggestedHabitDTO)
+        {
+            try
+            {
+                var suggestedHabit = await _readSuggestedHabitRepository.GetByIdAsync(addSuggestedHabitDTO.SuggestedHabitId);
+                if (suggestedHabit == null)
+                    return Result.FailureResult("Suggested habit not found.");
+
+                var existingUserHabit = await _readUserHabitRepository.GetByUserAndHabitAsync(userId, suggestedHabit.Title);
+                if (existingUserHabit != null)
+                    return Result.FailureResult("User habit already exists.");
+
+                var userHabit = new UserHabit
+                {
+                    UserId = userId,
+                    HabitId = null,
+                    Title = suggestedHabit.Title,
+                    Description = suggestedHabit.Description,
+                    Frequency = suggestedHabit.Frequency,
+                    CreatedAt = DateTime.UtcNow,
+                    CurrentStreak = 0,
+                    LongestStreak = 0,
+                    StartDate = addSuggestedHabitDTO.StartDate ?? DateTime.UtcNow,
+                    EndDate = addSuggestedHabitDTO.EndDate ?? suggestedHabit.EndDate,
+                    NotificationTime = addSuggestedHabitDTO.NotificationTime ?? suggestedHabit.NotificationTime, 
+                    DurationInMinutes = addSuggestedHabitDTO.DurationInMinutes ?? suggestedHabit.DurationInMinutes,
+                    LastCompletedDate = null,
+                    IsActive = true,
+                    IsDeleted = false
+                };
+                await _writeUserHabitRepository.AddAsync(userHabit);
+               
+                return Result.SuccessResult("Habit added from suggested habit successfully.");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error adding habit from suggested habit");
+                return Result.FailureResult("An error occurred while adding the habit from suggested habit.");
+            }
+        }
+
         public async Task<Result> AddUserHabitAsync(string userId, AddUserHabitDTO dto)
         {
             try
@@ -194,6 +239,8 @@ namespace GrowDay.Persistance.Services
                 return Result<UserHabitDTO>.FailureResult("An error occurred while completing the habit.");
             }
         }
+
+        
 
         public async Task<Result<List<UserHabitDTO>>> GetAllUserHabitAsync()
         {

@@ -90,7 +90,7 @@ namespace GrowDay.Persistance.Services
             }
         }
 
-      
+
 
         public async Task<Result> DeleteNotificationAsync(string notificationId)
         {
