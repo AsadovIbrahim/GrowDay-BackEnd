@@ -10,7 +10,7 @@ namespace GrowDay.Domain.Entities.Concretes
 
         //Audit fields
         public bool IsDeleted { get; set; } = false;
-        public bool FirstTimeLogin { get; set; }= true;
+        public bool FirstTimeLogin { get; set; } = true;
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime LastModifiedAt { get; set; } = DateTime.UtcNow;
 
@@ -18,6 +18,9 @@ namespace GrowDay.Domain.Entities.Concretes
         //Navigation
         public virtual ICollection<UserHabit>? UserHabits { get; set; }
         public virtual ICollection<UserToken>? UserTokens { get; set; }
+        public virtual ICollection<Notification>? Notifications { get; set; }
+        public virtual ICollection<Statistic>? Statistics { get; set; }
+        public virtual ICollection<UserPreferences>? UserPreferences { get; set; }
 
     }
 

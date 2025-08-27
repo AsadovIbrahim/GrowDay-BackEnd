@@ -1127,7 +1127,7 @@
       "AddHabitRecordDTO": {
         "type": "object",
         "properties": {
-          "habitId": {
+          "userHabitId": {
             "type": "string",
             "nullable": true
           },
@@ -1550,7 +1550,7 @@
             "type": "string",
             "nullable": true
           },
-          "habitId": {
+          "userHabitId": {
             "type": "string",
             "nullable": true
           }

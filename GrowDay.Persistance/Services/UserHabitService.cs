@@ -3,6 +3,7 @@ using GrowDay.Application.Services;
 using GrowDay.Domain.DTO;
 using GrowDay.Domain.Entities.Concretes;
 using GrowDay.Domain.Helpers;
+using GrowDay.Persistance.Repositories;
 using Microsoft.Extensions.Logging;
 
 namespace GrowDay.Persistance.Services
@@ -13,14 +14,15 @@ namespace GrowDay.Persistance.Services
         protected readonly IWriteHabitRepository _writeHabitRepository;
         protected readonly IReadHabitRepository _readHabitRepository;
         protected readonly IReadUserHabitRepository _readUserHabitRepository;
+        protected readonly IWriteNotificationRepository _writeNotificationRepository;
         protected readonly IReadSuggestedHabitRepository _readSuggestedHabitRepository;
         protected readonly INotificationService _notificationService;
 
         protected readonly ILogger<UserHabitService> _logger;
 
         public UserHabitService(IWriteUserHabitRepository userHabitRepository, ILogger<UserHabitService> logger, IReadUserHabitRepository readUserHabitRepository,
-            IWriteHabitRepository writeHabitRepository, IReadHabitRepository readHabitRepository, INotificationService notificationService, 
-            IReadSuggestedHabitRepository readSuggestedHabitRepository)
+            IWriteHabitRepository writeHabitRepository, IReadHabitRepository readHabitRepository, INotificationService notificationService,
+            IReadSuggestedHabitRepository readSuggestedHabitRepository, IWriteNotificationRepository writeNotificationRepository)
         {
             _writeUserHabitRepository = userHabitRepository;
             _logger = logger;
@@ -29,6 +31,7 @@ namespace GrowDay.Persistance.Services
             _readHabitRepository = readHabitRepository;
             _notificationService = notificationService;
             _readSuggestedHabitRepository = readSuggestedHabitRepository;
+            _writeNotificationRepository = writeNotificationRepository;
         }
 
         public async Task<Result> AddFromSuggestedHabitAsync(string userId, AddSuggestedHabitDTO addSuggestedHabitDTO)
@@ -104,15 +107,8 @@ namespace GrowDay.Persistance.Services
                 };
 
                 await _writeUserHabitRepository.AddAsync(userHabit);
-                if (dto.NotificationTime.HasValue)
-                {
-                    var notificationResult = await _notificationService.CreateAndSendNotificationAsync(
-                        userHabit.Id,
-                        userId,
-                        habit.Title,
-                        "Time to complete it.");
-                }
-                return Result.SuccessResult("Admin habit added to user successfully.");
+
+                return Result.SuccessResult($"User habit added successfully. UserHabitId: {userHabit.Id}");
             }
             catch (Exception ex)
             {
@@ -216,8 +212,9 @@ namespace GrowDay.Persistance.Services
 
                 var habitDTO = new UserHabitDTO
                 {
+                    Id = userHabit.Id,
                     UserId = userHabit.UserId,
-                    HabitId = !string.IsNullOrEmpty(userHabit.HabitId) ? userHabit.HabitId : userHabit.Id,
+                    HabitId = userHabit.HabitId,
                     Title = !string.IsNullOrEmpty(userHabit.Title) ? userHabit.Title : userHabit.Habit?.Title,
                     Description = !string.IsNullOrEmpty(userHabit.Description) ? userHabit.Description : userHabit.Habit?.Description,
                     IsActive = !userHabit.IsDeleted,
@@ -253,8 +250,9 @@ namespace GrowDay.Persistance.Services
                 }
                 var habitList = userHabits.Select(uh => new UserHabitDTO
                 {
+                    Id = uh.Id,
                     UserId = uh.UserId,
-                    HabitId = !string.IsNullOrEmpty(uh.HabitId) ? uh.HabitId : uh.Id,
+                    HabitId = uh.HabitId,
                     Title = !string.IsNullOrEmpty(uh.Title) ? uh.Title : uh.Habit?.Title,
                     Description = !string.IsNullOrEmpty(uh.Description) ? uh.Description : uh.Habit?.Description,
                     Frequency = uh.Frequency ?? uh.Habit?.Frequency,
@@ -287,8 +285,9 @@ namespace GrowDay.Persistance.Services
                 }
                 var habitDTO = new UserHabitDTO
                 {
+                    Id = userHabit.Id,
                     UserId = userHabit.UserId,
-                    HabitId = !string.IsNullOrEmpty(userHabit.HabitId) ? userHabit.HabitId : userHabit.Id,
+                    HabitId = userHabit.HabitId,
                     Title = !string.IsNullOrEmpty(userHabit.Title) ? userHabit.Title : userHabit.Habit?.Title,
                     Description = !string.IsNullOrEmpty(userHabit.Description) ? userHabit.Description : userHabit.Habit?.Description,
                     Frequency = userHabit.Frequency ?? userHabit.Habit?.Frequency,
@@ -336,7 +335,11 @@ namespace GrowDay.Persistance.Services
                 {
                     return Result.FailureResult("User habit not found.");
                 }
-                userHabit.IsDeleted = true;
+                if(userHabit.Notifications!=null && userHabit.Notifications.Any())
+                {
+                    await _writeNotificationRepository.RemoveRangeAsync(userHabit.Notifications);
+
+                }
                 await _writeUserHabitRepository.DeleteAsync(userHabit);
                 return Result.SuccessResult("User habit removed successfully.");
             }
@@ -371,7 +374,9 @@ namespace GrowDay.Persistance.Services
                 await _writeUserHabitRepository.UpdateAsync(userHabit);
                 var habitDTO = new UserHabitDTO
                 {
-                    HabitId = !string.IsNullOrEmpty(userHabit.HabitId) ? userHabit.HabitId : userHabit.Id,
+                    Id = userHabit.Id,
+                    UserId = userHabit.UserId,
+                    HabitId = userHabit.HabitId,    
                     Title = !string.IsNullOrEmpty(userHabit.Title) ? userHabit.Title : userHabit.Habit?.Title,
                     Description = !string.IsNullOrEmpty(userHabit.Description) ? userHabit.Description : userHabit.Habit?.Description,
                     Frequency = userHabit.Frequency ?? userHabit.Habit?.Frequency,

@@ -41,7 +41,7 @@ namespace GrowDay.Infrastructure.BackgroundServices
                             {
                                 _logger.LogInformation($"Sending notification for habit '{habit.Title}' to user '{habit.UserId}'.");
                                 await notificationService.CreateAndSendNotificationAsync(
-                                    habit.HabitId,
+                                    habit.Id,
                                     habit.UserId,
                                     habit.Title,
                                     "Time to complete your habit!");

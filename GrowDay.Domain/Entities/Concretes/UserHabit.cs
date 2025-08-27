@@ -3,10 +3,10 @@ using GrowDay.Domain.Enums;
 
 namespace GrowDay.Domain.Entities.Concretes
 {
-    public class UserHabit:BaseEntity
+    public class UserHabit : BaseEntity
     {
         public string UserId { get; set; }
-        public string ?HabitId { get; set; }
+        public string? HabitId { get; set; }
 
         public string? Title { get; set; }
         public string? Description { get; set; }
@@ -20,7 +20,7 @@ namespace GrowDay.Domain.Entities.Concretes
         public int LongestStreak { get; set; }
         public DateTime? LastCompletedDate { get; set; }
 
-        public TimeSpan? NotificationTime { get; set; } 
+        public TimeSpan? NotificationTime { get; set; }
         public int? DurationInMinutes { get; set; }
 
         //Navigation Properties
@@ -28,6 +28,8 @@ namespace GrowDay.Domain.Entities.Concretes
         public virtual Habit? Habit { get; set; }
 
         public virtual ICollection<SuggestedHabit>? SuggestedHabits { get; set; }
+        public virtual ICollection<Notification>? Notifications { get; set; }
+        public virtual ICollection<HabitRecord>? HabitRecords { get; set; }
 
     }
 }

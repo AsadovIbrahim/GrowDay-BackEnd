@@ -7,6 +7,6 @@
         public string Note { get; set; }
 
 
-        public string HabitId { get; set; }
+        public string UserHabitId { get; set; }
     }
 }

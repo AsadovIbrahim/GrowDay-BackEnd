@@ -10,7 +10,7 @@ namespace GrowDay.Domain.Entities.Concretes
 
 
         //Foreign Key
-        public string HabitId { get; set; }
-        public virtual Habit? Habit { get; set; }
+        public string UserHabitId { get; set; }
+        public virtual UserHabit? UserHabit { get; set; }
     }
 }

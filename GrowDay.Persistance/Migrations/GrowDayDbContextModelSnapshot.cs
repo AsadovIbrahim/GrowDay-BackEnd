@@ -84,10 +84,6 @@ namespace GrowDay.Persistance.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("HabitId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<bool>("IsCompleted")
                         .HasColumnType("bit");
 
@@ -101,9 +97,13 @@ namespace GrowDay.Persistance.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
+                    b.Property<string>("UserHabitId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("HabitId");
+                    b.HasIndex("UserHabitId");
 
                     b.ToTable("HabitRecords");
                 });
@@ -620,26 +620,26 @@ namespace GrowDay.Persistance.Migrations
 
             modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.HabitRecord", b =>
                 {
-                    b.HasOne("GrowDay.Domain.Entities.Concretes.Habit", "Habit")
+                    b.HasOne("GrowDay.Domain.Entities.Concretes.UserHabit", "UserHabit")
                         .WithMany("HabitRecords")
-                        .HasForeignKey("HabitId")
+                        .HasForeignKey("UserHabitId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Habit");
+                    b.Navigation("UserHabit");
                 });
 
             modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.Notification", b =>
                 {
                     b.HasOne("GrowDay.Domain.Entities.Concretes.UserHabit", "UserHabit")
-                        .WithMany()
+                        .WithMany("Notifications")
                         .HasForeignKey("UserHabitId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("GrowDay.Domain.Entities.Concretes.User", "User")
-                        .WithMany()
+                        .WithMany("Notifications")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("User");
@@ -650,7 +650,7 @@ namespace GrowDay.Persistance.Migrations
             modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.Statistic", b =>
                 {
                     b.HasOne("GrowDay.Domain.Entities.Concretes.User", "User")
-                        .WithMany()
+                        .WithMany("Statistics")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -688,7 +688,7 @@ namespace GrowDay.Persistance.Migrations
             modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.UserPreferences", b =>
                 {
                     b.HasOne("GrowDay.Domain.Entities.Concretes.User", "User")
-                        .WithMany()
+                        .WithMany("UserPreferences")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -760,20 +760,28 @@ namespace GrowDay.Persistance.Migrations
 
             modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.Habit", b =>
                 {
-                    b.Navigation("HabitRecords");
-
                     b.Navigation("UserHabits");
                 });
 
             modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.User", b =>
                 {
+                    b.Navigation("Notifications");
+
+                    b.Navigation("Statistics");
+
                     b.Navigation("UserHabits");
+
+                    b.Navigation("UserPreferences");
 
                     b.Navigation("UserTokens");
                 });
 
             modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.UserHabit", b =>
                 {
+                    b.Navigation("HabitRecords");
+
+                    b.Navigation("Notifications");
+
                     b.Navigation("SuggestedHabits");
                 });
 #pragma warning restore 612, 618

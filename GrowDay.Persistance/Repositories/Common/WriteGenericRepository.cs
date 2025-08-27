@@ -9,7 +9,7 @@ namespace GrowDay.Persistance.Repositories.Common
         public WriteGenericRepository(GrowDayDbContext context) : base(context)
         {
         }
-
+            
         public async Task AddAsync(T entity)
         {
             await _table.AddAsync(entity);
@@ -37,6 +37,13 @@ namespace GrowDay.Persistance.Repositories.Common
             }
             await _context.SaveChangesAsync();
         }
+
+        public async Task RemoveRangeAsync(IEnumerable<T> entities)
+        {
+            _table.RemoveRange(entities);
+            await _context.SaveChangesAsync();
+        }
+
 
         public async Task SaveChangesAsync()
         {

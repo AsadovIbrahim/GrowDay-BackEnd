@@ -16,7 +16,12 @@ namespace GrowDay.Persistance.Configurations
             builder.Property(hr => hr.Date)
                 .IsRequired();
 
-            
+            builder.HasOne(hr => hr.UserHabit)
+                .WithMany(uh => uh.HabitRecords)
+                .HasForeignKey(hr => hr.UserHabitId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+
 
         }
     }

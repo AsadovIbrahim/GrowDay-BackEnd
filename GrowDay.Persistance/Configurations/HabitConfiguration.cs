@@ -22,10 +22,7 @@ namespace GrowDay.Persistance.Configurations
                 .HasConversion<string>()
                 .IsRequired();
 
-            builder.HasMany(h=>h.HabitRecords)
-                .WithOne(hr => hr.Habit)
-                .HasForeignKey(hr => hr.HabitId)
-                .OnDelete(DeleteBehavior.Cascade);
+      
 
 
             builder.HasMany(h => h.UserHabits)

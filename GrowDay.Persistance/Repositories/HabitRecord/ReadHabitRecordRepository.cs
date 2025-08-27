@@ -12,20 +12,20 @@ namespace GrowDay.Persistance.Repositories
         {
         }
 
-        public async Task<IEnumerable<HabitRecord>> GetAllByHabitIdAsync(string habitId)
+        public async Task<IEnumerable<HabitRecord>> GetAllByHabitIdAsync(string userHabitId)
         {
             return await _table
-                .Where(hr => hr.HabitId == habitId)
+                .Where(hr => hr.UserHabitId == userHabitId)
                 .ToListAsync();
         }
 
         public async Task<IEnumerable<HabitRecord>> GetAllByUserAndDateRangeAsync(string userId, DateTime startDate, DateTime endDate)
         {
             return await _table
-                .Include(hr => hr.Habit)
-                    .ThenInclude(h => h.UserHabits)
-                .Where(hr => hr.Habit.UserHabits != null &&
-                             hr.Habit.UserHabits.Any(uh => uh.UserId == userId && !uh.IsDeleted) &&
+                .Include(hr => hr.UserHabit)
+                    .ThenInclude(uh => uh.Habit)
+                .Where(hr => hr.UserHabit != null &&
+                             hr.UserHabit.UserId == userId &&
                              hr.Date >= startDate && hr.Date <= endDate)
                 .ToListAsync();
         }
@@ -33,13 +33,11 @@ namespace GrowDay.Persistance.Repositories
         public async Task<IEnumerable<HabitRecord>> GetAllByUserAsync(string userId)
         {
             return await _table
-                .Include(hr => hr.Habit)
-                    .ThenInclude(h => h.UserHabits)
-                .Where(hr => hr.Habit.UserHabits != null &&
-                             hr.Habit.UserHabits.Any(uh => uh.UserId == userId && !uh.IsDeleted))
+                .Include(hr => hr.UserHabit)
+                    .ThenInclude(uh => uh.Habit)
+                .Where(hr => hr.UserHabit != null &&
+                             hr.UserHabit.UserId == userId)
                 .ToListAsync();
-
-
         }
     }
 }

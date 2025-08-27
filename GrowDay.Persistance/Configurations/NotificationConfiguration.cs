@@ -31,15 +31,15 @@ namespace GrowDay.Persistance.Configurations
 
           
             builder.HasOne(n => n.UserHabit)
-                .WithMany()
+                .WithMany(uh=>uh.Notifications)
                 .HasForeignKey(n => n.UserHabitId)
-                .OnDelete(DeleteBehavior.SetNull);
+                .OnDelete(DeleteBehavior.Restrict);
 
 
             builder.HasOne(n => n.User)
-                .WithMany()
+                .WithMany(u=>u.Notifications)
                 .HasForeignKey(n => n.UserId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
 
 
         }

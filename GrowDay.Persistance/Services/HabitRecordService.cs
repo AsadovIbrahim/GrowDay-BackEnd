@@ -26,7 +26,7 @@ namespace GrowDay.Persistance.Services
             {
                 var habitRecord = new HabitRecord
                 {
-                    HabitId = addHabitRecordDTO.HabitId,
+                    UserHabitId = addHabitRecordDTO.UserHabitId,
                     Date = addHabitRecordDTO.Date,
                     IsCompleted = addHabitRecordDTO.IsCompleted,
                     Note = addHabitRecordDTO.Note
@@ -54,7 +54,7 @@ namespace GrowDay.Persistance.Services
                 var habitRecordDTO = new HabitRecordDTO
                 {
                     Id = habitRecord.Id,
-                    HabitId = habitRecord.HabitId,
+                    UserHabitId = habitRecord.UserHabitId,
                     Date = habitRecord.Date,
                     IsCompleted = habitRecord.IsCompleted,
                     Note = habitRecord.Note
@@ -81,7 +81,7 @@ namespace GrowDay.Persistance.Services
                 var habitRecordDTO = new HabitRecordDTO
                 {
                     Id = habitRecord.Id,
-                    HabitId = habitRecord.HabitId,
+                    UserHabitId = habitRecord.UserHabitId,
                     Date = habitRecord.Date,
                     IsCompleted = habitRecord.IsCompleted,
                     Note = habitRecord.Note
@@ -108,7 +108,7 @@ namespace GrowDay.Persistance.Services
                 var habitRecordDTOs = habitRecords.Select(hr => new HabitRecordDTO
                 {
                     Id = hr.Id,
-                    HabitId = hr.HabitId,
+                    UserHabitId = hr.UserHabitId,
                     Date = hr.Date,
                     IsCompleted = hr.IsCompleted,
                     Note = hr.Note
@@ -131,7 +131,7 @@ namespace GrowDay.Persistance.Services
                 {
                     return Result<HabitRecordDTO>.FailureResult("Habit record not found.");
                 }
-                habitRecord.HabitId = updateHabitRecordDTO.HabitId;
+                habitRecord.UserHabitId = updateHabitRecordDTO.UserHabitId;
                 habitRecord.Date = updateHabitRecordDTO.Date;
                 habitRecord.IsCompleted = updateHabitRecordDTO.IsCompleted;
                 habitRecord.Note = updateHabitRecordDTO.Note;
@@ -140,7 +140,7 @@ namespace GrowDay.Persistance.Services
                 var habitRecordDTO = new HabitRecordDTO
                 {
                     Id = habitRecord.Id,
-                    HabitId = habitRecord.HabitId,
+                    UserHabitId = habitRecord.UserHabitId,
                     Date = habitRecord.Date,
                     IsCompleted = habitRecord.IsCompleted,
                     Note = habitRecord.Note

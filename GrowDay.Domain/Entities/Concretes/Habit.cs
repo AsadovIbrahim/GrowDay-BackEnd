@@ -18,7 +18,6 @@ namespace GrowDay.Domain.Entities.Concretes
         public string? CreatedByUserId { get; set; }
 
         //Navigation Property
-        public virtual ICollection<HabitRecord>? HabitRecords { get; set; }
         public virtual ICollection<UserHabit>? UserHabits { get; set; }
 
 
