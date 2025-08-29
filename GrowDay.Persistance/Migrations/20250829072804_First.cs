@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace GrowDay.Persistance.Migrations
 {
     /// <inheritdoc />
-    public partial class first : Migration
+    public partial class First : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -33,6 +33,7 @@ namespace GrowDay.Persistance.Migrations
                     FirstName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    FirstTimeLogin = table.Column<bool>(type: "bit", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -66,7 +67,7 @@ namespace GrowDay.Persistance.Migrations
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     EndDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsGLobal = table.Column<bool>(type: "bit", nullable: false),
+                    IsGlobal = table.Column<bool>(type: "bit", nullable: false),
                     CreatedByUserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -75,26 +76,6 @@ namespace GrowDay.Persistance.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Habits", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Statistics",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    CompletedCount = table.Column<int>(type: "int", nullable: false),
-                    MissedCount = table.Column<int>(type: "int", nullable: false),
-                    PeriodStart = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    PeriodEnd = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    PeriodType = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Statistics", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -204,6 +185,58 @@ namespace GrowDay.Persistance.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Statistics",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    CompletedCount = table.Column<int>(type: "int", nullable: false),
+                    MissedCount = table.Column<int>(type: "int", nullable: false),
+                    PeriodStart = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    PeriodEnd = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    PeriodType = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LastModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Statistics", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Statistics_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UserPreferences",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    WakeUpTime = table.Column<TimeSpan>(type: "time", nullable: false),
+                    SleepTime = table.Column<TimeSpan>(type: "time", nullable: false),
+                    ProcrestinateFrequency = table.Column<int>(type: "int", nullable: false),
+                    FocusDifficulty = table.Column<int>(type: "int", nullable: false),
+                    MotivationalFactors = table.Column<int>(type: "int", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LastModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserPreferences", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_UserPreferences_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "UserTokens",
                 columns: table => new
                 {
@@ -228,61 +261,7 @@ namespace GrowDay.Persistance.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "HabitRecords",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    IsCompleted = table.Column<bool>(type: "bit", nullable: false),
-                    Note = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    HabitId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_HabitRecords", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_HabitRecords_Habits_HabitId",
-                        column: x => x.HabitId,
-                        principalTable: "Habits",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Notifications",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Message = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    IsRead = table.Column<bool>(type: "bit", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    HabitId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Notifications", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Notifications_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Notifications_Habits_HabitId",
-                        column: x => x.HabitId,
-                        principalTable: "Habits",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.SetNull);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "UserHabit",
+                name: "UserHabits",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -297,25 +276,114 @@ namespace GrowDay.Persistance.Migrations
                     CurrentStreak = table.Column<int>(type: "int", nullable: false),
                     LongestStreak = table.Column<int>(type: "int", nullable: false),
                     LastCompletedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    NotificationTime = table.Column<TimeSpan>(type: "time", nullable: true),
+                    DurationInMinutes = table.Column<int>(type: "int", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserHabit", x => x.Id);
+                    table.PrimaryKey("PK_UserHabits", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_UserHabit_AspNetUsers_UserId",
+                        name: "FK_UserHabits_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_UserHabit_Habits_HabitId",
+                        name: "FK_UserHabits_Habits_HabitId",
                         column: x => x.HabitId,
                         principalTable: "Habits",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "HabitRecords",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsCompleted = table.Column<bool>(type: "bit", nullable: false),
+                    Note = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    UserHabitId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LastModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HabitRecords", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_HabitRecords_UserHabits_UserHabitId",
+                        column: x => x.UserHabitId,
+                        principalTable: "UserHabits",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Notifications",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Message = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    IsRead = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
+                    SentAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    NotificationType = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    UserHabitId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LastModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Notifications", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Notifications_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Notifications_UserHabits_UserHabitId",
+                        column: x => x.UserHabitId,
+                        principalTable: "UserHabits",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SuggestedHabits",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Frequency = table.Column<int>(type: "int", nullable: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    IsSelected = table.Column<bool>(type: "bit", nullable: false),
+                    Criteria = table.Column<int>(type: "int", nullable: false),
+                    NotificationTime = table.Column<TimeSpan>(type: "time", nullable: true),
+                    DurationInMinutes = table.Column<int>(type: "int", nullable: true),
+                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UserHabitId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LastModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SuggestedHabits", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_SuggestedHabits_UserHabits_UserHabitId",
+                        column: x => x.UserHabitId,
+                        principalTable: "UserHabits",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
@@ -358,14 +426,14 @@ namespace GrowDay.Persistance.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_HabitRecords_HabitId",
+                name: "IX_HabitRecords_UserHabitId",
                 table: "HabitRecords",
-                column: "HabitId");
+                column: "UserHabitId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Notifications_HabitId",
+                name: "IX_Notifications_UserHabitId",
                 table: "Notifications",
-                column: "HabitId");
+                column: "UserHabitId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Notifications_UserId",
@@ -373,13 +441,28 @@ namespace GrowDay.Persistance.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserHabit_HabitId",
-                table: "UserHabit",
+                name: "IX_Statistics_UserId",
+                table: "Statistics",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SuggestedHabits_UserHabitId",
+                table: "SuggestedHabits",
+                column: "UserHabitId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserHabits_HabitId",
+                table: "UserHabits",
                 column: "HabitId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserHabit_UserId",
-                table: "UserHabit",
+                name: "IX_UserHabits_UserId",
+                table: "UserHabits",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserPreferences_UserId",
+                table: "UserPreferences",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
@@ -416,7 +499,10 @@ namespace GrowDay.Persistance.Migrations
                 name: "Statistics");
 
             migrationBuilder.DropTable(
-                name: "UserHabit");
+                name: "SuggestedHabits");
+
+            migrationBuilder.DropTable(
+                name: "UserPreferences");
 
             migrationBuilder.DropTable(
                 name: "UserTokens");
@@ -425,10 +511,13 @@ namespace GrowDay.Persistance.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "Habits");
+                name: "UserHabits");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Habits");
         }
     }
 }

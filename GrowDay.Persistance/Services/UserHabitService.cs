@@ -3,7 +3,6 @@ using GrowDay.Application.Services;
 using GrowDay.Domain.DTO;
 using GrowDay.Domain.Entities.Concretes;
 using GrowDay.Domain.Helpers;
-using GrowDay.Persistance.Repositories;
 using Microsoft.Extensions.Logging;
 
 namespace GrowDay.Persistance.Services
@@ -15,6 +14,8 @@ namespace GrowDay.Persistance.Services
         protected readonly IReadHabitRepository _readHabitRepository;
         protected readonly IReadUserHabitRepository _readUserHabitRepository;
         protected readonly IWriteNotificationRepository _writeNotificationRepository;
+        protected readonly IReadHabitRecordRepository _readHabitRecordRepository;
+        protected readonly IWriteHabitRecordRepository _writeHabitRecordRepository;
         protected readonly IReadSuggestedHabitRepository _readSuggestedHabitRepository;
         protected readonly INotificationService _notificationService;
 
@@ -22,7 +23,7 @@ namespace GrowDay.Persistance.Services
 
         public UserHabitService(IWriteUserHabitRepository userHabitRepository, ILogger<UserHabitService> logger, IReadUserHabitRepository readUserHabitRepository,
             IWriteHabitRepository writeHabitRepository, IReadHabitRepository readHabitRepository, INotificationService notificationService,
-            IReadSuggestedHabitRepository readSuggestedHabitRepository, IWriteNotificationRepository writeNotificationRepository)
+            IReadSuggestedHabitRepository readSuggestedHabitRepository, IWriteNotificationRepository writeNotificationRepository, IReadHabitRecordRepository readHabitRecordRepository, IWriteHabitRecordRepository writeHabitRecordRepository)
         {
             _writeUserHabitRepository = userHabitRepository;
             _logger = logger;
@@ -32,6 +33,8 @@ namespace GrowDay.Persistance.Services
             _notificationService = notificationService;
             _readSuggestedHabitRepository = readSuggestedHabitRepository;
             _writeNotificationRepository = writeNotificationRepository;
+            _readHabitRecordRepository = readHabitRecordRepository;
+            _writeHabitRecordRepository = writeHabitRecordRepository;
         }
 
         public async Task<Result> AddFromSuggestedHabitAsync(string userId, AddSuggestedHabitDTO addSuggestedHabitDTO)
@@ -177,19 +180,19 @@ namespace GrowDay.Persistance.Services
             }
         }
 
-        public async Task<Result<UserHabitDTO>> CompleteHabitAsync(string userId, string habitId)
+        public async Task<Result<UserHabitDTO>> CompleteHabitAsync(string userId, string userHabitId, string? note = null)
         {
             try
             {
-                var userHabit = await _readUserHabitRepository.GetByUserAndHabitAsync(userId, habitId);
+                var userHabit = await _readUserHabitRepository.GetByUserAndHabitAsync(userId, userHabitId);
                 if (userHabit == null)
-                {
                     return Result<UserHabitDTO>.FailureResult("User habit not found.");
-                }
 
                 var today = DateTime.UtcNow.Date;
 
-                if (userHabit.LastCompletedDate.HasValue && userHabit.LastCompletedDate.Value.Date == today)
+                var existingHabitRecord = await _readHabitRecordRepository.GetByUserHabitIdAndDateAsync(userHabit.Id, today);
+
+                if (existingHabitRecord != null && existingHabitRecord.IsCompleted && !existingHabitRecord.IsDeleted)
                 {
                     return Result<UserHabitDTO>.FailureResult("Habit already completed for today.");
                 }
@@ -209,6 +212,32 @@ namespace GrowDay.Persistance.Services
                 userHabit.LastCompletedDate = today;
 
                 await _writeUserHabitRepository.UpdateAsync(userHabit);
+
+                if (existingHabitRecord == null || existingHabitRecord.IsDeleted)
+                {
+                    var habitRecord = new HabitRecord
+                    {
+                        UserHabitId = userHabit.Id,
+                        Date = today,
+                        Note = note,
+                        CreatedAt = DateTime.UtcNow,
+                        LastModifiedAt = DateTime.UtcNow,
+                        IsCompleted = true,
+                        IsDeleted = false 
+                    };
+                    await _writeHabitRecordRepository.AddAsync(habitRecord);
+                }
+                else
+                {
+                    if (!existingHabitRecord.IsCompleted || !string.IsNullOrEmpty(note))
+                    {
+                        existingHabitRecord.IsCompleted = true;
+                        if (!string.IsNullOrEmpty(note))
+                            existingHabitRecord.Note = note;
+                        existingHabitRecord.LastModifiedAt = DateTime.UtcNow;
+                        await _writeHabitRecordRepository.UpdateAsync(existingHabitRecord);
+                    }
+                }
 
                 var habitDTO = new UserHabitDTO
                 {
@@ -237,7 +266,32 @@ namespace GrowDay.Persistance.Services
             }
         }
 
-        
+        public async Task<Result<ICollection<HabitRecordDTO>>> GetAllCompletedHabitsAsync(string userId)
+        {
+            try
+            {
+                var userHabits = await _readHabitRecordRepository.GetAllByUserAsync(userId);
+                if (userHabits == null || !userHabits.Any())
+                {
+                    return Result<ICollection<HabitRecordDTO>>.FailureResult("No completed habits found.");
+                }
+                var habitRecords = userHabits.Select(hr => new HabitRecordDTO
+                {
+                    Id = hr.Id,
+                    UserHabitId = hr.UserHabitId,
+                    Date = hr.Date,
+                    Note = hr.Note!,
+                    IsCompleted = hr.IsCompleted
+                }).ToList();
+                return Result<ICollection<HabitRecordDTO>>.SuccessResult(habitRecords, "Completed habits retrieved successfully.");
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error retrieving completed habits");
+                return Result<ICollection<HabitRecordDTO>>.FailureResult("An error occurred while retrieving completed habits.");
+            }
+        }
 
         public async Task<Result<List<UserHabitDTO>>> GetAllUserHabitAsync()
         {

@@ -45,25 +45,23 @@ namespace GrowDay.Presentation.Controllers
             }
             return Ok(result);
         }
-        [HttpPost("CreateHabitRecord")]
-        public async Task<IActionResult> CreateHabitRecord([FromBody] AddHabitRecordDTO addHabitRecordDTO)
+
+        [HttpDelete("ClearAllHabitRecords")]
+        public async Task<IActionResult> ClearAllHabitRecords()
         {
-            if (addHabitRecordDTO == null)
-            {
-                return BadRequest("Habit Record data is required.");
-            }
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (string.IsNullOrEmpty(userId))
             {
                 return BadRequest("User ID is required.");
             }
-            var result = await _habitRecordService.CreateHabitRecordAsync(addHabitRecordDTO);
+            var result = await _habitRecordService.ClearAllHabitRecordsAsync(userId);
             if (!result.Success)
             {
                 return BadRequest(result.Message);
             }
             return Ok(result);
         }
+
         [HttpDelete("{habitRecordId}")]
         public async Task<IActionResult> DeleteHabitRecord(string habitRecordId)
         {
@@ -92,5 +90,27 @@ namespace GrowDay.Presentation.Controllers
             }
             return Ok(result);
         }
+        
+        //It doesn't needed because habit records are created automatically when a user adds a habit or marks a habit as completed.
+
+        //[HttpPost("CreateHabitRecord")]
+        //public async Task<IActionResult> CreateHabitRecord([FromBody] AddHabitRecordDTO addHabitRecordDTO)
+        //{
+        //    if (addHabitRecordDTO == null)
+        //    {
+        //        return BadRequest("Habit Record data is required.");
+        //    }
+        //    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        //    if (string.IsNullOrEmpty(userId))
+        //    {
+        //        return BadRequest("User ID is required.");
+        //    }
+        //    var result = await _habitRecordService.CreateHabitRecordAsync(addHabitRecordDTO);
+        //    if (!result.Success)
+        //    {
+        //        return BadRequest(result.Message);
+        //    }
+        //    return Ok(result);
+        //}
     }
 }

@@ -21,6 +21,7 @@ namespace GrowDay.Infrastructure
             builder.Services.AddScoped<ITokenService, TokenService>();
             builder.Services.AddScoped<IEmailService, EmailService>();
             builder.Services.AddHostedService<NotificationBackgroundService>();
+            builder.Services.AddHostedService<MissedHabitBackgroundService>();
 
             builder.Services.ConfigureApplicationCookie(options => {
                 options.Cookie.HttpOnly = true;

@@ -6,11 +6,20 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GrowDay.Persistance.Repositories
 {
-    public class ReadUserHabitRepository:ReadGenericRepository<UserHabit>, IReadUserHabitRepository
+    public class ReadUserHabitRepository : ReadGenericRepository<UserHabit>, IReadUserHabitRepository
     {
         public ReadUserHabitRepository(GrowDayDbContext context) : base(context)
         {
         }
+
+        public async Task<ICollection<UserHabit>> GetAllActiveUserHabitsAsync()
+        {
+            return await _table
+                .Where(uh=>!uh.IsDeleted && uh.IsActive)
+                .ToListAsync();
+        }
+
+       
 
         public async Task<UserHabit?> GetByUserAndHabitAsync(string userId, string idOrTitleOrHabitId)
         {

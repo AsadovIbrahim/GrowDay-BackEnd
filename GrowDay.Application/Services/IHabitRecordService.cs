@@ -10,5 +10,6 @@ namespace GrowDay.Application.Services
         Task<Result<HabitRecordDTO>> GetHabitRecordByIdAsync(string habitRecordId);
         Task<Result<HabitRecordDTO>> DeleteHabitRecordAsync(string habitRecordId);
         Task<Result<List<HabitRecordDTO>>> GetHabitRecordByUserAsync(string userId);
+        Task<Result> ClearAllHabitRecordsAsync(string userId);
     }
 }

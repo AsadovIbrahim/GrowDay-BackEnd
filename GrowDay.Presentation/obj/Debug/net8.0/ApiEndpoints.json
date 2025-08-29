@@ -233,18 +233,12 @@
   },
   {
     "ContainingType": "GrowDay.Presentation.Controllers.HabitRecordController",
-    "Method": "CreateHabitRecord",
-    "RelativePath": "api/HabitRecord/CreateHabitRecord",
-    "HttpMethod": "POST",
+    "Method": "ClearAllHabitRecords",
+    "RelativePath": "api/HabitRecord/ClearAllHabitRecords",
+    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
-    "Parameters": [
-      {
-        "Name": "addHabitRecordDTO",
-        "Type": "GrowDay.Domain.DTO.AddHabitRecordDTO",
-        "IsRequired": true
-      }
-    ],
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -601,6 +595,11 @@
         "Name": "userHabitId",
         "Type": "System.String",
         "IsRequired": true
+      },
+      {
+        "Name": "note",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -651,6 +650,16 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.UserHabitController",
+    "Method": "GetAllCompletedHabits",
+    "RelativePath": "api/UserHabit/GetCompletedHabits",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {

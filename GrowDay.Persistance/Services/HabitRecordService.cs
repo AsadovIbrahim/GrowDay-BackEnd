@@ -20,10 +20,39 @@ namespace GrowDay.Persistance.Services
             _readHabitRecordRepository = readHabitRecordRepository;
             _writeHabitRecordRepository = writeHabitRecordRepository;
         }
+
+        public async Task<Result> ClearAllHabitRecordsAsync(string userId)
+        {
+            try
+            {
+                var habitRecords = await _readHabitRecordRepository.GetAllByUserAsync(userId);
+                if (habitRecords == null || !habitRecords.Any())
+                {
+                    return Result.FailureResult("No habit records found for the user.");
+                }
+                foreach (var record in habitRecords)
+                {
+                    record.IsDeleted = true;
+                    await _writeHabitRecordRepository.UpdateAsync(record);
+                }
+                return Result.SuccessResult("All habit records cleared successfully.");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error while clearing all habit records");
+                return Result.FailureResult("An error occurred while clearing habit records.");
+            }
+        }
+
         public async Task<Result> CreateHabitRecordAsync(AddHabitRecordDTO addHabitRecordDTO)
         {
             try
             {
+                var existingRecord = await _readHabitRecordRepository.GetAllByHabitIdAsync(addHabitRecordDTO.UserHabitId);
+                if (existingRecord.Any(r => r.Date.Date == addHabitRecordDTO.Date.Date))
+                {
+                    return Result.FailureResult("A habit record for this date already exists.");
+                }
                 var habitRecord = new HabitRecord
                 {
                     UserHabitId = addHabitRecordDTO.UserHabitId,
@@ -50,7 +79,8 @@ namespace GrowDay.Persistance.Services
                 {
                     return Result<HabitRecordDTO>.FailureResult("Habit record not found.");
                 }
-                await _writeHabitRecordRepository.DeleteAsync(habitRecord);
+                habitRecord.IsDeleted = true;
+                await _writeHabitRecordRepository.UpdateAsync(habitRecord);
                 var habitRecordDTO = new HabitRecordDTO
                 {
                     Id = habitRecord.Id,
@@ -67,6 +97,8 @@ namespace GrowDay.Persistance.Services
                 return Result<HabitRecordDTO>.FailureResult("An error occurred while deleting the habit record.");
             }
         }
+
+        
 
         public async Task<Result<HabitRecordDTO>> GetHabitRecordByIdAsync(string habitRecordId)
         {

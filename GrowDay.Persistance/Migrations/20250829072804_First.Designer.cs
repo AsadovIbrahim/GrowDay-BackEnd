@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GrowDay.Persistance.Migrations
 {
     [DbContext(typeof(GrowDayDbContext))]
-    [Migration("20250827103927_FixNotificationCascade2")]
-    partial class FixNotificationCascade2
+    [Migration("20250829072804_First")]
+    partial class First
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

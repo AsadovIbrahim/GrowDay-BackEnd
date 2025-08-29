@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GrowDay.Persistance")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e0a07bc6a04d8c76eefa45fdeeb358b68878ebab")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+776039b171e07d72f78c3a1a121b616c77f2b29e")]
 [assembly: System.Reflection.AssemblyProductAttribute("GrowDay.Persistance")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GrowDay.Persistance")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -47,6 +47,7 @@ namespace GrowDay.Persistance.Services
                     PeriodStart = startDate,
                     PeriodEnd = endDate,
                     PeriodType = StatisticPeriodType.Custom,
+                    CompletionRate=completionRate
                 };
 
                 return Result<StatisticDTO>.SuccessResult(statisticDTO, "Statistics calculated successfully.");

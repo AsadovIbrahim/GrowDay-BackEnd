@@ -39,5 +39,11 @@ namespace GrowDay.Persistance.Repositories
                              hr.UserHabit.UserId == userId)
                 .ToListAsync();
         }
+
+        public async Task<HabitRecord?> GetByUserHabitIdAndDateAsync(string userHabitId, DateTime date)
+        {
+            return await _table
+                .FirstOrDefaultAsync(hr => hr.UserHabitId == userHabitId && hr.Date.Date == date.Date);
+        }
     }
 }

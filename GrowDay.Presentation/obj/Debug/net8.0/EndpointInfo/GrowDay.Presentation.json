@@ -392,30 +392,11 @@
         }
       }
     },
-    "/api/HabitRecord/CreateHabitRecord": {
-      "post": {
+    "/api/HabitRecord/ClearAllHabitRecords": {
+      "delete": {
         "tags": [
           "HabitRecord"
         ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AddHabitRecordDTO"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AddHabitRecordDTO"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/AddHabitRecordDTO"
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
             "description": "OK"
@@ -1028,6 +1009,37 @@
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/UserHabit/GetCompletedHabits": {
+      "get": {
+        "tags": [
+          "UserHabit"
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -1124,27 +1136,6 @@
   },
   "components": {
     "schemas": {
-      "AddHabitRecordDTO": {
-        "type": "object",
-        "properties": {
-          "userHabitId": {
-            "type": "string",
-            "nullable": true
-          },
-          "date": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "isCompleted": {
-            "type": "boolean"
-          },
-          "note": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "AddSuggestedHabitDTO": {
         "type": "object",
         "properties": {

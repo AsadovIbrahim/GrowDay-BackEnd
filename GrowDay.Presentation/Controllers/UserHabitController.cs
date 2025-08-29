@@ -8,7 +8,7 @@ namespace GrowDay.Presentation.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles ="User")]
+    [Authorize(Roles = "User")]
     public class UserHabitController : ControllerBase
     {
         private readonly IUserHabitService _userHabitService;
@@ -39,10 +39,10 @@ namespace GrowDay.Presentation.Controllers
             return Ok(result);
         }
         [HttpPost("CreateSharedHabit")]
-        public async Task<IActionResult> AddUserHabit([FromBody]AddUserHabitDTO addUserHabitDTO)
+        public async Task<IActionResult> AddUserHabit([FromBody] AddUserHabitDTO addUserHabitDTO)
         {
             var userId = GetUserId();
-            
+
             var result = await _userHabitService.AddUserHabitAsync(userId, addUserHabitDTO);
             if (!result.Success)
             {
@@ -51,7 +51,7 @@ namespace GrowDay.Presentation.Controllers
             return Ok(result);
         }
         [HttpPost("AddSuggestedHabitToUser")]
-        public async Task<IActionResult> AddFromSuggestedHabit([FromBody]AddSuggestedHabitDTO addSuggestedHabitDTO)
+        public async Task<IActionResult> AddFromSuggestedHabit([FromBody] AddSuggestedHabitDTO addSuggestedHabitDTO)
         {
             var userId = GetUserId();
             if (string.IsNullOrEmpty(userId))
@@ -67,7 +67,7 @@ namespace GrowDay.Presentation.Controllers
         }
 
         [HttpPost("CreateMyOwnHabit")]
-        public async Task<IActionResult> AddUserOwnHabit([FromBody]AddUserOwnHabitDTO addUserOwnHabitDTO)
+        public async Task<IActionResult> AddUserOwnHabit([FromBody] AddUserOwnHabitDTO addUserOwnHabitDTO)
         {
             var userId = GetUserId();
             if (string.IsNullOrEmpty(userId))
@@ -112,14 +112,29 @@ namespace GrowDay.Presentation.Controllers
             return Ok(result);
         }
         [HttpPost("Complete/{userHabitId}")]
-        public async Task<IActionResult> CompleteUserHabit(string userHabitId)
+        public async Task<IActionResult> CompleteUserHabit(string userHabitId, [FromBody] string? note=null)
         {
             var userId = GetUserId();
             if (string.IsNullOrEmpty(userId))
             {
                 return BadRequest("User ID is required.");
             }
-            var result = await _userHabitService.CompleteHabitAsync(userId, userHabitId);
+            var result = await _userHabitService.CompleteHabitAsync(userId, userHabitId,note);
+            if (!result.Success)
+            {
+                return BadRequest(result.Message);
+            }
+            return Ok(result);
+        }
+        [HttpGet("GetCompletedHabits")]
+        public async Task<IActionResult> GetAllCompletedHabits()
+        {
+            var userId = GetUserId();
+            if (string.IsNullOrEmpty(userId))
+            {
+                return BadRequest("User ID is required.");
+            }
+            var result = await _userHabitService.GetAllCompletedHabitsAsync(userId);
             if (!result.Success)
             {
                 return BadRequest(result.Message);
