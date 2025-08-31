@@ -166,11 +166,7 @@ namespace GrowDay.Persistance.Services
                 {
                     return Result.FailureResult("No habits found for the user.");
                 }
-                foreach (var userHabit in userHabits)
-                {
-                    userHabit.IsDeleted = true;
-                    await _writeUserHabitRepository.DeleteAsync(userHabit);
-                }
+                await _writeUserHabitRepository.DeleteRangeAsync(userHabits);
                 return Result.SuccessResult("User habits cleared successfully.");
             }
             catch (Exception ex)

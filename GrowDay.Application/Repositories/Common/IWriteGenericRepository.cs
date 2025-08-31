@@ -10,6 +10,7 @@ namespace GrowDay.Application.Repositories.Common
         Task DeleteAsync(T entity);
         Task RemoveRangeAsync(IEnumerable<T> entities);
         Task DeleteByIdAsync(string id);
+        Task DeleteRangeAsync(IEnumerable<T> entities);
         Task AddRangeAsync(IEnumerable<T> entities);
     }
 }

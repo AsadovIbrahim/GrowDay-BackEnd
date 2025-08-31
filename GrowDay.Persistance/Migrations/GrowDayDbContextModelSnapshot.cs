@@ -649,7 +649,7 @@ namespace GrowDay.Persistance.Migrations
                     b.HasOne("GrowDay.Domain.Entities.Concretes.UserHabit", "UserHabit")
                         .WithMany("HabitRecords")
                         .HasForeignKey("UserHabitId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("UserHabit");
@@ -660,12 +660,12 @@ namespace GrowDay.Persistance.Migrations
                     b.HasOne("GrowDay.Domain.Entities.Concretes.UserHabit", "UserHabit")
                         .WithMany("Notifications")
                         .HasForeignKey("UserHabitId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("GrowDay.Domain.Entities.Concretes.User", "User")
                         .WithMany("Notifications")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("User");
@@ -698,7 +698,7 @@ namespace GrowDay.Persistance.Migrations
                     b.HasOne("GrowDay.Domain.Entities.Concretes.Habit", "Habit")
                         .WithMany("UserHabits")
                         .HasForeignKey("HabitId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("GrowDay.Domain.Entities.Concretes.User", "User")
                         .WithMany("UserHabits")

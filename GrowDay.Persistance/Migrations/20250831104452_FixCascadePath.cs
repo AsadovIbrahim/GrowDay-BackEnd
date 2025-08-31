@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace GrowDay.Persistance.Migrations
 {
     /// <inheritdoc />
-    public partial class First : Migration
+    public partial class FixCascadePath : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -76,6 +76,22 @@ namespace GrowDay.Persistance.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Habits", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "JobExecutionLogs",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    JobName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastRunDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LastModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_JobExecutionLogs", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -296,7 +312,7 @@ namespace GrowDay.Persistance.Migrations
                         column: x => x.HabitId,
                         principalTable: "Habits",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -320,7 +336,7 @@ namespace GrowDay.Persistance.Migrations
                         column: x => x.UserHabitId,
                         principalTable: "UserHabits",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -347,13 +363,13 @@ namespace GrowDay.Persistance.Migrations
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Notifications_UserHabits_UserHabitId",
                         column: x => x.UserHabitId,
                         principalTable: "UserHabits",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.SetNull);
                 });
 
             migrationBuilder.CreateTable(
@@ -491,6 +507,9 @@ namespace GrowDay.Persistance.Migrations
 
             migrationBuilder.DropTable(
                 name: "HabitRecords");
+
+            migrationBuilder.DropTable(
+                name: "JobExecutionLogs");
 
             migrationBuilder.DropTable(
                 name: "Notifications");

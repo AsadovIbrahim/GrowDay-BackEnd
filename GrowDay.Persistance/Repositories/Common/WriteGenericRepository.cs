@@ -38,6 +38,12 @@ namespace GrowDay.Persistance.Repositories.Common
             await _context.SaveChangesAsync();
         }
 
+        public async Task DeleteRangeAsync(IEnumerable<T> entities)
+        {
+            _table.RemoveRange(entities);   
+            await _context.SaveChangesAsync();
+        }
+
         public async Task RemoveRangeAsync(IEnumerable<T> entities)
         {
             _table.RemoveRange(entities);
