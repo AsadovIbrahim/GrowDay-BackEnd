@@ -18,7 +18,7 @@ namespace GrowDay.Persistance.Configurations
             builder.HasMany(uh=>uh.HabitRecords)
                 .WithOne(hr=>hr.UserHabit)
                 .HasForeignKey(hr=>hr.UserHabitId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasOne(uh => uh.Habit)
                 .WithMany(h => h.UserHabits)
