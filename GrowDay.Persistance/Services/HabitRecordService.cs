@@ -32,8 +32,7 @@ namespace GrowDay.Persistance.Services
                 }
                 foreach (var record in habitRecords)
                 {
-                    record.IsDeleted = true;
-                    await _writeHabitRecordRepository.UpdateAsync(record);
+                    await _writeHabitRecordRepository.DeleteAsync(record);
                 }
                 return Result.SuccessResult("All habit records cleared successfully.");
             }

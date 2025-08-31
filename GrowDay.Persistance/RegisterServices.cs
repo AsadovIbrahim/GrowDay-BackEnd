@@ -45,6 +45,7 @@ namespace GrowDay.Persistance
             services.AddScoped<IWriteNotificationRepository, WriteNotificationRepository>();
             services.AddScoped<IWriteUserPreferencesRepository, WriteUserPreferencesRepository>();
             services.AddScoped<IWriteSuggestedHabitRepository, WriteSuggestedHabitRepository>();
+            services.AddScoped<IWriteJobExecutingRepository, WriteJobExecutionRepository>();
 
 
 
@@ -58,6 +59,7 @@ namespace GrowDay.Persistance
             services.AddScoped<IReadNotificationRepository, ReadNotificationRepository>();
             services.AddScoped<IReadUserPreferencesRepository, ReadUserPreferencesRepository>();
             services.AddScoped<IReadSuggestedHabitRepository, ReadSuggestedHabitRepository>();
+            services.AddScoped<IReadJobExecutingRepository, ReadJobExecutionRepository>();
         }
     }
 }

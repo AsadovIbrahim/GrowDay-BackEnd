@@ -15,6 +15,7 @@ namespace GrowDay.Infrastructure.BackgroundServices
             _serviceScopeFactory = serviceScopeFactory;
             _logger = logger;
         }
+
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             _logger.LogInformation("Notification Background Service is starting.");
@@ -28,6 +29,7 @@ namespace GrowDay.Infrastructure.BackgroundServices
                     var notificationService = scope.ServiceProvider.GetRequiredService<INotificationService>();
 
                     var currentTime = DateTime.Now.TimeOfDay;
+                    var today = DateTime.Today;
                     var userHabitsResult = await userHabitService.GetAllUserHabitAsync();
 
                     if (userHabitsResult.Success)
@@ -36,15 +38,27 @@ namespace GrowDay.Infrastructure.BackgroundServices
 
                         foreach (var habit in userHabits)
                         {
+                            // Notification vaxtı uyğun gəlirsə:
                             if (habit.NotificationTime.Value.Hours == currentTime.Hours &&
                                 habit.NotificationTime.Value.Minutes == currentTime.Minutes)
                             {
-                                _logger.LogInformation($"Sending notification for habit '{habit.Title}' to user '{habit.UserId}'.");
-                                await notificationService.CreateAndSendNotificationAsync(
-                                    habit.Id,
-                                    habit.UserId,
-                                    habit.Title,
-                                    "Time to complete your habit!");
+                                // Habit bu gün üçün tamamlanıbsa, notification göndərmə
+                                var isCompletedResult = await userHabitService.IsHabitCompletedTodayAsync(habit.UserId, habit.Id, today);
+                                bool isCompleted = isCompletedResult.Success && isCompletedResult.Data;
+
+                                if (!isCompleted)
+                                {
+                                    _logger.LogInformation($"Sending notification for habit '{habit.Title}' to user '{habit.UserId}'.");
+                                    await notificationService.CreateAndSendNotificationAsync(
+                                        habit.Id,
+                                        habit.UserId,
+                                        habit.Title,
+                                        "Time to complete your habit!");
+                                }
+                                else
+                                {
+                                    _logger.LogInformation($"Habit '{habit.Title}' for user '{habit.UserId}' is already completed today. Notification not sent.");
+                                }
                             }
                         }
                     }

@@ -363,6 +363,29 @@ namespace GrowDay.Persistance.Services
             }
         }
 
+        public async Task<Result<bool>> IsHabitCompletedTodayAsync(string userId, string userHabitId, DateTime date)
+        {
+            try
+            {
+
+                var userHabit = await _readUserHabitRepository.GetByUserAndHabitAsync(userId, userHabitId);
+                if (userHabit == null)
+                    return Result<bool>.FailureResult("User habit not found.");
+                var habitRecord = await _readHabitRecordRepository.GetByUserHabitIdAndDateAsync(userHabit.Id, date.Date);
+                if (habitRecord != null && habitRecord.IsCompleted && !habitRecord.IsDeleted)
+                {
+                    return Result<bool>.SuccessResult(true, "Habit is completed for the specified date.");
+                }
+                return Result<bool>.SuccessResult(false, "Habit is not completed for the specified date.");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error checking if habit is completed today");
+                return Result<bool>.FailureResult("An error occurred while checking if the habit is completed.");
+            }
+
+        }
+
         public async Task<Result<bool>> IsUserHabitExistsAsync(string userId, string habitId)
         {
             try

@@ -108,6 +108,32 @@ namespace GrowDay.Persistance.Migrations
                     b.ToTable("HabitRecords");
                 });
 
+            modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.JobExecutionLog", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("JobName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("LastModifiedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("LastRunDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("JobExecutionLogs");
+                });
+
             modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.Notification", b =>
                 {
                     b.Property<string>("Id")

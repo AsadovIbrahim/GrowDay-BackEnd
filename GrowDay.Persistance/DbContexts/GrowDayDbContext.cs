@@ -28,6 +28,7 @@ namespace GrowDay.Persistance.DbContexts
         public virtual DbSet<UserPreferences> UserPreferences { get; set; }
         public virtual DbSet<SuggestedHabit> SuggestedHabits { get; set; }
         public virtual DbSet<UserToken> UserTokens { get; set; }
+        public virtual DbSet<JobExecutionLog> JobExecutionLogs { get; set; }
 
     }
 }
