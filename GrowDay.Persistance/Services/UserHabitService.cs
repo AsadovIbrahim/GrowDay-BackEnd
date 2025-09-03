@@ -103,6 +103,8 @@ namespace GrowDay.Persistance.Services
                     LongestStreak = 0,
                     NotificationTime = dto.NotificationTime,
                     DurationInMinutes = dto.DurationInMinutes,
+                    StartDate = dto.StartDate ?? DateTime.UtcNow,
+                    EndDate = dto.EndDate ?? habit.EndDate,
                     Frequency = userHabitFrequency,
                     LastCompletedDate = null,
                     IsActive = true,

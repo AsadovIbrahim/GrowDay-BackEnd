@@ -3,24 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C80FADED-CC18-4E34-866C-17798A02FBD6}|GrowDay.Domain\\GrowDay.Domain.csproj|c:\\users\\asus\\source\\repos\\growday-backend\\growday.domain\\enums\\habitcriteria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C80FADED-CC18-4E34-866C-17798A02FBD6}|GrowDay.Domain\\GrowDay.Domain.csproj|solutionrelative:growday.domain\\enums\\habitcriteria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Migrations\\20250831152811_UserHabitConfiguration updated.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:GrowDay.Persistance\\Migrations\\20250831152811_UserHabitConfiguration updated.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|c:\\users\\asus\\source\\repos\\growday-backend\\growday.persistance\\configurations\\userhabitconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|solutionrelative:growday.persistance\\configurations\\userhabitconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|c:\\users\\asus\\source\\repos\\growday-backend\\growday.persistance\\configurations\\habitrecordconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|solutionrelative:growday.persistance\\configurations\\habitrecordconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|c:\\users\\asus\\source\\repos\\growday-backend\\growday.persistance\\configurations\\usertokenconfiuration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|solutionrelative:growday.persistance\\configurations\\usertokenconfiuration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C80FADED-CC18-4E34-866C-17798A02FBD6}|GrowDay.Domain\\GrowDay.Domain.csproj|c:\\users\\asus\\source\\repos\\growday-backend\\growday.domain\\entities\\concretes\\usertoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C80FADED-CC18-4E34-866C-17798A02FBD6}|GrowDay.Domain\\GrowDay.Domain.csproj|solutionrelative:growday.domain\\entities\\concretes\\usertoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C80FADED-CC18-4E34-866C-17798A02FBD6}|GrowDay.Domain\\GrowDay.Domain.csproj|c:\\users\\asus\\source\\repos\\growday-backend\\growday.domain\\entities\\concretes\\userpreferences.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -47,6 +31,10 @@
       "RelativeMoniker": "D:0:0:{C80FADED-CC18-4E34-866C-17798A02FBD6}|GrowDay.Domain\\GrowDay.Domain.csproj|solutionrelative:growday.domain\\entities\\concretes\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{C80FADED-CC18-4E34-866C-17798A02FBD6}|GrowDay.Domain\\GrowDay.Domain.csproj|c:\\users\\asus\\source\\repos\\growday-backend\\growday.domain\\entities\\concretes\\jobexecutionlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C80FADED-CC18-4E34-866C-17798A02FBD6}|GrowDay.Domain\\GrowDay.Domain.csproj|solutionrelative:growday.domain\\entities\\concretes\\jobexecutionlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C80FADED-CC18-4E34-866C-17798A02FBD6}|GrowDay.Domain\\GrowDay.Domain.csproj|c:\\users\\asus\\source\\repos\\growday-backend\\growday.domain\\entities\\concretes\\habitrecord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C80FADED-CC18-4E34-866C-17798A02FBD6}|GrowDay.Domain\\GrowDay.Domain.csproj|solutionrelative:growday.domain\\entities\\concretes\\habitrecord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -63,12 +51,35 @@
       "RelativeMoniker": "D:0:0:{C80FADED-CC18-4E34-866C-17798A02FBD6}|GrowDay.Domain\\GrowDay.Domain.csproj|solutionrelative:growday.domain\\entities\\abstracts\\ibaseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{F52A2FB2-5202-4301-9009-B484409603D4}|GrowDay.Infrastructure\\GrowDay.Infrastructure.csproj|c:\\users\\asus\\source\\repos\\growday-backend\\growday.infrastructure\\backgroundservices\\notificationbackgroundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F52A2FB2-5202-4301-9009-B484409603D4}|GrowDay.Infrastructure\\GrowDay.Infrastructure.csproj|solutionrelative:growday.infrastructure\\backgroundservices\\notificationbackgroundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|c:\\users\\asus\\source\\repos\\growday-backend\\growday.persistance\\services\\notificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|solutionrelative:growday.persistance\\services\\notificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/DESKTOP_RH76RDQ_SQLEXPRESS/GrowDay/True/SqlTable/dbo.UserHabits.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|c:\\users\\asus\\source\\repos\\growday-backend\\growday.persistance\\services\\userhabitservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|solutionrelative:growday.persistance\\services\\userhabitservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE44F028-975A-4085-B2A2-C15B9834A624}|GrowDay.Presentation\\GrowDay.Presentation.csproj|c:\\users\\asus\\source\\repos\\growday-backend\\growday.presentation\\controllers\\userhabitcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CE44F028-975A-4085-B2A2-C15B9834A624}|GrowDay.Presentation\\GrowDay.Presentation.csproj|solutionrelative:growday.presentation\\controllers\\userhabitcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|c:\\users\\asus\\source\\repos\\growday-backend\\growday.persistance\\services\\habitservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|solutionrelative:growday.persistance\\services\\habitservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C80FADED-CC18-4E34-866C-17798A02FBD6}|GrowDay.Domain\\GrowDay.Domain.csproj|c:\\users\\asus\\source\\repos\\growday-backend\\growday.domain\\dto\\adduserhabitdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C80FADED-CC18-4E34-866C-17798A02FBD6}|GrowDay.Domain\\GrowDay.Domain.csproj|solutionrelative:growday.domain\\dto\\adduserhabitdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F52A2FB2-5202-4301-9009-B484409603D4}|GrowDay.Infrastructure\\GrowDay.Infrastructure.csproj|c:\\users\\asus\\source\\repos\\growday-backend\\growday.infrastructure\\backgroundservices\\missedhabitbackgroundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F52A2FB2-5202-4301-9009-B484409603D4}|GrowDay.Infrastructure\\GrowDay.Infrastructure.csproj|solutionrelative:growday.infrastructure\\backgroundservices\\missedhabitbackgroundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|c:\\users\\asus\\source\\repos\\growday-backend\\growday.persistance\\services\\habitrecordservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|solutionrelative:growday.persistance\\services\\habitrecordservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -78,93 +89,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "HabitCriteria.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Domain\\Enums\\HabitCriteria.cs",
-              "RelativeDocumentMoniker": "GrowDay.Domain\\Enums\\HabitCriteria.cs",
-              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Domain\\Enums\\HabitCriteria.cs",
-              "RelativeToolTip": "GrowDay.Domain\\Enums\\HabitCriteria.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAdAAAAAAAAAA==",
+              "Title": "UserToken.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Domain\\Entities\\Concretes\\UserToken.cs",
+              "RelativeDocumentMoniker": "GrowDay.Domain\\Entities\\Concretes\\UserToken.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Domain\\Entities\\Concretes\\UserToken.cs",
+              "RelativeToolTip": "GrowDay.Domain\\Entities\\Concretes\\UserToken.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-31T15:36:08.132Z",
+              "WhenOpened": "2025-09-03T11:07:07.069Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "20250831152811_UserHabitConfiguration updated.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Migrations\\20250831152811_UserHabitConfiguration updated.cs",
-              "RelativeDocumentMoniker": "GrowDay.Persistance\\Migrations\\20250831152811_UserHabitConfiguration updated.cs",
-              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Migrations\\20250831152811_UserHabitConfiguration updated.cs",
-              "RelativeToolTip": "GrowDay.Persistance\\Migrations\\20250831152811_UserHabitConfiguration updated.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-31T15:28:12.163Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UserHabitConfiguration.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Configurations\\UserHabitConfiguration.cs",
-              "RelativeDocumentMoniker": "GrowDay.Persistance\\Configurations\\UserHabitConfiguration.cs",
-              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Configurations\\UserHabitConfiguration.cs",
-              "RelativeToolTip": "GrowDay.Persistance\\Configurations\\UserHabitConfiguration.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-31T15:26:11.467Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "UserTokenConfiuration.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Configurations\\UserTokenConfiuration.cs",
-              "RelativeDocumentMoniker": "GrowDay.Persistance\\Configurations\\UserTokenConfiuration.cs",
-              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Configurations\\UserTokenConfiuration.cs",
-              "RelativeToolTip": "GrowDay.Persistance\\Configurations\\UserTokenConfiuration.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-31T15:26:10.642Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "HabitRecordConfiguration.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Configurations\\HabitRecordConfiguration.cs",
-              "RelativeDocumentMoniker": "GrowDay.Persistance\\Configurations\\HabitRecordConfiguration.cs",
-              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Configurations\\HabitRecordConfiguration.cs",
-              "RelativeToolTip": "GrowDay.Persistance\\Configurations\\HabitRecordConfiguration.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-31T15:26:01.852Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
               "Title": "UserPreferences.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Domain\\Entities\\Concretes\\UserPreferences.cs",
               "RelativeDocumentMoniker": "GrowDay.Domain\\Entities\\Concretes\\UserPreferences.cs",
               "ToolTip": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Domain\\Entities\\Concretes\\UserPreferences.cs",
               "RelativeToolTip": "GrowDay.Domain\\Entities\\Concretes\\UserPreferences.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA8AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-31T15:23:16.223Z",
+              "WhenOpened": "2025-09-03T11:07:01.437Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 2,
               "Title": "UserHabit.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Domain\\Entities\\Concretes\\UserHabit.cs",
               "RelativeDocumentMoniker": "GrowDay.Domain\\Entities\\Concretes\\UserHabit.cs",
@@ -172,12 +127,12 @@
               "RelativeToolTip": "GrowDay.Domain\\Entities\\Concretes\\UserHabit.cs",
               "ViewState": "AgIAAAoAAAAAAAAAAAA0wCMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-31T15:23:10.268Z",
+              "WhenOpened": "2025-09-03T11:06:51.438Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 3,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Domain\\Entities\\Concretes\\User.cs",
               "RelativeDocumentMoniker": "GrowDay.Domain\\Entities\\Concretes\\User.cs",
@@ -185,12 +140,12 @@
               "RelativeToolTip": "GrowDay.Domain\\Entities\\Concretes\\User.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-31T15:23:02.739Z",
+              "WhenOpened": "2025-09-03T11:06:47.84Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 4,
               "Title": "SuggestedHabit.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Domain\\Entities\\Concretes\\SuggestedHabit.cs",
               "RelativeDocumentMoniker": "GrowDay.Domain\\Entities\\Concretes\\SuggestedHabit.cs",
@@ -198,12 +153,12 @@
               "RelativeToolTip": "GrowDay.Domain\\Entities\\Concretes\\SuggestedHabit.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-31T15:22:52.571Z",
+              "WhenOpened": "2025-09-03T11:06:43.431Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 5,
               "Title": "Statistic.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Domain\\Entities\\Concretes\\Statistic.cs",
               "RelativeDocumentMoniker": "GrowDay.Domain\\Entities\\Concretes\\Statistic.cs",
@@ -211,12 +166,12 @@
               "RelativeToolTip": "GrowDay.Domain\\Entities\\Concretes\\Statistic.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-31T15:22:43.832Z",
+              "WhenOpened": "2025-09-03T11:06:40.188Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 6,
               "Title": "Notification.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Domain\\Entities\\Concretes\\Notification.cs",
               "RelativeDocumentMoniker": "GrowDay.Domain\\Entities\\Concretes\\Notification.cs",
@@ -224,12 +179,25 @@
               "RelativeToolTip": "GrowDay.Domain\\Entities\\Concretes\\Notification.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-31T15:22:34.432Z",
+              "WhenOpened": "2025-09-03T11:06:36.693Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 7,
+              "Title": "JobExecutionLog.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Domain\\Entities\\Concretes\\JobExecutionLog.cs",
+              "RelativeDocumentMoniker": "GrowDay.Domain\\Entities\\Concretes\\JobExecutionLog.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Domain\\Entities\\Concretes\\JobExecutionLog.cs",
+              "RelativeToolTip": "GrowDay.Domain\\Entities\\Concretes\\JobExecutionLog.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-03T11:06:32.973Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "HabitRecord.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Domain\\Entities\\Concretes\\HabitRecord.cs",
               "RelativeDocumentMoniker": "GrowDay.Domain\\Entities\\Concretes\\HabitRecord.cs",
@@ -237,12 +205,12 @@
               "RelativeToolTip": "GrowDay.Domain\\Entities\\Concretes\\HabitRecord.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-31T15:22:17.163Z",
+              "WhenOpened": "2025-09-03T11:06:26.91Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 9,
               "Title": "Habit.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Domain\\Entities\\Concretes\\Habit.cs",
               "RelativeDocumentMoniker": "GrowDay.Domain\\Entities\\Concretes\\Habit.cs",
@@ -250,12 +218,12 @@
               "RelativeToolTip": "GrowDay.Domain\\Entities\\Concretes\\Habit.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-31T15:22:11.762Z",
+              "WhenOpened": "2025-09-03T11:06:23.413Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 10,
               "Title": "BaseEntity.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Domain\\Entities\\Common\\BaseEntity.cs",
               "RelativeDocumentMoniker": "GrowDay.Domain\\Entities\\Common\\BaseEntity.cs",
@@ -263,12 +231,12 @@
               "RelativeToolTip": "GrowDay.Domain\\Entities\\Common\\BaseEntity.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-31T15:22:04.247Z",
+              "WhenOpened": "2025-09-03T11:06:16.805Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 11,
               "Title": "IBaseEntity.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Domain\\Entities\\Abstracts\\IBaseEntity.cs",
               "RelativeDocumentMoniker": "GrowDay.Domain\\Entities\\Abstracts\\IBaseEntity.cs",
@@ -276,20 +244,60 @@
               "RelativeToolTip": "GrowDay.Domain\\Entities\\Abstracts\\IBaseEntity.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-31T15:21:56.542Z",
+              "WhenOpened": "2025-09-03T11:06:10.974Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "UserHabitController.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Presentation\\Controllers\\UserHabitController.cs",
-              "RelativeDocumentMoniker": "GrowDay.Presentation\\Controllers\\UserHabitController.cs",
-              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Presentation\\Controllers\\UserHabitController.cs",
-              "RelativeToolTip": "GrowDay.Presentation\\Controllers\\UserHabitController.cs",
-              "ViewState": "AgIAAJEAAAAAAAAAAAAAAJcAAAAMAAAAAAAAAA==",
+              "DocumentIndex": 17,
+              "Title": "AddUserHabitDTO.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Domain\\DTO\\AddUserHabitDTO.cs",
+              "RelativeDocumentMoniker": "GrowDay.Domain\\DTO\\AddUserHabitDTO.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Domain\\DTO\\AddUserHabitDTO.cs",
+              "RelativeToolTip": "GrowDay.Domain\\DTO\\AddUserHabitDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-31T15:08:50.427Z",
+              "WhenOpened": "2025-09-03T08:58:39.396Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "HabitService.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Services\\HabitService.cs",
+              "RelativeDocumentMoniker": "GrowDay.Persistance\\Services\\HabitService.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Services\\HabitService.cs",
+              "RelativeToolTip": "GrowDay.Persistance\\Services\\HabitService.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAHgAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-03T08:56:58.369Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "dbo.UserHabits [Data]",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/DESKTOP_RH76RDQ_SQLEXPRESS/GrowDay/True/SqlTable/dbo.UserHabits.sql",
+              "ToolTip": "dbo.UserHabits [Data]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-09-03T08:54:21.321Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "NotificationService.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Services\\NotificationService.cs",
+              "RelativeDocumentMoniker": "GrowDay.Persistance\\Services\\NotificationService.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Services\\NotificationService.cs",
+              "RelativeToolTip": "GrowDay.Persistance\\Services\\NotificationService.cs",
+              "ViewState": "AgIAAJkAAAAAAAAAAAAswKoAAABcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-03T08:46:57.029Z",
               "EditorCaption": ""
             },
             {
@@ -300,9 +308,48 @@
               "RelativeDocumentMoniker": "GrowDay.Persistance\\Services\\UserHabitService.cs",
               "ToolTip": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Services\\UserHabitService.cs",
               "RelativeToolTip": "GrowDay.Persistance\\Services\\UserHabitService.cs",
-              "ViewState": "AgIAAJgAAAAAAAAAAAAAAK4AAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAN0AAAAAAAAAAAAswPIAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-31T15:07:49.007Z",
+              "WhenOpened": "2025-09-03T08:46:49.829Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "NotificationBackgroundService.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Infrastructure\\BackgroundServices\\NotificationBackgroundService.cs",
+              "RelativeDocumentMoniker": "GrowDay.Infrastructure\\BackgroundServices\\NotificationBackgroundService.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Infrastructure\\BackgroundServices\\NotificationBackgroundService.cs",
+              "RelativeToolTip": "GrowDay.Infrastructure\\BackgroundServices\\NotificationBackgroundService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-03T08:46:39.012Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "HabitRecordService.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Services\\HabitRecordService.cs",
+              "RelativeDocumentMoniker": "GrowDay.Persistance\\Services\\HabitRecordService.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Services\\HabitRecordService.cs",
+              "RelativeToolTip": "GrowDay.Persistance\\Services\\HabitRecordService.cs",
+              "ViewState": "AgIAAJYAAAAAAAAAAAAwwKwAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-03T08:47:41.477Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "MissedHabitBackgroundService.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Infrastructure\\BackgroundServices\\MissedHabitBackgroundService.cs",
+              "RelativeDocumentMoniker": "GrowDay.Infrastructure\\BackgroundServices\\MissedHabitBackgroundService.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\GrowDay-BackEnd\\GrowDay.Infrastructure\\BackgroundServices\\MissedHabitBackgroundService.cs",
+              "RelativeToolTip": "GrowDay.Infrastructure\\BackgroundServices\\MissedHabitBackgroundService.cs",
+              "ViewState": "AgIAAEwAAAAAAAAAAAAwwHIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-03T08:46:33.629Z",
               "EditorCaption": ""
             }
           ]

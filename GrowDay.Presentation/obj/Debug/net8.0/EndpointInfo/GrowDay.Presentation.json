@@ -1183,6 +1183,16 @@
             "format": "int32",
             "nullable": true
           },
+          "startDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
           "frequency": {
             "$ref": "#/components/schemas/HabitFrequency"
           }
