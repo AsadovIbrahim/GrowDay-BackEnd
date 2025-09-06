@@ -30,7 +30,6 @@ namespace GrowDay.Persistance.Repositories
         }
 
 
-
         public async Task<IEnumerable<UserHabit>> GetByUserIdAsync(string userId)
         {
             return await _table

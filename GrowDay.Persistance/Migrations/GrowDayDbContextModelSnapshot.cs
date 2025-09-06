@@ -25,6 +25,42 @@ namespace GrowDay.Persistance.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.Achievement", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("LastModifiedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("PointsRequired")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("StreakRequired")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TaskCompletionRequired")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Achievements");
+                });
+
             modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.Habit", b =>
                 {
                     b.Property<string>("Id")
@@ -283,6 +319,39 @@ namespace GrowDay.Persistance.Migrations
                     b.ToTable("SuggestedHabits");
                 });
 
+            modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.TaskEntity", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("LastModifiedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Points")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tasks");
+                });
+
             modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.User", b =>
                 {
                     b.Property<string>("Id")
@@ -368,6 +437,40 @@ namespace GrowDay.Persistance.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.UserAchievement", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("AchievementId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("EarnedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("LastModifiedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AchievementId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserAchievements");
                 });
 
             modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.UserHabit", b =>
@@ -471,6 +574,59 @@ namespace GrowDay.Persistance.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("UserPreferences");
+                });
+
+            modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.UserTask", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("CompletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsCompleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("LastModifiedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Points")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TaskId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserHabitId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TaskId");
+
+                    b.HasIndex("UserHabitId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserTasks");
                 });
 
             modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.UserToken", b =>
@@ -693,6 +849,25 @@ namespace GrowDay.Persistance.Migrations
                     b.Navigation("UserHabit");
                 });
 
+            modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.UserAchievement", b =>
+                {
+                    b.HasOne("GrowDay.Domain.Entities.Concretes.Achievement", "Achievement")
+                        .WithMany("UserAchievements")
+                        .HasForeignKey("AchievementId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("GrowDay.Domain.Entities.Concretes.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Achievement");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.UserHabit", b =>
                 {
                     b.HasOne("GrowDay.Domain.Entities.Concretes.Habit", "Habit")
@@ -720,6 +895,31 @@ namespace GrowDay.Persistance.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.UserTask", b =>
+                {
+                    b.HasOne("GrowDay.Domain.Entities.Concretes.TaskEntity", "Task")
+                        .WithMany("UserTasks")
+                        .HasForeignKey("TaskId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("GrowDay.Domain.Entities.Concretes.UserHabit", "UserHabit")
+                        .WithMany()
+                        .HasForeignKey("UserHabitId");
+
+                    b.HasOne("GrowDay.Domain.Entities.Concretes.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Task");
+
+                    b.Navigation("User");
+
+                    b.Navigation("UserHabit");
                 });
 
             modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.UserToken", b =>
@@ -784,9 +984,19 @@ namespace GrowDay.Persistance.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.Achievement", b =>
+                {
+                    b.Navigation("UserAchievements");
+                });
+
             modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.Habit", b =>
                 {
                     b.Navigation("UserHabits");
+                });
+
+            modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.TaskEntity", b =>
+                {
+                    b.Navigation("UserTasks");
                 });
 
             modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.User", b =>

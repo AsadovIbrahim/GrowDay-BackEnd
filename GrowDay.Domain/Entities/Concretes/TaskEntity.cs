@@ -1,0 +1,14 @@
+﻿using GrowDay.Domain.Entities.Common;
+
+namespace GrowDay.Domain.Entities.Concretes
+{
+    public class TaskEntity : BaseEntity
+    {
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public int Points { get; set; }
+        public bool IsActive { get; set; } = true;
+
+        public virtual ICollection<UserTask> UserTasks { get; set; }
+    }
+}

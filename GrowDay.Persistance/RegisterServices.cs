@@ -23,6 +23,10 @@ namespace GrowDay.Persistance
             services.AddScoped<INotificationService, NotificationService>();
             services.AddScoped<IUserPreferencesService, UserPreferencesService>();
             services.AddScoped<ISuggestedHabitService, SuggestedHabitService>();
+            services.AddScoped<IUserTaskService, UserTaskService>();
+            services.AddScoped<IAchievementService, AchievementService>();
+            services.AddScoped<IUserAchievementService, UserAchievementService>();
+            services.AddScoped<ITaskService, TaskService>();
 
             // Context
 
@@ -46,6 +50,10 @@ namespace GrowDay.Persistance
             services.AddScoped<IWriteUserPreferencesRepository, WriteUserPreferencesRepository>();
             services.AddScoped<IWriteSuggestedHabitRepository, WriteSuggestedHabitRepository>();
             services.AddScoped<IWriteJobExecutingRepository, WriteJobExecutionRepository>();
+            services.AddScoped<IWriteAchievementRepository, WriteAchievementRepository>();
+            services.AddScoped<IWriteUserAchievementRepository, WriteUserAchievementRepository>();
+            services.AddScoped<IWriteUserTaskRepository, WriteUserTaskRepository>();
+            services.AddScoped<IWriteTaskRepository, WriteTaskRepository>();
 
 
 
@@ -60,6 +68,10 @@ namespace GrowDay.Persistance
             services.AddScoped<IReadUserPreferencesRepository, ReadUserPreferencesRepository>();
             services.AddScoped<IReadSuggestedHabitRepository, ReadSuggestedHabitRepository>();
             services.AddScoped<IReadJobExecutingRepository, ReadJobExecutionRepository>();
+            services.AddScoped<IReadAchievementRepository, ReadAchievementRepository>();
+            services.AddScoped<IReadUserAchievementRepository, ReadUserAchievementRepository>();
+            services.AddScoped<IReadUserTaskRepository, ReadUserTaskRepository>();
+            services.AddScoped<IReadTaskRepository, ReadTaskRepository>();
         }
     }
 }
