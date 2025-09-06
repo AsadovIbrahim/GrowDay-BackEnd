@@ -2,6 +2,7 @@
 using GrowDay.Application.Services;
 using GrowDay.Domain.DTO;
 using GrowDay.Domain.Entities.Concretes;
+using GrowDay.Domain.Enums;
 using GrowDay.Domain.Helpers;
 using GrowDay.Infrastructure.Hubs;
 using Microsoft.AspNetCore.SignalR;
@@ -52,7 +53,7 @@ namespace GrowDay.Persistance.Services
             }
         }
 
-        public async Task<Result<NotificationDTO>> CreateAndSendNotificationAsync(string userHabitId, string userId, string title, string message)
+        public async Task<Result<NotificationDTO>> CreateAndSendNotificationAsync(string userHabitId, string userId, string title, string message,NotificationType notificationType)
         {
             try
             {
@@ -65,6 +66,7 @@ namespace GrowDay.Persistance.Services
                     IsRead = false,
                     SentAt = DateTime.UtcNow,
                     CreatedAt = DateTime.UtcNow,
+                    NotificationType = notificationType
                 };
                 await _writeNotificationRepository.AddAsync(notification);
                 var notificationDTO = new NotificationDTO

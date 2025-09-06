@@ -29,7 +29,8 @@ namespace GrowDay.Presentation.Controllers
                 createNotificationDTO.HabitId,
                 createNotificationDTO.UserId,
                 createNotificationDTO.Title,
-                createNotificationDTO.Message);
+                createNotificationDTO.Message,
+                createNotificationDTO.NotificationType);
             if (!result.Success)
             {
                 return BadRequest(result.Message);

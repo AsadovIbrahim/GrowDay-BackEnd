@@ -276,7 +276,7 @@ namespace GrowDay.Persistance.Services
                 {
                     return Result<ICollection<HabitRecordDTO>>.FailureResult("No completed habits found.");
                 }
-                var habitRecords = userHabits.Select(hr => new HabitRecordDTO
+                var habitRecords=userHabits.Where(hr => hr.IsCompleted && !hr.IsDeleted).Select(hr => new HabitRecordDTO
                 {
                     Id = hr.Id,
                     UserHabitId = hr.UserHabitId,
@@ -284,6 +284,7 @@ namespace GrowDay.Persistance.Services
                     Note = hr.Note!,
                     IsCompleted = hr.IsCompleted
                 }).ToList();
+               
                 return Result<ICollection<HabitRecordDTO>>.SuccessResult(habitRecords, "Completed habits retrieved successfully.");
 
             }

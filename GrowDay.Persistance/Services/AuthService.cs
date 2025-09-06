@@ -2,6 +2,7 @@
 using GrowDay.Application.Services;
 using GrowDay.Domain.DTO;
 using GrowDay.Domain.Entities.Concretes;
+using GrowDay.Domain.Enums;
 using GrowDay.Domain.Helpers;
 using GrowDay.Domain.ViewModels;
 using Microsoft.AspNetCore.Http;
@@ -72,7 +73,8 @@ namespace GrowDay.Persistance.Services
                 await _notificationService.CreateAndSendNotificationAsync(null,
                     user.Id, 
                     "Welcome to GrowDay!", 
-                    "We're excited to have you on board. Start your journey towards better habits today!");
+                    "We're excited to have you on board. Start your journey towards better habits today!",
+                    NotificationType.Achievement);
             }
             var roles = (await _userManager.GetRolesAsync(user)).ToList();
             var accesstoken = await _tokenService.CreateAccessToken(user);

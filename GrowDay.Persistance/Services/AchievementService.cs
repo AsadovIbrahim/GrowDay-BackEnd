@@ -11,13 +11,18 @@ namespace GrowDay.Persistance.Services
     {
         protected readonly IWriteAchievementRepository _writeAchievementRepository;
         protected readonly IReadAchievementRepository _readAchievementRepository;
+        protected readonly IReadUserRepository _readUserRepository;
+        protected readonly IUserTaskService _userTaskService; 
         protected readonly ILogger<AchievementService> _logger;
+
         public AchievementService(IWriteAchievementRepository writeAchievementRepository, IReadAchievementRepository readAchievementRepository,
-            ILogger<AchievementService> logger)
+            ILogger<AchievementService> logger, IReadUserRepository readUserRepository, IUserTaskService userTaskService)
         {
             _writeAchievementRepository = writeAchievementRepository;
             _readAchievementRepository = readAchievementRepository;
             _logger = logger;
+            _readUserRepository = readUserRepository;
+            _userTaskService = userTaskService;
         }
 
         public async Task<Result> ClearAllAchievementsAsync()
@@ -136,6 +141,11 @@ namespace GrowDay.Persistance.Services
                 existingAchievement.TaskCompletionRequired = updateAchievementDTO.TaskCompletionRequired != 0 ?
                     updateAchievementDTO.TaskCompletionRequired : existingAchievement.TaskCompletionRequired;
                 await _writeAchievementRepository.UpdateAsync(existingAchievement);
+                var users=await _readUserRepository.GetAllAsync();
+                foreach (var user in users!)
+                {
+                    await _userTaskService.CheckAndGrantAchievementsAsync(user.Id);
+                }
                 var achievementDTO = new AchievementDTO
                 {
                     AchievementId = existingAchievement.Id,

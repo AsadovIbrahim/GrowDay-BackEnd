@@ -3,7 +3,8 @@ using GrowDay.Domain.Helpers;
 using GrowDay.Application.Services;
 using Microsoft.Extensions.Logging;
 using GrowDay.Application.Repositories;
-using GrowDay.Domain.Entities.Concretes; 
+using GrowDay.Domain.Entities.Concretes;
+using GrowDay.Domain.Enums;
 
 namespace GrowDay.Persistance.Services
 {
@@ -16,10 +17,13 @@ namespace GrowDay.Persistance.Services
         protected readonly IReadUserTaskRepository _readUserTaskRepository;
         protected readonly IReadUserHabitRepository _readUserHabitRepository;
         protected readonly IStatisticService _statisticService;
+        protected readonly INotificationService _notificationService;
         protected readonly ILogger<UserTaskService> _logger;
+
         public UserTaskService(IWriteUserTaskRepository writeUserTaskRepository, IReadUserTaskRepository readUserTaskRepository, ILogger<UserTaskService> logger,
             IReadAchievementRepository readAchievementRepository, IWriteUserAchievementRepository writeUserAchievementRepository,
-            IReadUserAchievementRepository readUserAchievementRepository, IStatisticService statisticService, IReadUserHabitRepository readUserHabitRepository)
+            IReadUserAchievementRepository readUserAchievementRepository, IStatisticService statisticService, IReadUserHabitRepository readUserHabitRepository,
+            INotificationService notificationService)
         {
             _writeUserTaskRepository = writeUserTaskRepository;
             _readUserTaskRepository = readUserTaskRepository;
@@ -29,6 +33,7 @@ namespace GrowDay.Persistance.Services
             _readUserAchievementRepository = readUserAchievementRepository;
             _statisticService = statisticService;
             _readUserHabitRepository = readUserHabitRepository;
+            _notificationService = notificationService;
         }
 
         public async Task<Result<UserTaskDTO>> CompleteTaskAsync(string userId, string taskId)
@@ -119,7 +124,7 @@ namespace GrowDay.Persistance.Services
                 {
                     var completedTasks = await _readUserTaskRepository.GetUserTasksByUserIdAsync(userId);
                     var totalPoints = completedTasks.Where(t=>t.IsCompleted).Sum(t=>t.Points);
-                    if (totalPoints < achievement.PointsRequired)
+                    if (totalPoints < achievement.PointsRequired) 
                         meetsRequirement = false;
                 }
 
@@ -135,6 +140,12 @@ namespace GrowDay.Persistance.Services
                             EarnedAt = DateTime.UtcNow
                         };
                         await _writeUserAchievementRepository.AddAsync(userAchievement);
+                        await _notificationService.CreateAndSendNotificationAsync(
+                            null,
+                            userId,
+                            "New Achievement Unlocked! 🏆",
+                            $"Congratulations! You've unlocked the achievement: {achievement.Title}",
+                            NotificationType.Achievement);
                     }
                 }
             }

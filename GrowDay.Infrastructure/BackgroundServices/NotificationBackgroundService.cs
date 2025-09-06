@@ -1,4 +1,5 @@
 ﻿using GrowDay.Application.Services;
+using GrowDay.Domain.Enums;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -53,7 +54,8 @@ namespace GrowDay.Infrastructure.BackgroundServices
                                         habit.Id,
                                         habit.UserId,
                                         habit.Title,
-                                        "Time to complete your habit!");
+                                        "Time to complete your habit ⏰",
+                                        NotificationType.Reminder);
                                 }
                                 else
                                 {
