@@ -30,6 +30,7 @@ namespace GrowDay.Domain.Entities.Concretes
         public virtual ICollection<SuggestedHabit>? SuggestedHabits { get; set; }
         public virtual ICollection<Notification>? Notifications { get; set; }
         public virtual ICollection<HabitRecord>? HabitRecords { get; set; }
+        public virtual ICollection<UserTask>? UserTasks { get; set; }
 
-    }
+        }
 }

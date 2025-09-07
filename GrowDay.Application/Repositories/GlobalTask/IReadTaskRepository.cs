@@ -5,5 +5,6 @@ namespace GrowDay.Application.Repositories
 {
     public interface IReadTaskRepository : IReadGenericRepository<TaskEntity>
     {
+        Task<ICollection<TaskEntity>>GetByHabitIdAsync(string habitId);
     }
 }

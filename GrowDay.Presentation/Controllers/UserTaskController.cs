@@ -47,6 +47,17 @@ namespace GrowDay.Presentation.Controllers
             }
             return Ok(result);
         }
-       
+        [HttpDelete("DeleteMyTask/{userTaskId}")]
+        [Authorize(Roles ="User")]
+        public async Task<IActionResult> DeleteUserTask(string userTaskId)
+        {
+            var result = await _userTaskService.DeleteUserTaskAsync(userTaskId);
+            if (!result.Success)
+            {
+                return BadRequest(result.Message);
+            }
+            return Ok(result);
+        }
+
     }
 }

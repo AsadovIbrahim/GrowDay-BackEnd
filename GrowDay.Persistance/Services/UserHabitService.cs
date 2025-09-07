@@ -2,6 +2,7 @@
 using GrowDay.Application.Services;
 using GrowDay.Domain.DTO;
 using GrowDay.Domain.Entities.Concretes;
+using GrowDay.Domain.Enums;
 using GrowDay.Domain.Helpers;
 using Microsoft.Extensions.Logging;
 
@@ -17,13 +18,18 @@ namespace GrowDay.Persistance.Services
         protected readonly IReadHabitRecordRepository _readHabitRecordRepository;
         protected readonly IWriteHabitRecordRepository _writeHabitRecordRepository;
         protected readonly IReadSuggestedHabitRepository _readSuggestedHabitRepository;
+        protected readonly IWriteTaskRepository _writeTaskRepository;
+        protected readonly IReadTaskRepository _readTaskRepository;
+        protected readonly IWriteUserTaskRepository _writeUserTaskRepository;
         protected readonly INotificationService _notificationService;
 
         protected readonly ILogger<UserHabitService> _logger;
 
         public UserHabitService(IWriteUserHabitRepository userHabitRepository, ILogger<UserHabitService> logger, IReadUserHabitRepository readUserHabitRepository,
             IWriteHabitRepository writeHabitRepository, IReadHabitRepository readHabitRepository, INotificationService notificationService,
-            IReadSuggestedHabitRepository readSuggestedHabitRepository, IWriteNotificationRepository writeNotificationRepository, IReadHabitRecordRepository readHabitRecordRepository, IWriteHabitRecordRepository writeHabitRecordRepository)
+            IReadSuggestedHabitRepository readSuggestedHabitRepository, IWriteNotificationRepository writeNotificationRepository,
+            IReadHabitRecordRepository readHabitRecordRepository, IWriteHabitRecordRepository writeHabitRecordRepository, IWriteTaskRepository writeTaskRepository, 
+            IReadTaskRepository readTaskRepository, IWriteUserTaskRepository writeUserTaskRepository)
         {
             _writeUserHabitRepository = userHabitRepository;
             _logger = logger;
@@ -35,6 +41,9 @@ namespace GrowDay.Persistance.Services
             _writeNotificationRepository = writeNotificationRepository;
             _readHabitRecordRepository = readHabitRecordRepository;
             _writeHabitRecordRepository = writeHabitRecordRepository;
+            _writeTaskRepository = writeTaskRepository;
+            _readTaskRepository = readTaskRepository;
+            _writeUserTaskRepository = writeUserTaskRepository;
         }
 
         public async Task<Result> AddFromSuggestedHabitAsync(string userId, AddSuggestedHabitDTO addSuggestedHabitDTO)
@@ -89,7 +98,7 @@ namespace GrowDay.Persistance.Services
                 if (habit == null)
                     return Result.FailureResult("Habit not found.");
                 var existingUserHabit = await _readUserHabitRepository.GetByUserAndHabitAsync(userId, dto.HabitId);
-                if (existingUserHabit != null)
+                if (existingUserHabit != null && !existingUserHabit.IsDeleted)
                     return Result.FailureResult("User habit already exists.");
 
                 var userHabitFrequency = dto.Frequency ?? habit.Frequency;
@@ -112,7 +121,23 @@ namespace GrowDay.Persistance.Services
                 };
 
                 await _writeUserHabitRepository.AddAsync(userHabit);
-
+                var habitTasks= await _readTaskRepository.GetByHabitIdAsync(dto.HabitId);
+                foreach(var task in habitTasks)
+                {
+                    var userTask = new UserTask
+                    {
+                        TaskId = task.Id,
+                        UserId = userId,
+                        UserHabitId = userHabit.Id,
+                        Title = task.Title,
+                        Description = task.Description,
+                        Points = task.Points,
+                        IsCompleted = false,
+                        CreatedAt = DateTime.UtcNow,
+                        IsDeleted = false
+                    };
+                    await _writeUserTaskRepository.AddAsync(userTask);
+                }
                 return Result.SuccessResult($"User habit added successfully. UserHabitId: {userHabit.Id}");
             }
             catch (Exception ex)
@@ -239,6 +264,12 @@ namespace GrowDay.Persistance.Services
                         await _writeHabitRecordRepository.UpdateAsync(existingHabitRecord);
                     }
                 }
+                await _notificationService.CreateAndSendNotificationAsync(
+                    userHabit.Id, 
+                    userId, 
+                    "Habit Completed ✅", $"Great job! You completed the habit: {(!string.IsNullOrEmpty(userHabit.Title) ? userHabit.Title : userHabit.Habit?.Title)}",
+                    NotificationType.Reminder);
+
 
                 var habitDTO = new UserHabitDTO
                 {

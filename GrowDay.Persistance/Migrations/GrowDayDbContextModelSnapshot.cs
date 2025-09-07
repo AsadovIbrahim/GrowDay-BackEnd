@@ -37,6 +37,9 @@ namespace GrowDay.Persistance.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("HabitId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -57,6 +60,8 @@ namespace GrowDay.Persistance.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("HabitId");
 
                     b.ToTable("Achievements");
                 });
@@ -331,6 +336,9 @@ namespace GrowDay.Persistance.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("HabitId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
@@ -348,6 +356,8 @@ namespace GrowDay.Persistance.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("HabitId");
 
                     b.ToTable("Tasks");
                 });
@@ -800,6 +810,15 @@ namespace GrowDay.Persistance.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.Achievement", b =>
+                {
+                    b.HasOne("GrowDay.Domain.Entities.Concretes.Habit", "Habit")
+                        .WithMany("Achievements")
+                        .HasForeignKey("HabitId");
+
+                    b.Navigation("Habit");
+                });
+
             modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.HabitRecord", b =>
                 {
                     b.HasOne("GrowDay.Domain.Entities.Concretes.UserHabit", "UserHabit")
@@ -847,6 +866,15 @@ namespace GrowDay.Persistance.Migrations
                         .HasForeignKey("UserHabitId");
 
                     b.Navigation("UserHabit");
+                });
+
+            modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.TaskEntity", b =>
+                {
+                    b.HasOne("GrowDay.Domain.Entities.Concretes.Habit", "Habit")
+                        .WithMany("Tasks")
+                        .HasForeignKey("HabitId");
+
+                    b.Navigation("Habit");
                 });
 
             modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.UserAchievement", b =>
@@ -906,7 +934,7 @@ namespace GrowDay.Persistance.Migrations
                         .IsRequired();
 
                     b.HasOne("GrowDay.Domain.Entities.Concretes.UserHabit", "UserHabit")
-                        .WithMany()
+                        .WithMany("UserTasks")
                         .HasForeignKey("UserHabitId");
 
                     b.HasOne("GrowDay.Domain.Entities.Concretes.User", "User")
@@ -991,6 +1019,10 @@ namespace GrowDay.Persistance.Migrations
 
             modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.Habit", b =>
                 {
+                    b.Navigation("Achievements");
+
+                    b.Navigation("Tasks");
+
                     b.Navigation("UserHabits");
                 });
 
@@ -1019,6 +1051,8 @@ namespace GrowDay.Persistance.Migrations
                     b.Navigation("Notifications");
 
                     b.Navigation("SuggestedHabits");
+
+                    b.Navigation("UserTasks");
                 });
 #pragma warning restore 612, 618
         }

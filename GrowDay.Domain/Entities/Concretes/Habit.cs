@@ -19,7 +19,9 @@ namespace GrowDay.Domain.Entities.Concretes
 
         //Navigation Property
         public virtual ICollection<UserHabit>? UserHabits { get; set; }
+        public virtual ICollection<TaskEntity>? Tasks { get; set; }
+        public virtual ICollection<Achievement>? Achievements { get; set; }
 
 
-    }
+        }
 }

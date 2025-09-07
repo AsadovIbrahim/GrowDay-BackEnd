@@ -658,6 +658,32 @@
   },
   {
     "ContainingType": "GrowDay.Presentation.Controllers.UserAchievementController",
+    "Method": "ClearAllUserAchievements",
+    "RelativePath": "api/UserAchievement/ClearMyAchievements",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.UserAchievementController",
+    "Method": "DeleteUserAchievement",
+    "RelativePath": "api/UserAchievement/DeleteMyAchievement/{userAchievementId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userAchievementId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.UserAchievementController",
     "Method": "GetUserAchievements",
     "RelativePath": "api/UserAchievement/GetMyAchievements",
     "HttpMethod": "GET",
@@ -881,6 +907,22 @@
     "Method": "CompleteTask",
     "RelativePath": "api/UserTask/CompleteTask/{userTaskId}",
     "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userTaskId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.UserTaskController",
+    "Method": "DeleteUserTask",
+    "RelativePath": "api/UserTask/DeleteMyTask/{userTaskId}",
+    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [

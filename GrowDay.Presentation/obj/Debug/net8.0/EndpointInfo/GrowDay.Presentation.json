@@ -1036,6 +1036,40 @@
         }
       }
     },
+    "/api/UserAchievement/DeleteMyAchievement/{userAchievementId}": {
+      "delete": {
+        "tags": [
+          "UserAchievement"
+        ],
+        "parameters": [
+          {
+            "name": "userAchievementId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/UserAchievement/ClearMyAchievements": {
+      "delete": {
+        "tags": [
+          "UserAchievement"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/UserHabit/GetMyHabits": {
       "get": {
         "tags": [
@@ -1416,6 +1450,28 @@
           }
         }
       }
+    },
+    "/api/UserTask/DeleteMyTask/{userTaskId}": {
+      "delete": {
+        "tags": [
+          "UserTask"
+        ],
+        "parameters": [
+          {
+            "name": "userTaskId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1523,6 +1579,10 @@
       "CreateAchievementDTO": {
         "type": "object",
         "properties": {
+          "habitId": {
+            "type": "string",
+            "nullable": true
+          },
           "title": {
             "type": "string",
             "nullable": true
@@ -1649,6 +1709,10 @@
       "CreateTaskDTO": {
         "type": "object",
         "properties": {
+          "habitId": {
+            "type": "string",
+            "nullable": true
+          },
           "title": {
             "type": "string",
             "nullable": true
@@ -1840,6 +1904,10 @@
       "UpdateAchievementDTO": {
         "type": "object",
         "properties": {
+          "habitId": {
+            "type": "string",
+            "nullable": true
+          },
           "achievementId": {
             "type": "string",
             "nullable": true
@@ -1973,6 +2041,10 @@
       "UpdateTaskDTO": {
         "type": "object",
         "properties": {
+          "habitId": {
+            "type": "string",
+            "nullable": true
+          },
           "taskId": {
             "type": "string",
             "nullable": true

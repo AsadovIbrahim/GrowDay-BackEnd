@@ -9,6 +9,7 @@ namespace GrowDay.Application.Services
         Task<Result<IEnumerable<UserTaskDTO>>>GetAllTasksAsync(string userId);
         Task<Result<UserTaskDTO>>CompleteTaskAsync(string userId,string taskId);
         Task CheckAndGrantAchievementsAsync(string userId);
+        Task<Result>DeleteUserTaskAsync(string userTaskId);
 
     }
 }

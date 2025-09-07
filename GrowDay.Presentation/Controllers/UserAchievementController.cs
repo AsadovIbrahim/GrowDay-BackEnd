@@ -26,5 +26,29 @@ namespace GrowDay.Presentation.Controllers
                 return BadRequest(result.Message);
             return Ok(result);
         }
+        [HttpDelete("DeleteMyAchievement/{userAchievementId}")]
+        public async Task<IActionResult> DeleteUserAchievement(string userAchievementId)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId == null)
+                return Unauthorized("User is not authenticated.");
+            var result = await _userAchievementService.DeleteUserAchievementAsync(userId, userAchievementId);
+            if (!result.Success)
+                return BadRequest(result.Message);
+            return Ok(result);
+        }
+        [HttpDelete("ClearMyAchievements")]
+        public async Task<IActionResult> ClearAllUserAchievements()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId == null)
+                return Unauthorized("User is not authenticated.");
+            var result = await _userAchievementService.ClearAllUserAchievementsAsync();
+            if (!result.Success)
+                return BadRequest(result.Message);
+            return Ok(result);
+        }
+
+
     }
 }

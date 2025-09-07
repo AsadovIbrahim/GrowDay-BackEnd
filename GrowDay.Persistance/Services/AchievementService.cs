@@ -53,6 +53,7 @@ namespace GrowDay.Persistance.Services
             {
                 var newAchievement = new Achievement
                 {
+                    HabitId = createAchievementDTO.HabitId,
                     Title = createAchievementDTO.Title,
                     Description = createAchievementDTO.Description,
                     CreatedAt = DateTime.UtcNow,
@@ -63,6 +64,7 @@ namespace GrowDay.Persistance.Services
                 await _writeAchievementRepository.AddAsync(newAchievement);
                 var achievementDTO = new AchievementDTO
                 {
+                    HabitId = newAchievement.HabitId,
                     AchievementId = newAchievement.Id,
                     Title = newAchievement.Title,
                     Description = newAchievement.Description,
@@ -109,6 +111,7 @@ namespace GrowDay.Persistance.Services
                 }
                 var achievementDTOs = achievements.Select(a => new AchievementDTO
                 {
+                    HabitId = a.HabitId,
                     AchievementId = a.Id,
                     Title = a.Title,
                     Description = a.Description,
@@ -134,6 +137,7 @@ namespace GrowDay.Persistance.Services
                 {
                     return Result<AchievementDTO>.FailureResult("Achievement not found.");
                 }
+                existingAchievement.HabitId = updateAchievementDTO.HabitId ?? existingAchievement.HabitId;
                 existingAchievement.Title = updateAchievementDTO.Title ?? existingAchievement.Title;
                 existingAchievement.Description = updateAchievementDTO.Description ?? existingAchievement.Description;
                 existingAchievement.PointsRequired = updateAchievementDTO.PointsRequired != 0 ? updateAchievementDTO.PointsRequired : existingAchievement.PointsRequired;
@@ -148,6 +152,7 @@ namespace GrowDay.Persistance.Services
                 }
                 var achievementDTO = new AchievementDTO
                 {
+                    HabitId = existingAchievement.HabitId,
                     AchievementId = existingAchievement.Id,
                     Title = existingAchievement.Title,
                     Description = existingAchievement.Description,

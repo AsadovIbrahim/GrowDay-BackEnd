@@ -53,9 +53,9 @@ namespace GrowDay.Persistance.Services
                 userTaskResult.IsCompleted = true;
                 userTaskResult.CompletedAt = DateTime.UtcNow;
                 await _writeUserTaskRepository.UpdateAsync(userTaskResult);
-                
+
                 await CheckAndGrantAchievementsAsync(userId);
-                
+
                 var userTaskDTO = new UserTaskDTO
                 {
                     UserTaskId = userTaskResult.Id,
@@ -65,7 +65,7 @@ namespace GrowDay.Persistance.Services
                     IsCompleted = userTaskResult.IsCompleted,
                     CompletedAt = userTaskResult.CompletedAt
                 };
-                return Result<UserTaskDTO>.SuccessResult(userTaskDTO,"Task completed successfully.");
+                return Result<UserTaskDTO>.SuccessResult(userTaskDTO, "Task completed successfully.");
             }
             catch (Exception ex)
             {
@@ -91,7 +91,7 @@ namespace GrowDay.Persistance.Services
                     Description = ut.Description,
                     Points = ut.Points,
                     IsCompleted = ut.IsCompleted,
-                    CompletedAt = ut.CompletedAt
+                    CompletedAt = ut.CompletedAt,
                 }).ToList();
                 return Result<IEnumerable<UserTaskDTO>>.SuccessResult(userTaskDTOs, "User tasks retrieved successfully.");
             }
@@ -123,8 +123,8 @@ namespace GrowDay.Persistance.Services
                 if (achievement.PointsRequired > 0)
                 {
                     var completedTasks = await _readUserTaskRepository.GetUserTasksByUserIdAsync(userId);
-                    var totalPoints = completedTasks.Where(t=>t.IsCompleted).Sum(t=>t.Points);
-                    if (totalPoints < achievement.PointsRequired) 
+                    var totalPoints = completedTasks.Where(t => t.IsCompleted).Sum(t => t.Points);
+                    if (totalPoints < achievement.PointsRequired)
                         meetsRequirement = false;
                 }
 
@@ -148,6 +148,25 @@ namespace GrowDay.Persistance.Services
                             NotificationType.Achievement);
                     }
                 }
+            }
+        }
+
+        public async Task<Result> DeleteUserTaskAsync(string userTaskId)
+        {
+            try
+            {
+                var userTask = await _readUserTaskRepository.GetByIdAsync(userTaskId);
+                if (userTask == null)
+                {
+                    return Result.FailureResult("User task not found.");
+                }
+                await _writeUserTaskRepository.DeleteAsync(userTask);
+                return Result.SuccessResult("User task deleted successfully.");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error deleting user task {UserTaskId}", userTaskId);
+                return Result.FailureResult("An error occurred while deleting the user task.");
             }
         }
     }

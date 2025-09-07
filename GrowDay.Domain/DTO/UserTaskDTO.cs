@@ -8,6 +8,7 @@
         public int Points { get; set; }
         public bool IsCompleted { get; set; }
         public DateTime? CompletedAt { get; set; }
+        public string UserHabitId { get; set; }
 
     }
 }

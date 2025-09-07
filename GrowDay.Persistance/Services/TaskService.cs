@@ -52,6 +52,7 @@ namespace GrowDay.Persistance.Services
             {
                 var newTask = new TaskEntity
                 {
+                    HabitId = createTaskDTO.HabitId,
                     Title = createTaskDTO.Title,
                     Description = createTaskDTO.Description,
                     Points = createTaskDTO.Points,
@@ -59,24 +60,11 @@ namespace GrowDay.Persistance.Services
                     CreatedAt = DateTime.UtcNow
                 };
                 await _writeTaskRepository.AddAsync(newTask);
-                var users = await _readUserRepository.GetAllAsync();
-                foreach (var user in users)
-                {
-                    var userTask = new UserTask
-                    {
-                        UserId = user.Id,
-                        TaskId = newTask.Id,
-                        Title = newTask.Title,
-                        Description = newTask.Description,
-                        Points = newTask.Points,
-                        IsCompleted = false,
-                        CreatedAt = DateTime.UtcNow
-                    };
-                    await _writeUserTaskRepository.AddAsync(userTask);
-                }
+                
 
                 var taskDTO = new TaskDTO
                 {
+                    HabitId=newTask.HabitId,
                     TaskId = newTask.Id,
                     Title = newTask.Title,
                     Description = newTask.Description,
@@ -123,6 +111,7 @@ namespace GrowDay.Persistance.Services
                 }
                 var taskDTOs = tasks.Select(t => new TaskDTO
                 {
+                    HabitId = t.HabitId,
                     TaskId = t.Id,
                     Title = t.Title,
                     Description = t.Description,
@@ -174,6 +163,7 @@ namespace GrowDay.Persistance.Services
                 {
                     return Result<TaskDTO>.FailureResult("Task not found.");
                 }
+                task.HabitId = updateTaskDTO.HabitId;
                 task.Title = updateTaskDTO.Title;
                 task.Description = updateTaskDTO.Description;
                 task.Points = updateTaskDTO.Points;
@@ -181,6 +171,7 @@ namespace GrowDay.Persistance.Services
                 await _writeTaskRepository.UpdateAsync(task);
                 var taskDTO = new TaskDTO
                 {
+                    HabitId = task.HabitId,
                     TaskId = task.Id,
                     Title = task.Title,
                     Description = task.Description,
