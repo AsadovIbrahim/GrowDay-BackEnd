@@ -47,6 +47,22 @@ namespace GrowDay.Presentation.Controllers
             }
             return Ok(result);
         }
+        [HttpGet("GetCompletedTasks")]
+        [Authorize(Roles ="User")]
+        public async Task<IActionResult> GetCompletedTasks()
+        {
+            var userId=User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized(new { Message = "User is not authenticated." });
+            }
+            var result = await _userTaskService.GetCompletedTasksAsync(userId!);
+            if (!result.Success)
+            {
+                return BadRequest(result.Message);
+            }
+            return Ok(result);
+        }
         [HttpDelete("DeleteMyTask/{userTaskId}")]
         [Authorize(Roles ="User")]
         public async Task<IActionResult> DeleteUserTask(string userTaskId)

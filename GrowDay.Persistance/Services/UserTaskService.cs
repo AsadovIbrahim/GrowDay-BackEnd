@@ -169,5 +169,33 @@ namespace GrowDay.Persistance.Services
                 return Result.FailureResult("An error occurred while deleting the user task.");
             }
         }
+
+        public async Task<Result<ICollection<UserTaskDTO>>> GetCompletedTasksAsync(string userId)
+        {
+            try
+            {
+                var completedTasks = await _readUserTaskRepository.GetCompletedUserTasksByUserIdAsync(userId);
+                if (!completedTasks.Any())
+                {
+                    return Result<ICollection<UserTaskDTO>>
+                        .SuccessResult(new List<UserTaskDTO>(), "No completed tasks found for the user.");
+                }
+                var completedTaskDTOs = completedTasks.Select(ut => new UserTaskDTO
+                {
+                    UserTaskId = ut.Id,
+                    Title = ut.Title,
+                    Description = ut.Description,
+                    Points = ut.Points,
+                    IsCompleted = ut.IsCompleted,
+                    CompletedAt = ut.CompletedAt,
+                }).ToList();
+                return Result<ICollection<UserTaskDTO>>.SuccessResult(completedTaskDTOs, "Completed tasks retrieved successfully.");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error retrieving completed tasks for user {UserId}", userId);
+                return Result<ICollection<UserTaskDTO>>.FailureResult("An error occurred while retrieving completed tasks.");
+            }
+        }
     }
 }

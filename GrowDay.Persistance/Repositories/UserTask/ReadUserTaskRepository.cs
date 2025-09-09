@@ -18,6 +18,11 @@ namespace GrowDay.Persistance.Repositories
             return count;
         }
 
+        public async Task<IEnumerable<UserTask>> GetCompletedUserTasksByUserIdAsync(string userId)
+        {
+            return await _table.Where(ut => ut.UserId == userId && ut.IsCompleted).ToListAsync();
+        }
+
         public async Task<UserTask?> GetUserTaskByIdAsync(string userId, string userTaskId)
         {
             return await _table.FirstOrDefaultAsync(ut => ut.Id == userTaskId && ut.UserId == userId);

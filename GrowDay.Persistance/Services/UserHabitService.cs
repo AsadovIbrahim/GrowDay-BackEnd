@@ -4,6 +4,7 @@ using GrowDay.Domain.DTO;
 using GrowDay.Domain.Entities.Concretes;
 using GrowDay.Domain.Enums;
 using GrowDay.Domain.Helpers;
+using GrowDay.Persistance.Repositories;
 using Microsoft.Extensions.Logging;
 
 namespace GrowDay.Persistance.Services
@@ -21,6 +22,7 @@ namespace GrowDay.Persistance.Services
         protected readonly IWriteTaskRepository _writeTaskRepository;
         protected readonly IReadTaskRepository _readTaskRepository;
         protected readonly IWriteUserTaskRepository _writeUserTaskRepository;
+        protected readonly IWriteSuggestedHabitRepository _writeSuggestedHabitRepository;
         protected readonly INotificationService _notificationService;
 
         protected readonly ILogger<UserHabitService> _logger;
@@ -28,8 +30,8 @@ namespace GrowDay.Persistance.Services
         public UserHabitService(IWriteUserHabitRepository userHabitRepository, ILogger<UserHabitService> logger, IReadUserHabitRepository readUserHabitRepository,
             IWriteHabitRepository writeHabitRepository, IReadHabitRepository readHabitRepository, INotificationService notificationService,
             IReadSuggestedHabitRepository readSuggestedHabitRepository, IWriteNotificationRepository writeNotificationRepository,
-            IReadHabitRecordRepository readHabitRecordRepository, IWriteHabitRecordRepository writeHabitRecordRepository, IWriteTaskRepository writeTaskRepository, 
-            IReadTaskRepository readTaskRepository, IWriteUserTaskRepository writeUserTaskRepository)
+            IReadHabitRecordRepository readHabitRecordRepository, IWriteHabitRecordRepository writeHabitRecordRepository, IWriteTaskRepository writeTaskRepository,
+            IReadTaskRepository readTaskRepository, IWriteUserTaskRepository writeUserTaskRepository, IWriteSuggestedHabitRepository writeSuggestedHabitRepository)
         {
             _writeUserHabitRepository = userHabitRepository;
             _logger = logger;
@@ -44,6 +46,7 @@ namespace GrowDay.Persistance.Services
             _writeTaskRepository = writeTaskRepository;
             _readTaskRepository = readTaskRepository;
             _writeUserTaskRepository = writeUserTaskRepository;
+            _writeSuggestedHabitRepository = writeSuggestedHabitRepository;
         }
 
         public async Task<Result> AddFromSuggestedHabitAsync(string userId, AddSuggestedHabitDTO addSuggestedHabitDTO)
@@ -440,22 +443,29 @@ namespace GrowDay.Persistance.Services
         {
             try
             {
-                var userHabit = await _readUserHabitRepository.GetByUserAndHabitAsync(userId, userHabitId);
+                var userHabit = await _readUserHabitRepository.GetByUserAndHabitAsync(userId,userHabitId);
                 if (userHabit == null || userHabit.UserId != userId)
-                {
                     return Result.FailureResult("User habit not found.");
-                }
-                if(userHabit.Notifications!=null && userHabit.Notifications.Any())
-                {
+
+                if (userHabit.UserTasks != null && userHabit.UserTasks.Any())
+                    await _writeUserTaskRepository.RemoveRangeAsync(userHabit.UserTasks);
+
+                if (userHabit.HabitRecords != null && userHabit.HabitRecords.Any())
+                    await _writeHabitRecordRepository.RemoveRangeAsync(userHabit.HabitRecords);
+
+                if (userHabit.Notifications != null && userHabit.Notifications.Any())
                     await _writeNotificationRepository.RemoveRangeAsync(userHabit.Notifications);
 
-                }
+                if (userHabit.SuggestedHabits != null && userHabit.SuggestedHabits.Any())
+                    await _writeSuggestedHabitRepository.RemoveRangeAsync(userHabit.SuggestedHabits);
+
                 await _writeUserHabitRepository.DeleteAsync(userHabit);
+
                 return Result.SuccessResult("User habit removed successfully.");
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error removing user habit");
+                _logger.LogError(ex, $"Error removing user habit: {ex.Message} | {ex.StackTrace}");
                 return Result.FailureResult("An error occurred while removing the user habit.");
             }
         }

@@ -936,6 +936,16 @@
   },
   {
     "ContainingType": "GrowDay.Presentation.Controllers.UserTaskController",
+    "Method": "GetCompletedTasks",
+    "RelativePath": "api/UserTask/GetCompletedTasks",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.UserTaskController",
     "Method": "GetAllTasks",
     "RelativePath": "api/UserTask/GetMyTasks",
     "HttpMethod": "GET",

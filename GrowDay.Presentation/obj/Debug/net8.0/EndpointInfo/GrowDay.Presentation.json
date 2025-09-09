@@ -1451,6 +1451,18 @@
         }
       }
     },
+    "/api/UserTask/GetCompletedTasks": {
+      "get": {
+        "tags": [
+          "UserTask"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/UserTask/DeleteMyTask/{userTaskId}": {
       "delete": {
         "tags": [
