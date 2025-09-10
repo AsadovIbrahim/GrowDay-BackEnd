@@ -54,6 +54,8 @@ namespace GrowDay.Persistance
             services.AddScoped<IWriteUserAchievementRepository, WriteUserAchievementRepository>();
             services.AddScoped<IWriteUserTaskRepository, WriteUserTaskRepository>();
             services.AddScoped<IWriteTaskRepository, WriteTaskRepository>();
+            services.AddScoped<IWriteUserTaskCompletionRepository, WriteUserTaskCompletionRepository>();
+          
 
 
 
@@ -72,6 +74,8 @@ namespace GrowDay.Persistance
             services.AddScoped<IReadUserAchievementRepository, ReadUserAchievementRepository>();
             services.AddScoped<IReadUserTaskRepository, ReadUserTaskRepository>();
             services.AddScoped<IReadTaskRepository, ReadTaskRepository>();
+            services.AddScoped<IReadUserTaskCompletionRepository, ReadUserTaskCompletionRepository>();
         }
+
     }
 }

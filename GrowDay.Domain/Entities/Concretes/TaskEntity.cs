@@ -9,6 +9,9 @@ namespace GrowDay.Domain.Entities.Concretes
         public int Points { get; set; }
         public bool IsActive { get; set; } = true;
 
+        public int? TotalRequiredCompletions { get; set; }
+        public int? RequiredPoints { get; set; }
+        public int? StreakRequired { get; set; }
         public string? HabitId { get; set; }
         public virtual Habit Habit { get; set; }
         public virtual ICollection<UserTask> UserTasks { get; set; }

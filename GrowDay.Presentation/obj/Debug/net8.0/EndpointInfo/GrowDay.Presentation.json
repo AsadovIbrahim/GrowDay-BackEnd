@@ -1484,6 +1484,28 @@
           }
         }
       }
+    },
+    "/api/UserTask/GetTaskStats/{taskId}": {
+      "get": {
+        "tags": [
+          "UserTask"
+        ],
+        "parameters": [
+          {
+            "name": "taskId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1736,6 +1758,21 @@
           "points": {
             "type": "integer",
             "format": "int32"
+          },
+          "totalRequiredCompletions": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "requiredPoints": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "streakRequired": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           },
           "isActive": {
             "type": "boolean"
@@ -2072,6 +2109,21 @@
           "points": {
             "type": "integer",
             "format": "int32"
+          },
+          "totalRequiredCompletions": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "requiredPoints": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "streakRequired": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           },
           "isActive": {
             "type": "boolean"

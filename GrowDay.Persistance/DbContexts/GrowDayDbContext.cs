@@ -33,6 +33,7 @@ namespace GrowDay.Persistance.DbContexts
         public virtual DbSet<UserTask> UserTasks { get; set; }
         public virtual DbSet<JobExecutionLog> JobExecutionLogs { get; set; }
         public virtual DbSet<TaskEntity> Tasks { get; set; }
+        public virtual DbSet<UserTaskCompletion> UserTaskCompletions { get; set; }
 
-    }
+        }
 }

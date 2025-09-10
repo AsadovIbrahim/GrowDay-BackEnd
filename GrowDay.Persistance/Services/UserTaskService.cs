@@ -18,12 +18,15 @@ namespace GrowDay.Persistance.Services
         protected readonly IReadUserHabitRepository _readUserHabitRepository;
         protected readonly IStatisticService _statisticService;
         protected readonly INotificationService _notificationService;
+        protected readonly IUserHabitService _userHabitService;
+        protected readonly IWriteUserTaskCompletionRepository _writeUserTaskCompletionRepository;
+        protected readonly IReadUserTaskCompletionRepository _readUserTaskCompletionRepository;
         protected readonly ILogger<UserTaskService> _logger;
 
         public UserTaskService(IWriteUserTaskRepository writeUserTaskRepository, IReadUserTaskRepository readUserTaskRepository, ILogger<UserTaskService> logger,
             IReadAchievementRepository readAchievementRepository, IWriteUserAchievementRepository writeUserAchievementRepository,
             IReadUserAchievementRepository readUserAchievementRepository, IStatisticService statisticService, IReadUserHabitRepository readUserHabitRepository,
-            INotificationService notificationService)
+            INotificationService notificationService, IUserHabitService userHabitService, IReadUserTaskCompletionRepository readUserTaskCompletionRepository, IWriteUserTaskCompletionRepository writeUserTaskCompletionRepository)
         {
             _writeUserTaskRepository = writeUserTaskRepository;
             _readUserTaskRepository = readUserTaskRepository;
@@ -34,38 +37,101 @@ namespace GrowDay.Persistance.Services
             _statisticService = statisticService;
             _readUserHabitRepository = readUserHabitRepository;
             _notificationService = notificationService;
+            _userHabitService = userHabitService;
+            _readUserTaskCompletionRepository = readUserTaskCompletionRepository;
+            _writeUserTaskCompletionRepository = writeUserTaskCompletionRepository;
         }
 
         public async Task<Result<UserTaskDTO>> CompleteTaskAsync(string userId, string taskId)
         {
             try
             {
-                var userTaskResult = await _readUserTaskRepository.GetUserTaskByIdAsync(userId, taskId);
-                if (userTaskResult == null)
-                {
+                var userTask = await _readUserTaskRepository.GetUserTaskByIdAsync(userId, taskId);
+                if (userTask == null)
                     return Result<UserTaskDTO>.FailureResult("Task not found.");
-                }
-                var today = DateTime.UtcNow.Date;
-                if (userTaskResult.IsCompleted && userTaskResult.CompletedAt.HasValue && userTaskResult.CompletedAt.Value.Date == today)
+
+                if (userTask.IsCompleted)
                 {
-                    return Result<UserTaskDTO>.FailureResult("Task has already been completed today.");
+                    return Result<UserTaskDTO>.SuccessResult(new UserTaskDTO
+                    {
+                        UserTaskId = userTask.Id,
+                        Title = userTask.Title,
+                        Description = userTask.Description,
+                        Points = userTask.Points,
+                        IsCompleted = userTask.IsCompleted,
+                        CompletedAt = userTask.CompletedAt
+                    }, "Task has already been completed.");
                 }
-                userTaskResult.IsCompleted = true;
-                userTaskResult.CompletedAt = DateTime.UtcNow;
-                await _writeUserTaskRepository.UpdateAsync(userTaskResult);
+
+                var today = DateTime.UtcNow.Date;
+                var todaysCompletions = await _readUserTaskCompletionRepository.GetUserTaskCompletions(userId, taskId);
+                if (todaysCompletions.Any(c => c.CompletedAt.Date == today))
+                {
+                    return Result<UserTaskDTO>.FailureResult("You can only complete this task once per day.");
+                }
+
+                var completion = new UserTaskCompletion
+                {
+                    UserTaskId = userTask.Id,
+                    Points = userTask.Points,
+                    CompletedAt = DateTime.UtcNow
+                };
+                await _writeUserTaskCompletionRepository.AddAsync(completion);
+
+                var completions = await _readUserTaskCompletionRepository.GetUserTaskCompletions(userId, taskId);
+                var totalPoints = completions.Sum(c => c.Points);
+                var totalCompleted = completions.Count;
+
+                int currentStreak = 0;
+                int longestStreak = 0;
+
+                if (!string.IsNullOrEmpty(userTask.UserHabitId))
+                {
+                    var habitResult = await _userHabitService.CompleteHabitAsync(userId, userTask.UserHabitId);
+                    if (habitResult.Success && habitResult.Data != null)
+                    {
+                        currentStreak = habitResult.Data.CurrentStreak;
+                        longestStreak = habitResult.Data.LongestStreak;
+                    }
+                }
+
+                bool requirementsMet = true;
+
+                if (userTask.Task.TotalRequiredCompletions.HasValue && totalCompleted < userTask.Task.TotalRequiredCompletions.Value)
+                    requirementsMet = false;
+
+                if (userTask.Task.RequiredPoints.HasValue && totalPoints < userTask.Task.RequiredPoints.Value)
+                    requirementsMet = false;
+
+                if (userTask.Task.StreakRequired.HasValue && longestStreak < userTask.Task.StreakRequired.Value)
+                    requirementsMet = false;
+
+                if (requirementsMet)
+                {
+                    userTask.IsCompleted = true;
+                    userTask.CompletedAt = DateTime.UtcNow;
+                    await _writeUserTaskRepository.UpdateAsync(userTask);
+                }
 
                 await CheckAndGrantAchievementsAsync(userId);
 
                 var userTaskDTO = new UserTaskDTO
                 {
-                    UserTaskId = userTaskResult.Id,
-                    Title = userTaskResult.Title,
-                    Description = userTaskResult.Description,
-                    Points = userTaskResult.Points,
-                    IsCompleted = userTaskResult.IsCompleted,
-                    CompletedAt = userTaskResult.CompletedAt
+                    UserTaskId = userTask.Id,
+                    Title = userTask.Title,
+                    Description = userTask.Description,
+                    Points = userTask.Points,
+                    IsCompleted = userTask.IsCompleted,
+                    CompletedAt = userTask.CompletedAt,
+                    TotalRequiredCompletions = userTask.Task.TotalRequiredCompletions,
+                    RequiredPoints = userTask.Task.RequiredPoints,
+                    StreakRequired = userTask.Task.StreakRequired,
+                    CurrentStreak = currentStreak,
+                    TotalPointsEarned = totalPoints,
+                    TotalTasksCompleted = totalCompleted
                 };
-                return Result<UserTaskDTO>.SuccessResult(userTaskDTO, "Task completed successfully.");
+
+                return Result<UserTaskDTO>.SuccessResult(userTaskDTO, "Task progress updated successfully.");
             }
             catch (Exception ex)
             {
@@ -73,6 +139,9 @@ namespace GrowDay.Persistance.Services
                 return Result<UserTaskDTO>.FailureResult("An error occurred while completing the task.");
             }
         }
+
+
+
 
         public async Task<Result<IEnumerable<UserTaskDTO>>> GetAllTasksAsync(string userId)
         {
@@ -92,6 +161,9 @@ namespace GrowDay.Persistance.Services
                     Points = ut.Points,
                     IsCompleted = ut.IsCompleted,
                     CompletedAt = ut.CompletedAt,
+                    TotalRequiredCompletions = ut.Task.TotalRequiredCompletions,
+                    RequiredPoints = ut.Task.RequiredPoints,
+                    StreakRequired = ut.Task.StreakRequired,
                 }).ToList();
                 return Result<IEnumerable<UserTaskDTO>>.SuccessResult(userTaskDTOs, "User tasks retrieved successfully.");
             }
@@ -188,6 +260,9 @@ namespace GrowDay.Persistance.Services
                     Points = ut.Points,
                     IsCompleted = ut.IsCompleted,
                     CompletedAt = ut.CompletedAt,
+                    TotalRequiredCompletions = ut.Task.TotalRequiredCompletions,
+                    RequiredPoints = ut.Task.RequiredPoints,
+                    StreakRequired=ut.Task.StreakRequired,
                 }).ToList();
                 return Result<ICollection<UserTaskDTO>>.SuccessResult(completedTaskDTOs, "Completed tasks retrieved successfully.");
             }
@@ -197,5 +272,52 @@ namespace GrowDay.Persistance.Services
                 return Result<ICollection<UserTaskDTO>>.FailureResult("An error occurred while retrieving completed tasks.");
             }
         }
+
+        public async Task<Result<UserTaskStatisticDTO>> GetUserTaskStatsAsync(string userId, string taskId)
+        {
+            try
+            {
+                var taskCompletions = await _readUserTaskCompletionRepository.GetUserTaskCompletions(userId, taskId);
+                if (taskCompletions == null)
+                {
+                    return Result<UserTaskStatisticDTO>.FailureResult("Task not found.");
+                }
+                if (taskCompletions == null || !taskCompletions.Any())
+                {
+                    return Result<UserTaskStatisticDTO>.FailureResult("Task has not been completed yet.");
+                }
+                var totalPoints = taskCompletions.Sum(c=>c.Points);
+                var totalCompleted = taskCompletions.Count;
+                var userHabits = await _readUserHabitRepository.GetByUserIdAsync(userId);
+
+               
+                var currentStreak = userHabits.Any() ? userHabits.Max(h => h.CurrentStreak) : 0;
+                var longestStreak = userHabits.Any() ? userHabits.Max(h => h.LongestStreak) : 0;
+
+                var latestCompletion = taskCompletions.OrderByDescending(c => c.CompletedAt).First();
+
+
+                var dto =new UserTaskStatisticDTO
+                {
+                    UserTaskId = latestCompletion.UserTaskId,
+                    Title = latestCompletion.UserTask.Title,
+                    Point = latestCompletion.Points,
+                    CompletedAt = latestCompletion.CompletedAt,
+                    TotalPoints = totalPoints,
+                    TotalTasksCompleted = totalCompleted,
+                    CurrentStreak = currentStreak,
+                    LongestStreak = longestStreak,
+                };
+                return Result<UserTaskStatisticDTO>.SuccessResult(dto, "Task statistics retrieved successfully.");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error retrieving task stats for user {UserId} and task {TaskId}", userId, taskId);
+                return Result<UserTaskStatisticDTO>.FailureResult("An error occurred while retrieving task statistics.");
+            }
+        }
+
+        
+
     }
 }

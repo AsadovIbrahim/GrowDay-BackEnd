@@ -953,5 +953,21 @@
     "Order": 0,
     "Parameters": [],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.UserTaskController",
+    "Method": "GetUserTaskStats",
+    "RelativePath": "api/UserTask/GetTaskStats/{taskId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "taskId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

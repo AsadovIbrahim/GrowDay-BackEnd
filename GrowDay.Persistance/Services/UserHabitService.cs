@@ -4,7 +4,6 @@ using GrowDay.Domain.DTO;
 using GrowDay.Domain.Entities.Concretes;
 using GrowDay.Domain.Enums;
 using GrowDay.Domain.Helpers;
-using GrowDay.Persistance.Repositories;
 using Microsoft.Extensions.Logging;
 
 namespace GrowDay.Persistance.Services
@@ -135,6 +134,9 @@ namespace GrowDay.Persistance.Services
                         Title = task.Title,
                         Description = task.Description,
                         Points = task.Points,
+                        TotalRequiredCompletions = task.TotalRequiredCompletions,
+                        RequiredPoints = task.RequiredPoints,
+                        StreakRequired = task.StreakRequired,
                         IsCompleted = false,
                         CreatedAt = DateTime.UtcNow,
                         IsDeleted = false

@@ -74,6 +74,22 @@ namespace GrowDay.Presentation.Controllers
             }
             return Ok(result);
         }
+        [HttpGet("GetTaskStats/{taskId}")]
+        [Authorize(Roles ="User")]
+        public async Task<IActionResult> GetUserTaskStats(string taskId)
+        {
+            var userId=User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized(new { Message = "User is not authenticated." });
+            }
+            var result = await _userTaskService.GetUserTaskStatsAsync(userId!, taskId);
+            if (!result.Success)
+            {
+                return BadRequest(result.Message);
+            }
+            return Ok(result);
+        }
 
     }
 }

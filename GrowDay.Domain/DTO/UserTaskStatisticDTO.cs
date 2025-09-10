@@ -1,0 +1,17 @@
+﻿namespace GrowDay.Domain.DTO
+{
+    public class UserTaskStatisticDTO
+    {
+        public string UserTaskId { get; set; }
+        public string Title { get; set; }
+        public int Point { get; set; }
+        public DateTime? CompletedAt { get; set; }
+
+        public int TotalPoints { get; set; }
+        public int TotalTasksCompleted { get; set; }
+        public int CurrentStreak { get; set; }
+        public int LongestStreak { get; set; }
+
+
+    }
+}

@@ -56,19 +56,25 @@ namespace GrowDay.Persistance.Services
                     Title = createTaskDTO.Title,
                     Description = createTaskDTO.Description,
                     Points = createTaskDTO.Points,
+                    TotalRequiredCompletions = createTaskDTO.TotalRequiredCompletions,
+                    RequiredPoints = createTaskDTO.RequiredPoints,
+                    StreakRequired = createTaskDTO.StreakRequired,
                     IsActive = true,
                     CreatedAt = DateTime.UtcNow
                 };
                 await _writeTaskRepository.AddAsync(newTask);
-                
+
 
                 var taskDTO = new TaskDTO
                 {
-                    HabitId=newTask.HabitId,
+                    HabitId = newTask.HabitId,
                     TaskId = newTask.Id,
                     Title = newTask.Title,
                     Description = newTask.Description,
                     Points = newTask.Points,
+                    TotalRequiredCompletions = newTask.TotalRequiredCompletions,
+                    RequiredPoints = newTask.RequiredPoints,
+                    StreakRequired = newTask.StreakRequired,
                     IsActive = newTask.IsActive
                 };
                 return Result<TaskDTO>.SuccessResult(taskDTO, "Task created successfully.");
@@ -116,6 +122,9 @@ namespace GrowDay.Persistance.Services
                     Title = t.Title,
                     Description = t.Description,
                     Points = t.Points,
+                    TotalRequiredCompletions = t.TotalRequiredCompletions,
+                    RequiredPoints = t.RequiredPoints,
+                    StreakRequired = t.StreakRequired,
                     IsActive = t.IsActive
                 }).ToList();
                 return Result<IEnumerable<TaskDTO>>.SuccessResult(taskDTOs, "Tasks retrieved successfully.");
@@ -143,6 +152,9 @@ namespace GrowDay.Persistance.Services
                     Title = task.Title,
                     Description = task.Description,
                     Points = task.Points,
+                    TotalRequiredCompletions = task.TotalRequiredCompletions,
+                    RequiredPoints = task.RequiredPoints,
+                    StreakRequired = task.StreakRequired,
                     IsActive = task.IsActive
                 };
                 return Result<TaskDTO>.SuccessResult(taskDTO, "Task retrieved successfully.");
@@ -176,6 +188,9 @@ namespace GrowDay.Persistance.Services
                     Title = task.Title,
                     Description = task.Description,
                     Points = task.Points,
+                    TotalRequiredCompletions = task.TotalRequiredCompletions,
+                    RequiredPoints = task.RequiredPoints,
+                    StreakRequired = task.StreakRequired,
                     IsActive = task.IsActive
                 };
                 return Result<TaskDTO>.SuccessResult(taskDTO, "Task updated successfully.");
