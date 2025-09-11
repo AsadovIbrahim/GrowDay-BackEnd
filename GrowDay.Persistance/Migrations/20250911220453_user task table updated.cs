@@ -5,34 +5,36 @@
 namespace GrowDay.Persistance.Migrations
 {
     /// <inheritdoc />
-    public partial class tasktableaddedtotalrequirementandrequiredpointsadded : Migration
+    public partial class usertasktableupdated : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<int>(
-                name: "RequiredPoints",
-                table: "Tasks",
+                name: "TotalPointsEarned",
+                table: "UserTasks",
                 type: "int",
-                nullable: true);
+                nullable: false,
+                defaultValue: 0);
 
             migrationBuilder.AddColumn<int>(
-                name: "TotalRequiredCompletions",
-                table: "Tasks",
+                name: "TotalTasksCompleted",
+                table: "UserTasks",
                 type: "int",
-                nullable: true);
+                nullable: false,
+                defaultValue: 0);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "RequiredPoints",
-                table: "Tasks");
+                name: "TotalPointsEarned",
+                table: "UserTasks");
 
             migrationBuilder.DropColumn(
-                name: "TotalRequiredCompletions",
-                table: "Tasks");
+                name: "TotalTasksCompleted",
+                table: "UserTasks");
         }
     }
 }

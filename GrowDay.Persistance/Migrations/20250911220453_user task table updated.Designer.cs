@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GrowDay.Persistance.Migrations
 {
     [DbContext(typeof(GrowDayDbContext))]
-    [Migration("20250907101902_UserTask,TaskEntity table updated")]
-    partial class UserTaskTaskEntitytableupdated
+    [Migration("20250911220453_user task table updated")]
+    partial class usertasktableupdated
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -40,6 +40,9 @@ namespace GrowDay.Persistance.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("HabitId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -60,6 +63,8 @@ namespace GrowDay.Persistance.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("HabitId");
 
                     b.ToTable("Achievements");
                 });
@@ -349,9 +354,15 @@ namespace GrowDay.Persistance.Migrations
                     b.Property<int>("Points")
                         .HasColumnType("int");
 
+                    b.Property<int?>("RequiredPoints")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("TotalRequiredCompletions")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -611,6 +622,9 @@ namespace GrowDay.Persistance.Migrations
                     b.Property<int>("Points")
                         .HasColumnType("int");
 
+                    b.Property<int?>("RequiredPoints")
+                        .HasColumnType("int");
+
                     b.Property<string>("TaskId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -618,6 +632,15 @@ namespace GrowDay.Persistance.Migrations
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TotalPointsEarned")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TotalRequiredCompletions")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TotalTasksCompleted")
+                        .HasColumnType("int");
 
                     b.Property<string>("UserHabitId")
                         .HasColumnType("nvarchar(450)");
@@ -635,6 +658,43 @@ namespace GrowDay.Persistance.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("UserTasks");
+                });
+
+            modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.UserTaskCompletion", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CompletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CurrentStreak")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("LastModifiedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("LongestStreak")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Points")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserTaskId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserTaskId");
+
+                    b.ToTable("UserTaskCompletions");
                 });
 
             modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.UserToken", b =>
@@ -808,6 +868,15 @@ namespace GrowDay.Persistance.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.Achievement", b =>
+                {
+                    b.HasOne("GrowDay.Domain.Entities.Concretes.Habit", "Habit")
+                        .WithMany("Achievements")
+                        .HasForeignKey("HabitId");
+
+                    b.Navigation("Habit");
+                });
+
             modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.HabitRecord", b =>
                 {
                     b.HasOne("GrowDay.Domain.Entities.Concretes.UserHabit", "UserHabit")
@@ -939,6 +1008,17 @@ namespace GrowDay.Persistance.Migrations
                     b.Navigation("UserHabit");
                 });
 
+            modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.UserTaskCompletion", b =>
+                {
+                    b.HasOne("GrowDay.Domain.Entities.Concretes.UserTask", "UserTask")
+                        .WithMany("Completions")
+                        .HasForeignKey("UserTaskId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("UserTask");
+                });
+
             modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.UserToken", b =>
                 {
                     b.HasOne("GrowDay.Domain.Entities.Concretes.User", "User")
@@ -1008,6 +1088,8 @@ namespace GrowDay.Persistance.Migrations
 
             modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.Habit", b =>
                 {
+                    b.Navigation("Achievements");
+
                     b.Navigation("Tasks");
 
                     b.Navigation("UserHabits");
@@ -1040,6 +1122,11 @@ namespace GrowDay.Persistance.Migrations
                     b.Navigation("SuggestedHabits");
 
                     b.Navigation("UserTasks");
+                });
+
+            modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.UserTask", b =>
+                {
+                    b.Navigation("Completions");
                 });
 #pragma warning restore 612, 618
         }

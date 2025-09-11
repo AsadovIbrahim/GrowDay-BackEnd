@@ -36,7 +36,7 @@ namespace GrowDay.Infrastructure.Services
             SmtpClient smtp = new SmtpClient();
             smtp.Host = "smtp.gmail.com";
             smtp.Port = 587;
-            smtp.Credentials = new NetworkCredential("ibrahimasadov31@gmail.com", "treq fglc dwmt nduj");
+            smtp.Credentials = new NetworkCredential("growday.team@gmail.com", "awdg xmat gcbl mudm");
             smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
             smtp.EnableSsl = true;
 

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace GrowDay.Persistance.Migrations
 {
     /// <inheritdoc />
-    public partial class FixCascadePath : Migration
+    public partial class first : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -277,6 +277,57 @@ namespace GrowDay.Persistance.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Achievements",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    HabitId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PointsRequired = table.Column<int>(type: "int", nullable: false),
+                    StreakRequired = table.Column<int>(type: "int", nullable: true),
+                    TaskCompletionRequired = table.Column<int>(type: "int", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LastModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Achievements", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Achievements_Habits_HabitId",
+                        column: x => x.HabitId,
+                        principalTable: "Habits",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Tasks",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Points = table.Column<int>(type: "int", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    TotalRequiredCompletions = table.Column<int>(type: "int", nullable: true),
+                    RequiredPoints = table.Column<int>(type: "int", nullable: true),
+                    HabitId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LastModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tasks", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Tasks_Habits_HabitId",
+                        column: x => x.HabitId,
+                        principalTable: "Habits",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "UserHabits",
                 columns: table => new
                 {
@@ -316,6 +367,35 @@ namespace GrowDay.Persistance.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "UserAchievements",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    AchievementId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    EarnedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LastModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserAchievements", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_UserAchievements_Achievements_AchievementId",
+                        column: x => x.AchievementId,
+                        principalTable: "Achievements",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_UserAchievements_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "HabitRecords",
                 columns: table => new
                 {
@@ -336,7 +416,7 @@ namespace GrowDay.Persistance.Migrations
                         column: x => x.UserHabitId,
                         principalTable: "UserHabits",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -401,6 +481,77 @@ namespace GrowDay.Persistance.Migrations
                         principalTable: "UserHabits",
                         principalColumn: "Id");
                 });
+
+            migrationBuilder.CreateTable(
+                name: "UserTasks",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Points = table.Column<int>(type: "int", nullable: false),
+                    IsCompleted = table.Column<bool>(type: "bit", nullable: false),
+                    CompletedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    TotalRequiredCompletions = table.Column<int>(type: "int", nullable: true),
+                    RequiredPoints = table.Column<int>(type: "int", nullable: true),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    UserHabitId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    TaskId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LastModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserTasks", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_UserTasks_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_UserTasks_Tasks_TaskId",
+                        column: x => x.TaskId,
+                        principalTable: "Tasks",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_UserTasks_UserHabits_UserHabitId",
+                        column: x => x.UserHabitId,
+                        principalTable: "UserHabits",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UserTaskCompletions",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    UserTaskId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Points = table.Column<int>(type: "int", nullable: false),
+                    CurrentStreak = table.Column<int>(type: "int", nullable: false),
+                    LongestStreak = table.Column<int>(type: "int", nullable: false),
+                    CompletedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LastModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserTaskCompletions", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_UserTaskCompletions_UserTasks_UserTaskId",
+                        column: x => x.UserTaskId,
+                        principalTable: "UserTasks",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Achievements_HabitId",
+                table: "Achievements",
+                column: "HabitId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -467,6 +618,21 @@ namespace GrowDay.Persistance.Migrations
                 column: "UserHabitId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Tasks_HabitId",
+                table: "Tasks",
+                column: "HabitId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserAchievements_AchievementId",
+                table: "UserAchievements",
+                column: "AchievementId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserAchievements_UserId",
+                table: "UserAchievements",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_UserHabits_HabitId",
                 table: "UserHabits",
                 column: "HabitId");
@@ -479,6 +645,26 @@ namespace GrowDay.Persistance.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_UserPreferences_UserId",
                 table: "UserPreferences",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserTaskCompletions_UserTaskId",
+                table: "UserTaskCompletions",
+                column: "UserTaskId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserTasks_TaskId",
+                table: "UserTasks",
+                column: "TaskId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserTasks_UserHabitId",
+                table: "UserTasks",
+                column: "UserHabitId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserTasks_UserId",
+                table: "UserTasks",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
@@ -521,13 +707,28 @@ namespace GrowDay.Persistance.Migrations
                 name: "SuggestedHabits");
 
             migrationBuilder.DropTable(
+                name: "UserAchievements");
+
+            migrationBuilder.DropTable(
                 name: "UserPreferences");
+
+            migrationBuilder.DropTable(
+                name: "UserTaskCompletions");
 
             migrationBuilder.DropTable(
                 name: "UserTokens");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "Achievements");
+
+            migrationBuilder.DropTable(
+                name: "UserTasks");
+
+            migrationBuilder.DropTable(
+                name: "Tasks");
 
             migrationBuilder.DropTable(
                 name: "UserHabits");

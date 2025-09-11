@@ -10,6 +10,8 @@ namespace GrowDay.Application.Repositories
         Task<int> GetCompletedUserTaskCountByUserIdAsync(string userId);
         Task<IEnumerable<UserTask>> GetUserTasksByUserIdAsync(string userId);
         Task<IEnumerable<UserTask>> GetCompletedUserTasksByUserIdAsync(string userId);
+        Task<IEnumerable<UserTask>>GetTasksByHabitIdAsync(string userId,string userHabitId);
+
 
     }
 }

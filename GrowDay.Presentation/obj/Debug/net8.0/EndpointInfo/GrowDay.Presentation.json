@@ -1769,11 +1769,6 @@
             "format": "int32",
             "nullable": true
           },
-          "streakRequired": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
           "isActive": {
             "type": "boolean"
           }
@@ -2116,11 +2111,6 @@
             "nullable": true
           },
           "requiredPoints": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "streakRequired": {
             "type": "integer",
             "format": "int32",
             "nullable": true

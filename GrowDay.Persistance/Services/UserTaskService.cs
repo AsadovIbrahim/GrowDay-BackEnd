@@ -103,8 +103,7 @@ namespace GrowDay.Persistance.Services
                 if (userTask.Task.RequiredPoints.HasValue && totalPoints < userTask.Task.RequiredPoints.Value)
                     requirementsMet = false;
 
-                if (userTask.Task.StreakRequired.HasValue && longestStreak < userTask.Task.StreakRequired.Value)
-                    requirementsMet = false;
+                
 
                 if (requirementsMet)
                 {
@@ -125,8 +124,6 @@ namespace GrowDay.Persistance.Services
                     CompletedAt = userTask.CompletedAt,
                     TotalRequiredCompletions = userTask.Task.TotalRequiredCompletions,
                     RequiredPoints = userTask.Task.RequiredPoints,
-                    StreakRequired = userTask.Task.StreakRequired,
-                    CurrentStreak = currentStreak,
                     TotalPointsEarned = totalPoints,
                     TotalTasksCompleted = totalCompleted
                 };
@@ -163,7 +160,6 @@ namespace GrowDay.Persistance.Services
                     CompletedAt = ut.CompletedAt,
                     TotalRequiredCompletions = ut.Task.TotalRequiredCompletions,
                     RequiredPoints = ut.Task.RequiredPoints,
-                    StreakRequired = ut.Task.StreakRequired,
                 }).ToList();
                 return Result<IEnumerable<UserTaskDTO>>.SuccessResult(userTaskDTOs, "User tasks retrieved successfully.");
             }
@@ -262,7 +258,6 @@ namespace GrowDay.Persistance.Services
                     CompletedAt = ut.CompletedAt,
                     TotalRequiredCompletions = ut.Task.TotalRequiredCompletions,
                     RequiredPoints = ut.Task.RequiredPoints,
-                    StreakRequired=ut.Task.StreakRequired,
                 }).ToList();
                 return Result<ICollection<UserTaskDTO>>.SuccessResult(completedTaskDTOs, "Completed tasks retrieved successfully.");
             }

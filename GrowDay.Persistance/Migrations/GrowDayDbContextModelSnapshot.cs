@@ -354,9 +354,6 @@ namespace GrowDay.Persistance.Migrations
                     b.Property<int?>("RequiredPoints")
                         .HasColumnType("int");
 
-                    b.Property<int?>("StreakRequired")
-                        .HasColumnType("int");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -625,9 +622,6 @@ namespace GrowDay.Persistance.Migrations
                     b.Property<int?>("RequiredPoints")
                         .HasColumnType("int");
 
-                    b.Property<int?>("StreakRequired")
-                        .HasColumnType("int");
-
                     b.Property<string>("TaskId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -636,7 +630,13 @@ namespace GrowDay.Persistance.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("TotalPointsEarned")
+                        .HasColumnType("int");
+
                     b.Property<int?>("TotalRequiredCompletions")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TotalTasksCompleted")
                         .HasColumnType("int");
 
                     b.Property<string>("UserHabitId")

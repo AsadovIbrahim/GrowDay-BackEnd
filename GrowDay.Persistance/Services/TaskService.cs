@@ -13,15 +13,17 @@ namespace GrowDay.Persistance.Services
         protected readonly IWriteUserTaskRepository _writeUserTaskRepository;
         protected readonly IReadTaskRepository _readTaskRepository;
         protected readonly IReadUserRepository _readUserRepository;
+        protected readonly IReadUserHabitRepository _readUserHabitRepository;
         protected readonly ILogger<TaskService> _logger;
         public TaskService(IWriteTaskRepository writeTaskRepository, IReadTaskRepository readTaskRepository, ILogger<TaskService> logger,
-            IReadUserRepository readUserRepository, IWriteUserTaskRepository writeUserTaskRepository)
+            IReadUserRepository readUserRepository, IWriteUserTaskRepository writeUserTaskRepository, IReadUserHabitRepository readUserHabitRepository)
         {
             _writeTaskRepository = writeTaskRepository;
             _readTaskRepository = readTaskRepository;
             _logger = logger;
             _readUserRepository = readUserRepository;
             _writeUserTaskRepository = writeUserTaskRepository;
+            _readUserHabitRepository = readUserHabitRepository;
         }
 
         public async Task<Result> ClearAllTasksAsync()
@@ -58,12 +60,34 @@ namespace GrowDay.Persistance.Services
                     Points = createTaskDTO.Points,
                     TotalRequiredCompletions = createTaskDTO.TotalRequiredCompletions,
                     RequiredPoints = createTaskDTO.RequiredPoints,
-                    StreakRequired = createTaskDTO.StreakRequired,
                     IsActive = true,
                     CreatedAt = DateTime.UtcNow
                 };
                 await _writeTaskRepository.AddAsync(newTask);
 
+                var userHabits = await _readUserHabitRepository.GetByHabitIdAsync(createTaskDTO.HabitId);
+                if (userHabits != null)
+                {
+                    foreach (var userHabit in userHabits)
+                    {
+                        var userTask = new UserTask
+                        {
+                            UserId = userHabit.UserId,
+                            TaskId = newTask.Id,
+                            UserHabitId = userHabit.Id,
+                            Title = newTask.Title,
+                            Description = newTask.Description,
+                            Points = newTask.Points,
+                            TotalRequiredCompletions = newTask.TotalRequiredCompletions,
+                            RequiredPoints = newTask.RequiredPoints,
+                            IsCompleted = false,
+                            TotalPointsEarned = 0,
+                            TotalTasksCompleted = 0,
+                            CreatedAt = DateTime.UtcNow
+                        };
+                        await _writeUserTaskRepository.AddAsync(userTask);
+                    }
+                }
 
                 var taskDTO = new TaskDTO
                 {
@@ -74,7 +98,6 @@ namespace GrowDay.Persistance.Services
                     Points = newTask.Points,
                     TotalRequiredCompletions = newTask.TotalRequiredCompletions,
                     RequiredPoints = newTask.RequiredPoints,
-                    StreakRequired = newTask.StreakRequired,
                     IsActive = newTask.IsActive
                 };
                 return Result<TaskDTO>.SuccessResult(taskDTO, "Task created successfully.");
@@ -124,7 +147,6 @@ namespace GrowDay.Persistance.Services
                     Points = t.Points,
                     TotalRequiredCompletions = t.TotalRequiredCompletions,
                     RequiredPoints = t.RequiredPoints,
-                    StreakRequired = t.StreakRequired,
                     IsActive = t.IsActive
                 }).ToList();
                 return Result<IEnumerable<TaskDTO>>.SuccessResult(taskDTOs, "Tasks retrieved successfully.");
@@ -154,7 +176,6 @@ namespace GrowDay.Persistance.Services
                     Points = task.Points,
                     TotalRequiredCompletions = task.TotalRequiredCompletions,
                     RequiredPoints = task.RequiredPoints,
-                    StreakRequired = task.StreakRequired,
                     IsActive = task.IsActive
                 };
                 return Result<TaskDTO>.SuccessResult(taskDTO, "Task retrieved successfully.");
@@ -190,7 +211,6 @@ namespace GrowDay.Persistance.Services
                     Points = task.Points,
                     TotalRequiredCompletions = task.TotalRequiredCompletions,
                     RequiredPoints = task.RequiredPoints,
-                    StreakRequired = task.StreakRequired,
                     IsActive = task.IsActive
                 };
                 return Result<TaskDTO>.SuccessResult(taskDTO, "Task updated successfully.");

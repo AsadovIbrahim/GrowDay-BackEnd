@@ -12,7 +12,9 @@ namespace GrowDay.Domain.Entities.Concretes
 
         public int? TotalRequiredCompletions { get; set; }
         public int? RequiredPoints { get; set; }
-        public int? StreakRequired { get; set; }
+
+        public int TotalPointsEarned { get; set; }
+        public int TotalTasksCompleted { get; set; }
         public string UserId { get; set; }
         public virtual User User { get; set; }
 

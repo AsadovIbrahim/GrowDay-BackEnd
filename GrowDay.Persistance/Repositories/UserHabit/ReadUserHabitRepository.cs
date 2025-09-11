@@ -19,7 +19,13 @@ namespace GrowDay.Persistance.Repositories
                 .ToListAsync();
         }
 
-       
+        public async Task<IEnumerable<UserHabit>> GetByHabitIdAsync(string habitId)
+        {
+            return await _table
+                .Include(uh => uh.Habit)
+                .Where(uh => uh.HabitId == habitId && !uh.IsDeleted)
+                .ToListAsync();
+        }
 
         public async Task<UserHabit?> GetByUserAndHabitAsync(string userId, string idOrTitleOrHabitId)
         {
