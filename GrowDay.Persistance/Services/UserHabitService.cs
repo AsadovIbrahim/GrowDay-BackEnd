@@ -35,7 +35,8 @@ namespace GrowDay.Persistance.Services
             IReadSuggestedHabitRepository readSuggestedHabitRepository, IWriteNotificationRepository writeNotificationRepository,
             IReadHabitRecordRepository readHabitRecordRepository, IWriteHabitRecordRepository writeHabitRecordRepository, IWriteTaskRepository writeTaskRepository,
             IReadTaskRepository readTaskRepository, IWriteUserTaskRepository writeUserTaskRepository, IWriteSuggestedHabitRepository writeSuggestedHabitRepository,
-            IReadUserTaskCompletionRepository readUserTaskCompletionRepository, IWriteUserTaskCompletionRepository writeUserTaskCompletionRepository, IReadUserTaskRepository readUserTaskRepository)
+            IReadUserTaskCompletionRepository readUserTaskCompletionRepository, IWriteUserTaskCompletionRepository writeUserTaskCompletionRepository, 
+            IReadUserTaskRepository readUserTaskRepository)
         {
             _writeUserHabitRepository = userHabitRepository;
             _logger = logger;

@@ -1,10 +1,10 @@
-﻿using GrowDay.Domain.DTO;
-using GrowDay.Domain.Helpers;
+﻿using GrowDay.Application.Repositories;
 using GrowDay.Application.Services;
-using Microsoft.Extensions.Logging;
-using GrowDay.Application.Repositories;
+using GrowDay.Domain.DTO;
 using GrowDay.Domain.Entities.Concretes;
 using GrowDay.Domain.Enums;
+using GrowDay.Domain.Helpers;
+using Microsoft.Extensions.Logging;
 
 namespace GrowDay.Persistance.Services
 {
@@ -26,7 +26,8 @@ namespace GrowDay.Persistance.Services
         public UserTaskService(IWriteUserTaskRepository writeUserTaskRepository, IReadUserTaskRepository readUserTaskRepository, ILogger<UserTaskService> logger,
             IReadAchievementRepository readAchievementRepository, IWriteUserAchievementRepository writeUserAchievementRepository,
             IReadUserAchievementRepository readUserAchievementRepository, IStatisticService statisticService, IReadUserHabitRepository readUserHabitRepository,
-            INotificationService notificationService, IUserHabitService userHabitService, IReadUserTaskCompletionRepository readUserTaskCompletionRepository, IWriteUserTaskCompletionRepository writeUserTaskCompletionRepository)
+            INotificationService notificationService, IUserHabitService userHabitService, IReadUserTaskCompletionRepository readUserTaskCompletionRepository, 
+            IWriteUserTaskCompletionRepository writeUserTaskCompletionRepository)
         {
             _writeUserTaskRepository = writeUserTaskRepository;
             _readUserTaskRepository = readUserTaskRepository;
@@ -150,17 +151,30 @@ namespace GrowDay.Persistance.Services
                     return Result<IEnumerable<UserTaskDTO>>
                         .SuccessResult(Enumerable.Empty<UserTaskDTO>(), "No tasks found for the user.");
                 }
-                var userTaskDTOs = userTasks.Select(ut => new UserTaskDTO
+
+                var userTaskDTOs = new List<UserTaskDTO>();
+
+                foreach (var ut in userTasks)
                 {
-                    UserTaskId = ut.Id,
-                    Title = ut.Title,
-                    Description = ut.Description,
-                    Points = ut.Points,
-                    IsCompleted = ut.IsCompleted,
-                    CompletedAt = ut.CompletedAt,
-                    TotalRequiredCompletions = ut.Task.TotalRequiredCompletions,
-                    RequiredPoints = ut.Task.RequiredPoints,
-                }).ToList();
+                    var completions = await _readUserTaskCompletionRepository.GetUserTaskCompletions(userId, ut.Id);
+                    var totalPoints = completions.Sum(c => c.Points);
+                    var totalCompleted = completions.Count;
+
+                    userTaskDTOs.Add(new UserTaskDTO
+                    {
+                        UserTaskId = ut.Id,
+                        Title = ut.Title,
+                        Description = ut.Description,
+                        Points = ut.Points,
+                        IsCompleted = ut.IsCompleted,
+                        CompletedAt = ut.CompletedAt,
+                        TotalRequiredCompletions = ut.Task.TotalRequiredCompletions,
+                        RequiredPoints = ut.Task.RequiredPoints,
+                        TotalPointsEarned = totalPoints,
+                        TotalTasksCompleted = totalCompleted
+                    });
+                }
+
                 return Result<IEnumerable<UserTaskDTO>>.SuccessResult(userTaskDTOs, "User tasks retrieved successfully.");
             }
             catch (Exception ex)
@@ -248,17 +262,30 @@ namespace GrowDay.Persistance.Services
                     return Result<ICollection<UserTaskDTO>>
                         .SuccessResult(new List<UserTaskDTO>(), "No completed tasks found for the user.");
                 }
-                var completedTaskDTOs = completedTasks.Select(ut => new UserTaskDTO
+
+                var completedTaskDTOs = new List<UserTaskDTO>();
+
+                foreach (var ut in completedTasks)
                 {
-                    UserTaskId = ut.Id,
-                    Title = ut.Title,
-                    Description = ut.Description,
-                    Points = ut.Points,
-                    IsCompleted = ut.IsCompleted,
-                    CompletedAt = ut.CompletedAt,
-                    TotalRequiredCompletions = ut.Task.TotalRequiredCompletions,
-                    RequiredPoints = ut.Task.RequiredPoints,
-                }).ToList();
+                    var completions = await _readUserTaskCompletionRepository.GetUserTaskCompletions(userId, ut.Id);
+                    var totalPoints = completions.Sum(c => c.Points);
+                    var totalCompleted = completions.Count;
+
+                    completedTaskDTOs.Add(new UserTaskDTO
+                    {
+                        UserTaskId = ut.Id,
+                        Title = ut.Title,
+                        Description = ut.Description,
+                        Points = ut.Points,
+                        IsCompleted = ut.IsCompleted,
+                        CompletedAt = ut.CompletedAt,
+                        TotalRequiredCompletions = ut.Task.TotalRequiredCompletions,
+                        RequiredPoints = ut.Task.RequiredPoints,
+                        TotalPointsEarned = totalPoints,
+                        TotalTasksCompleted = totalCompleted
+                    });
+                }
+
                 return Result<ICollection<UserTaskDTO>>.SuccessResult(completedTaskDTOs, "Completed tasks retrieved successfully.");
             }
             catch (Exception ex)
