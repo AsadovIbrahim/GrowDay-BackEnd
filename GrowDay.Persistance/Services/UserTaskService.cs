@@ -51,6 +51,9 @@ namespace GrowDay.Persistance.Services
                 if (userTask == null)
                     return Result<UserTaskDTO>.FailureResult("Task not found.");
 
+                var completions = await _readUserTaskCompletionRepository.GetUserTaskCompletions(userId, taskId);
+                var totalPoints = completions.Sum(c => c.Points);
+                var totalCompleted = completions.Count;
                 if (userTask.IsCompleted)
                 {
                     return Result<UserTaskDTO>.SuccessResult(new UserTaskDTO
@@ -60,6 +63,8 @@ namespace GrowDay.Persistance.Services
                         Description = userTask.Description,
                         Points = userTask.Points,
                         IsCompleted = userTask.IsCompleted,
+                        TotalPointsEarned=totalPoints,
+                        TotalTasksCompleted=totalCompleted,
                         CompletedAt = userTask.CompletedAt
                     }, "Task has already been completed.");
                 }
@@ -79,22 +84,11 @@ namespace GrowDay.Persistance.Services
                 };
                 await _writeUserTaskCompletionRepository.AddAsync(completion);
 
-                var completions = await _readUserTaskCompletionRepository.GetUserTaskCompletions(userId, taskId);
-                var totalPoints = completions.Sum(c => c.Points);
-                var totalCompleted = completions.Count;
+                completions = await _readUserTaskCompletionRepository.GetUserTaskCompletions(userId, taskId);
+                totalPoints = completions.Sum(c => c.Points);
+                totalCompleted = completions.Count;
 
-                int currentStreak = 0;
-                int longestStreak = 0;
-
-                if (!string.IsNullOrEmpty(userTask.UserHabitId))
-                {
-                    var habitResult = await _userHabitService.CompleteHabitAsync(userId, userTask.UserHabitId);
-                    if (habitResult.Success && habitResult.Data != null)
-                    {
-                        currentStreak = habitResult.Data.CurrentStreak;
-                        longestStreak = habitResult.Data.LongestStreak;
-                    }
-                }
+                
 
                 bool requirementsMet = true;
 
@@ -300,6 +294,7 @@ namespace GrowDay.Persistance.Services
             try
             {
                 var taskCompletions = await _readUserTaskCompletionRepository.GetUserTaskCompletions(userId, taskId);
+                
                 if (taskCompletions == null)
                 {
                     return Result<UserTaskStatisticDTO>.FailureResult("Task not found.");
@@ -310,16 +305,14 @@ namespace GrowDay.Persistance.Services
                 }
                 var totalPoints = taskCompletions.Sum(c=>c.Points);
                 var totalCompleted = taskCompletions.Count;
-                var userHabits = await _readUserHabitRepository.GetByUserIdAsync(userId);
-
                
-                var currentStreak = userHabits.Any() ? userHabits.Max(h => h.CurrentStreak) : 0;
-                var longestStreak = userHabits.Any() ? userHabits.Max(h => h.LongestStreak) : 0;
 
                 var latestCompletion = taskCompletions.OrderByDescending(c => c.CompletedAt).First();
+                var userHabit = latestCompletion.UserTask.UserHabitId != null
+                    ? await _readUserHabitRepository.GetByIdAsync(latestCompletion.UserTask.UserHabitId)
+                    : null;
 
-
-                var dto =new UserTaskStatisticDTO
+                var dto = new UserTaskStatisticDTO
                 {
                     UserTaskId = latestCompletion.UserTaskId,
                     Title = latestCompletion.UserTask.Title,
@@ -327,9 +320,12 @@ namespace GrowDay.Persistance.Services
                     CompletedAt = latestCompletion.CompletedAt,
                     TotalPoints = totalPoints,
                     TotalTasksCompleted = totalCompleted,
-                    CurrentStreak = currentStreak,
-                    LongestStreak = longestStreak,
+                    CurrentStreak = userHabit?.CurrentStreak ?? 0,
+                    LongestStreak = userHabit?.LongestStreak ?? 0
                 };
+
+
+
                 return Result<UserTaskStatisticDTO>.SuccessResult(dto, "Task statistics retrieved successfully.");
             }
             catch (Exception ex)

@@ -315,6 +315,22 @@ namespace GrowDay.Persistance.Services
             }
         }
 
+        private async Task CompleteTaskProgressAsync(string userId, UserTask userTask)
+        {
+            var today = DateTime.UtcNow.Date;
+
+            var todaysCompletions = await _readUserTaskCompletionRepository.GetUserTaskCompletions(userId, userTask.Id);
+            if (todaysCompletions.Any(c => c.CompletedAt.Date == today))
+                return;
+
+            var completion = new UserTaskCompletion
+            {
+                UserTaskId = userTask.Id,
+                Points = userTask.Points,
+                CompletedAt = DateTime.UtcNow
+            };
+            await _writeUserTaskCompletionRepository.AddAsync(completion);
+        }
         public async Task<Result<ICollection<HabitRecordDTO>>> GetAllCompletedHabitsAsync(string userId)
         {
             try
@@ -416,6 +432,7 @@ namespace GrowDay.Persistance.Services
         public async Task<Result<bool>> IsHabitCompletedTodayAsync(string userId, string userHabitId, DateTime date)
         {
             try
+        
             {
 
                 var userHabit = await _readUserHabitRepository.GetByUserAndHabitAsync(userId, userHabitId);
@@ -529,41 +546,6 @@ namespace GrowDay.Persistance.Services
             {
                 _logger.LogError(ex, "Error updating user habit");
                 return Result<UserHabitDTO>.FailureResult("An error occurred while updating the user habit.");
-            }
-        }
-        private async Task CompleteTaskProgressAsync(string userId, UserTask userTask)
-        {
-            var today = DateTime.UtcNow.Date;
-
-            var todaysCompletions = await _readUserTaskCompletionRepository.GetUserTaskCompletions(userId, userTask.Id);
-            if (todaysCompletions.Any(c => c.CompletedAt.Date == today))
-                return;
-
-            var completion = new UserTaskCompletion
-            {
-                UserTaskId = userTask.Id,
-                Points = userTask.Points,
-                CompletedAt = DateTime.UtcNow
-            };
-            await _writeUserTaskCompletionRepository.AddAsync(completion);
-
-            var completions = await _readUserTaskCompletionRepository.GetUserTaskCompletions(userId, userTask.Id);
-            var totalPoints = completions.Sum(c => c.Points);
-            var totalCompleted = completions.Count;
-
-            bool requirementsMet = true;
-
-            if (userTask.Task.TotalRequiredCompletions.HasValue && totalCompleted < userTask.Task.TotalRequiredCompletions.Value)
-                requirementsMet = false;
-
-            if (userTask.Task.RequiredPoints.HasValue && totalPoints < userTask.Task.RequiredPoints.Value)
-                requirementsMet = false;
-
-            if (requirementsMet)
-            {
-                userTask.IsCompleted = true;
-                userTask.CompletedAt = DateTime.UtcNow;
-                await _writeUserTaskRepository.UpdateAsync(userTask);
             }
         }
 
