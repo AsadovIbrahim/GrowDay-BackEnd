@@ -171,7 +171,7 @@ namespace GrowDay.Presentation.Controllers
                 return BadRequest(result.Message);
             }
             return Ok(result);
-        }
+        }   
         protected string GetUserId() => User.FindFirstValue(ClaimTypes.NameIdentifier)!;
     }
 }

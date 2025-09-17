@@ -15,6 +15,7 @@ namespace GrowDay.Persistance
         public static void AddPersistenceRegister(this IServiceCollection services)
         {
             //Services
+            services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IHabitService, HabitService>();
             services.AddScoped<IUserHabitService, UserHabitService>();
