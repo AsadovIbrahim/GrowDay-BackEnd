@@ -8,6 +8,7 @@ namespace GrowDay.Domain.DTO
         public int CompletedCount { get; set; }
         public int MissedCount { get; set; }
         public double CompletionRate { get; set; }
+        public double MissedRate { get; set; }
         public DateTime PeriodStart { get; set; }
         public DateTime PeriodEnd { get; set; }
     }

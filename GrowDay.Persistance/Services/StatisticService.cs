@@ -39,6 +39,9 @@ namespace GrowDay.Persistance.Services
                 double completionRate = (completedCount + missedCount) > 0
                     ? (double)completedCount / (completedCount + missedCount) * 100
                     : 0;
+                double missedRate= (completedCount + missedCount) > 0
+                    ? (double)missedCount / (completedCount + missedCount) * 100
+                    : 0;
 
                 var statisticDTO = new StatisticDTO
                 {
@@ -47,7 +50,9 @@ namespace GrowDay.Persistance.Services
                     PeriodStart = startDate,
                     PeriodEnd = endDate,
                     PeriodType = StatisticPeriodType.Custom,
-                    CompletionRate=completionRate
+                    CompletionRate=completionRate,
+                    MissedRate= missedRate
+
                 };
 
                 return Result<StatisticDTO>.SuccessResult(statisticDTO, "Statistics calculated successfully.");
