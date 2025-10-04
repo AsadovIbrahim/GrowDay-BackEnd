@@ -26,7 +26,7 @@ namespace GrowDay.Persistance.Services
         public UserTaskService(IWriteUserTaskRepository writeUserTaskRepository, IReadUserTaskRepository readUserTaskRepository, ILogger<UserTaskService> logger,
             IReadAchievementRepository readAchievementRepository, IWriteUserAchievementRepository writeUserAchievementRepository,
             IReadUserAchievementRepository readUserAchievementRepository, IStatisticService statisticService, IReadUserHabitRepository readUserHabitRepository,
-            INotificationService notificationService, IUserHabitService userHabitService, IReadUserTaskCompletionRepository readUserTaskCompletionRepository, 
+            INotificationService notificationService, IUserHabitService userHabitService, IReadUserTaskCompletionRepository readUserTaskCompletionRepository,
             IWriteUserTaskCompletionRepository writeUserTaskCompletionRepository)
         {
             _writeUserTaskRepository = writeUserTaskRepository;
@@ -63,8 +63,8 @@ namespace GrowDay.Persistance.Services
                         Description = userTask.Description,
                         Points = userTask.Points,
                         IsCompleted = userTask.IsCompleted,
-                        TotalPointsEarned=totalPoints,
-                        TotalTasksCompleted=totalCompleted,
+                        TotalPointsEarned = totalPoints,
+                        TotalTasksCompleted = totalCompleted,
                         CompletedAt = userTask.CompletedAt
                     }, "Task has already been completed.");
                 }
@@ -88,7 +88,7 @@ namespace GrowDay.Persistance.Services
                 totalPoints = completions.Sum(c => c.Points);
                 totalCompleted = completions.Count;
 
-                
+
 
                 bool requirementsMet = true;
 
@@ -98,7 +98,7 @@ namespace GrowDay.Persistance.Services
                 if (userTask.Task.RequiredPoints.HasValue && totalPoints < userTask.Task.RequiredPoints.Value)
                     requirementsMet = false;
 
-                
+
 
                 if (requirementsMet)
                 {
@@ -294,23 +294,38 @@ namespace GrowDay.Persistance.Services
             try
             {
                 var taskCompletions = await _readUserTaskCompletionRepository.GetUserTaskCompletions(userId, taskId);
-                
-                if (taskCompletions == null)
+                var userTask = await _readUserTaskRepository.GetUserTaskByIdAsync(userId, taskId);
+
+                if (userTask == null)
                 {
                     return Result<UserTaskStatisticDTO>.FailureResult("Task not found.");
                 }
+
                 if (taskCompletions == null || !taskCompletions.Any())
                 {
-                    return Result<UserTaskStatisticDTO>.FailureResult("Task has not been completed yet.");
+                    return Result<UserTaskStatisticDTO>.SuccessResult(new UserTaskStatisticDTO
+                    {
+                        UserTaskId = userTask.Id,
+                        Title = userTask.Title,
+                        Point = userTask.Points,
+                        CompletedAt = null,
+                        TotalPoints = 0,
+                        TotalTasksCompleted = 0,
+                        RequiredPoints = userTask.Task.RequiredPoints ?? 0,
+                        TotalRequiredCompletions = userTask.Task.TotalRequiredCompletions ?? 0,
+                        CurrentStreak = 0,
+                        LongestStreak = 0,
+                        CompletionPercentage = 0
+                    }, "No completions found for the specified task.");
                 }
-                var totalPoints = taskCompletions.Sum(c=>c.Points);
-                var totalCompleted = taskCompletions.Count;
-               
 
                 var latestCompletion = taskCompletions.OrderByDescending(c => c.CompletedAt).First();
                 var userHabit = latestCompletion.UserTask.UserHabitId != null
                     ? await _readUserHabitRepository.GetByIdAsync(latestCompletion.UserTask.UserHabitId)
                     : null;
+
+                var totalPoints = taskCompletions.Sum(c => c.Points);
+                var totalCompleted = taskCompletions.Count;
 
                 var dto = new UserTaskStatisticDTO
                 {
@@ -320,11 +335,16 @@ namespace GrowDay.Persistance.Services
                     CompletedAt = latestCompletion.CompletedAt,
                     TotalPoints = totalPoints,
                     TotalTasksCompleted = totalCompleted,
+                    RequiredPoints = latestCompletion.UserTask.Task.RequiredPoints ?? 0,
+                    TotalRequiredCompletions = latestCompletion.UserTask.Task.TotalRequiredCompletions ?? 0,
                     CurrentStreak = userHabit?.CurrentStreak ?? 0,
-                    LongestStreak = userHabit?.LongestStreak ?? 0
+                    LongestStreak = userHabit?.LongestStreak ?? 0,
+                    CompletionPercentage =
+                        latestCompletion.UserTask.Task.TotalRequiredCompletions.HasValue &&
+                        latestCompletion.UserTask.Task.TotalRequiredCompletions.Value > 0
+                            ? (double)totalCompleted / latestCompletion.UserTask.Task.TotalRequiredCompletions.Value * 100
+                            : 100
                 };
-
-
 
                 return Result<UserTaskStatisticDTO>.SuccessResult(dto, "Task statistics retrieved successfully.");
             }
@@ -335,7 +355,8 @@ namespace GrowDay.Persistance.Services
             }
         }
 
-        
+
+
 
     }
 }

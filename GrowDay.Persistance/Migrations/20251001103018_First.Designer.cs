@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GrowDay.Persistance.Migrations
 {
     [DbContext(typeof(GrowDayDbContext))]
-    [Migration("20250911174219_first")]
-    partial class first
+    [Migration("20251001103018_First")]
+    partial class First
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -633,7 +633,13 @@ namespace GrowDay.Persistance.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("TotalPointsEarned")
+                        .HasColumnType("int");
+
                     b.Property<int?>("TotalRequiredCompletions")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TotalTasksCompleted")
                         .HasColumnType("int");
 
                     b.Property<string>("UserHabitId")

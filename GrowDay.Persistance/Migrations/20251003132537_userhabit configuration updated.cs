@@ -5,20 +5,20 @@
 namespace GrowDay.Persistance.Migrations
 {
     /// <inheritdoc />
-    public partial class userconfigurationupdated : Migration
+    public partial class userhabitconfigurationupdated : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Notifications_AspNetUsers_UserId",
-                table: "Notifications");
+                name: "FK_UserHabits_Habits_HabitId",
+                table: "UserHabits");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Notifications_AspNetUsers_UserId",
-                table: "Notifications",
-                column: "UserId",
-                principalTable: "AspNetUsers",
+                name: "FK_UserHabits_Habits_HabitId",
+                table: "UserHabits",
+                column: "HabitId",
+                principalTable: "Habits",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
         }
@@ -27,14 +27,14 @@ namespace GrowDay.Persistance.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Notifications_AspNetUsers_UserId",
-                table: "Notifications");
+                name: "FK_UserHabits_Habits_HabitId",
+                table: "UserHabits");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Notifications_AspNetUsers_UserId",
-                table: "Notifications",
-                column: "UserId",
-                principalTable: "AspNetUsers",
+                name: "FK_UserHabits_Habits_HabitId",
+                table: "UserHabits",
+                column: "HabitId",
+                principalTable: "Habits",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
         }

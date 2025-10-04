@@ -23,7 +23,7 @@ namespace GrowDay.Persistance.Configurations
             builder.HasOne(uh => uh.Habit)
                 .WithMany(h => h.UserHabits)
                 .HasForeignKey(uh => uh.HabitId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

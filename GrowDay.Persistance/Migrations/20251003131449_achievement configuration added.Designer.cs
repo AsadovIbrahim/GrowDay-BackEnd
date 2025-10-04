@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GrowDay.Persistance.Migrations
 {
     [DbContext(typeof(GrowDayDbContext))]
-    [Migration("20250917074615_user configuration  updated")]
-    partial class userconfigurationupdated
+    [Migration("20251003131449_achievement configuration added")]
+    partial class achievementconfigurationadded
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -872,7 +872,8 @@ namespace GrowDay.Persistance.Migrations
                 {
                     b.HasOne("GrowDay.Domain.Entities.Concretes.Habit", "Habit")
                         .WithMany("Achievements")
-                        .HasForeignKey("HabitId");
+                        .HasForeignKey("HabitId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Habit");
                 });
@@ -898,7 +899,7 @@ namespace GrowDay.Persistance.Migrations
                     b.HasOne("GrowDay.Domain.Entities.Concretes.User", "User")
                         .WithMany("Notifications")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("User");

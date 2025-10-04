@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace GrowDay.Persistance.Migrations
 {
     /// <inheritdoc />
-    public partial class first : Migration
+    public partial class First : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -494,6 +494,8 @@ namespace GrowDay.Persistance.Migrations
                     CompletedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     TotalRequiredCompletions = table.Column<int>(type: "int", nullable: true),
                     RequiredPoints = table.Column<int>(type: "int", nullable: true),
+                    TotalPointsEarned = table.Column<int>(type: "int", nullable: false),
+                    TotalTasksCompleted = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     UserHabitId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     TaskId = table.Column<string>(type: "nvarchar(450)", nullable: false),
