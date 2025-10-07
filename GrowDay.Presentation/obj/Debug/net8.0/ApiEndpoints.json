@@ -897,6 +897,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "GrowDay.Presentation.Controllers.UserHabitController",
+    "Method": "GetWeeklyProgress",
+    "RelativePath": "api/UserHabit/GetWeeklyProgress/{userHabitId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userHabitId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "GrowDay.Presentation.Controllers.UserPreferencesController",
     "Method": "CreateUserPreferences",
     "RelativePath": "api/UserPreferences/CreateUserPreferences",

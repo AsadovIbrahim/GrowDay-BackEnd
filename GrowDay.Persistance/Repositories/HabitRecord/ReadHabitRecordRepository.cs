@@ -40,6 +40,13 @@ namespace GrowDay.Persistance.Repositories
                 .ToListAsync();
         }
 
+        public async Task<IEnumerable<HabitRecord>> GetAllUserHabitIdAsync(string userHabitId)
+        {
+            return await _table
+                .Where(hr => hr.UserHabitId == userHabitId)
+                .ToListAsync();
+        }
+
         public async Task<HabitRecord?> GetByUserHabitIdAndDateAsync(string userHabitId, DateTime date)
         {
             return await _table

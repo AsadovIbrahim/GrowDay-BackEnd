@@ -4,7 +4,7 @@ namespace GrowDay.Domain.DTO
 {
     public class UserHabitDTO
     {
-        public string Id { get; set; }
+        public string UserHabitId { get; set; }
         public string? UserId { get; set; }
         public string? HabitId { get; set; }
         public string? Title { get; set; }

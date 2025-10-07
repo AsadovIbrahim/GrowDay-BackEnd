@@ -9,5 +9,6 @@ namespace GrowDay.Application.Repositories
         Task<IEnumerable<HabitRecord>> GetAllByHabitIdAsync(string habitId);
         Task<HabitRecord?> GetByUserHabitIdAndDateAsync(string userHabitId, DateTime date);
         Task<IEnumerable<HabitRecord>>GetAllByUserAndDateRangeAsync(string userId, DateTime startDate, DateTime endDate);
+        Task<IEnumerable<HabitRecord>>GetAllUserHabitIdAsync(string userHabitId);
     }
 }

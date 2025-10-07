@@ -19,6 +19,7 @@ namespace GrowDay.Application.Services
         Task<Result> AddFromSuggestedHabitAsync(string userId, AddSuggestedHabitDTO addSuggestedHabitDTO);
 
         Task<Result<bool>> IsHabitCompletedTodayAsync(string userId, string userHabitId, DateTime date);
+        Task<Result<ICollection<WeeklyHabitProgressDTO>>> GetWeeklyHabitProgressAsync(string userId,string userHabitId);
 
 
     }

@@ -171,7 +171,24 @@ namespace GrowDay.Presentation.Controllers
                 return BadRequest(result.Message);
             }
             return Ok(result);
-        }   
+        }
+        [HttpGet("GetWeeklyProgress/{userHabitId}")]
+        public async Task<IActionResult> GetWeeklyProgress(string userHabitId)
+        {
+            var userId = GetUserId();
+            if (string.IsNullOrEmpty(userId))
+            {
+                return BadRequest("User ID is required.");
+            }
+            var result = await _userHabitService.GetWeeklyHabitProgressAsync(userId,userHabitId);
+            if (!result.Success)
+            {
+                return BadRequest(result.Message);
+            }
+            return Ok(result);
+        }
+
+
         protected string GetUserId() => User.FindFirstValue(ClaimTypes.NameIdentifier)!;
     }
 }

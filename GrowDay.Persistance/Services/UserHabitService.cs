@@ -290,7 +290,7 @@ namespace GrowDay.Persistance.Services
 
                 var habitDTO = new UserHabitDTO
                 {
-                    Id = userHabit.Id,
+                    UserHabitId = userHabit.Id,
                     UserId = userHabit.UserId,
                     HabitId = userHabit.HabitId,
                     Title = !string.IsNullOrEmpty(userHabit.Title) ? userHabit.Title : userHabit.Habit?.Title,
@@ -370,7 +370,7 @@ namespace GrowDay.Persistance.Services
                 }
                 var habitList = userHabits.Select(uh => new UserHabitDTO
                 {
-                    Id = uh.Id,
+                    UserHabitId = uh.Id,
                     UserId = uh.UserId,
                     HabitId = uh.HabitId,
                     Title = !string.IsNullOrEmpty(uh.Title) ? uh.Title : uh.Habit?.Title,
@@ -405,7 +405,7 @@ namespace GrowDay.Persistance.Services
                 }
                 var habitDTO = new UserHabitDTO
                 {
-                    Id = userHabit.Id,
+                    UserHabitId = userHabit.Id,
                     UserId = userHabit.UserId,
                     HabitId = userHabit.HabitId,
                     Title = !string.IsNullOrEmpty(userHabit.Title) ? userHabit.Title : userHabit.Habit?.Title,
@@ -525,7 +525,7 @@ namespace GrowDay.Persistance.Services
                 await _writeUserHabitRepository.UpdateAsync(userHabit);
                 var habitDTO = new UserHabitDTO
                 {
-                    Id = userHabit.Id,
+                    UserHabitId = userHabit.Id,
                     UserId = userHabit.UserId,
                     HabitId = userHabit.HabitId,
                     Title = !string.IsNullOrEmpty(userHabit.Title) ? userHabit.Title : userHabit.Habit?.Title,
@@ -549,5 +549,37 @@ namespace GrowDay.Persistance.Services
             }
         }
 
+        public async Task<Result<ICollection<WeeklyHabitProgressDTO>>> GetWeeklyHabitProgressAsync(string userId,string userHabitId)
+        {
+            try
+            {
+                var userHabit = await _readUserHabitRepository.GetByUserAndHabitAsync(userId, userHabitId);
+                if (userHabit == null || userHabit.UserId != userId)
+                {
+                    return Result<ICollection<WeeklyHabitProgressDTO>>.FailureResult("User habit not found.");
+                }
+                var last7Days = Enumerable.Range(0, 7)
+                    .Select(i => DateTime.UtcNow.Date.AddDays(-i))
+                    .OrderBy(d => d)
+                    .ToList();
+                var progressList = new List<WeeklyHabitProgressDTO>();
+                foreach (var date in last7Days)
+                {
+                    var habitRecord = await _readHabitRecordRepository.GetByUserHabitIdAndDateAsync(userHabitId, date);
+                    progressList.Add(new WeeklyHabitProgressDTO
+                    {
+                        Date = date,
+                        Day = date.DayOfWeek.ToString(),
+                        IsCompleted = habitRecord != null && habitRecord.IsCompleted && !habitRecord.IsDeleted
+                    });
+                }
+                return Result<ICollection<WeeklyHabitProgressDTO>>.SuccessResult(progressList, "Weekly habit progress retrieved successfully.");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error retrieving weekly habit progress");
+                return Result<ICollection<WeeklyHabitProgressDTO>>.FailureResult("An error occurred while retrieving weekly habit progress.");
+            }
+        }
     }
 }

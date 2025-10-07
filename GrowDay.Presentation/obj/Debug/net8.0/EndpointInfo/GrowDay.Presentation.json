@@ -1398,6 +1398,28 @@
         }
       }
     },
+    "/api/UserHabit/GetWeeklyProgress/{userHabitId}": {
+      "get": {
+        "tags": [
+          "UserHabit"
+        ],
+        "parameters": [
+          {
+            "name": "userHabitId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/UserPreferences/GetUserPreferences": {
       "get": {
         "tags": [

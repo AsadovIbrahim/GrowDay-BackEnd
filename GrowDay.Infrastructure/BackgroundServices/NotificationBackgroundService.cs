@@ -44,14 +44,14 @@ namespace GrowDay.Infrastructure.BackgroundServices
                                 habit.NotificationTime.Value.Minutes == currentTime.Minutes)
                             {
                                 // Habit bu gün üçün tamamlanıbsa, notification göndərmə
-                                var isCompletedResult = await userHabitService.IsHabitCompletedTodayAsync(habit.UserId, habit.Id, today);
+                                var isCompletedResult = await userHabitService.IsHabitCompletedTodayAsync(habit.UserId, habit.UserHabitId, today);
                                 bool isCompleted = isCompletedResult.Success && isCompletedResult.Data;
 
                                 if (!isCompleted)
                                 {
                                     _logger.LogInformation($"Sending notification for habit '{habit.Title}' to user '{habit.UserId}'.");
                                     await notificationService.CreateAndSendNotificationAsync(
-                                        habit.Id,
+                                        habit.UserHabitId,
                                         habit.UserId,
                                         habit.Title,
                                         "Time to complete your habit ⏰",
