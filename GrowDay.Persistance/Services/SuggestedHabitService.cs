@@ -42,6 +42,9 @@ namespace GrowDay.Persistance.Services
                     DurationInMinutes = createSuggestedHabitDTO.DurationInMinutes,
                     StartDate = createSuggestedHabitDTO.StartDate,
                     EndDate = createSuggestedHabitDTO.EndDate,
+                    TargetValue = createSuggestedHabitDTO.TargetValue,
+                    IncrementValue = createSuggestedHabitDTO.IncrementValue,
+                    Unit = createSuggestedHabitDTO.Unit,
                     IsActive = true,
                     Criteria =createSuggestedHabitDTO.Criteria??HabitCriteria.None,
                     IsDeleted = false
@@ -58,6 +61,9 @@ namespace GrowDay.Persistance.Services
                     DurationInMinutes = suggestedHabit.DurationInMinutes,
                     StartDate = suggestedHabit.StartDate,
                     EndDate = suggestedHabit.EndDate,
+                    TargetValue = suggestedHabit.TargetValue,
+                    IncrementValue = suggestedHabit.IncrementValue,
+                    Unit = suggestedHabit.Unit,
                     IsActive = suggestedHabit.IsActive,
                     Criteria = suggestedHabit.Criteria
                 };
@@ -109,6 +115,9 @@ namespace GrowDay.Persistance.Services
                         DurationInMinutes = sh.DurationInMinutes,
                         StartDate = sh.StartDate,
                         EndDate = sh.EndDate,
+                        TargetValue = sh.TargetValue,
+                        IncrementValue = sh.IncrementValue,
+                        Unit = sh.Unit,
                         IsActive = sh.IsActive,
                         Criteria = sh.Criteria
                     }).ToList();
@@ -141,6 +150,9 @@ namespace GrowDay.Persistance.Services
                     DurationInMinutes = suggestedHabit.DurationInMinutes,
                     StartDate = suggestedHabit.StartDate,
                     EndDate = suggestedHabit.EndDate,
+                    TargetValue = suggestedHabit.TargetValue,
+                    IncrementValue = suggestedHabit.IncrementValue,
+                    Unit = suggestedHabit.Unit,
                     IsActive = suggestedHabit.IsActive,
                     Criteria = suggestedHabit.Criteria
                 };
@@ -172,7 +184,10 @@ namespace GrowDay.Persistance.Services
                     Title = h.Title,
                     Description = h.Description,
                     Frequency = h.Frequency,
-                    Criteria = h.Criteria
+                    Criteria = h.Criteria,
+                    TargetValue = h.TargetValue,
+                    IncrementValue = h.IncrementValue,
+                    Unit = h.Unit,
                 });
 
                 return Result<IEnumerable<SuggestedHabitDTO>>.SuccessResult(mapped, "Matched habits retrieved.");
@@ -202,6 +217,9 @@ namespace GrowDay.Persistance.Services
                 suggestedHabit.StartDate = updateSuggestedHabitDTO.StartDate ?? suggestedHabit.StartDate;
                 suggestedHabit.EndDate = updateSuggestedHabitDTO.EndDate ?? suggestedHabit.EndDate;
                 suggestedHabit.Criteria = updateSuggestedHabitDTO.Criteria ?? suggestedHabit.Criteria;
+                suggestedHabit.TargetValue = updateSuggestedHabitDTO.TargetValue ?? suggestedHabit.TargetValue;
+                suggestedHabit.IncrementValue = updateSuggestedHabitDTO.IncrementValue ?? suggestedHabit.IncrementValue;
+                suggestedHabit.Unit = updateSuggestedHabitDTO.Unit ?? suggestedHabit.Unit;
 
                 await _writeSuggestedHabitRepository.UpdateAsync(suggestedHabit);
 
@@ -216,7 +234,10 @@ namespace GrowDay.Persistance.Services
                     StartDate = suggestedHabit.StartDate,
                     EndDate = suggestedHabit.EndDate,
                     IsActive = suggestedHabit.IsActive,
-                    Criteria = suggestedHabit.Criteria
+                    Criteria = suggestedHabit.Criteria,
+                    TargetValue = suggestedHabit.TargetValue,
+                    IncrementValue = suggestedHabit.IncrementValue,
+                    Unit = suggestedHabit.Unit
                 };
                 return Result<SuggestedHabitDTO>.SuccessResult(suggestedHabitDTO, "Suggested habit updated successfully.");
             }

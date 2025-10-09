@@ -15,7 +15,12 @@ namespace GrowDay.Domain.DTO
         public DateTime? EndDate { get; set; }
 
         public int CurrentStreak { get; set; }
-        public int LongestStreak { get; set; }  
+        public int LongestStreak { get; set; }
+
+        public int? CurrentValue { get; set; }
+        public int? TargetValue { get; set; }
+        public int? IncrementValue { get; set; }
+        public string? Unit { get; set; }
 
         public DateTime? LastCompletedDate { get; set; }
 

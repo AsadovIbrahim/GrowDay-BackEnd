@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GrowDay.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6528225b264dc9342d662bf068515ff9dba5a88f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+75af370f226b9126e629ec933811619296725044")]
 [assembly: System.Reflection.AssemblyProductAttribute("GrowDay.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GrowDay.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

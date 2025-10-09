@@ -17,6 +17,10 @@ namespace GrowDay.Domain.Entities.Concretes
         public bool IsGlobal { get; set; } = false;
         public string? CreatedByUserId { get; set; }
 
+        public int? TargetValue { get; set; }
+        public int? IncrementValue { get; set; }
+        public string? Unit { get; set; }
+
         //Navigation Property
         public virtual ICollection<UserHabit>? UserHabits { get; set; }
         public virtual ICollection<TaskEntity>? Tasks { get; set; }

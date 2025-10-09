@@ -84,6 +84,10 @@ namespace GrowDay.Persistance.Services
                     NotificationTime = addSuggestedHabitDTO.NotificationTime ?? suggestedHabit.NotificationTime,
                     DurationInMinutes = addSuggestedHabitDTO.DurationInMinutes ?? suggestedHabit.DurationInMinutes,
                     LastCompletedDate = null,
+                    CurrentValue = 0,
+                    TargetValue = suggestedHabit.TargetValue,
+                    IncrementValue = suggestedHabit.IncrementValue,
+                    Unit = suggestedHabit.Unit,
                     IsActive = true,
                     IsDeleted = false
                 };
@@ -125,6 +129,10 @@ namespace GrowDay.Persistance.Services
                     DurationInMinutes = dto.DurationInMinutes,
                     StartDate = dto.StartDate ?? DateTime.UtcNow,
                     EndDate = dto.EndDate ?? habit.EndDate,
+                    CurrentValue = 0,
+                    TargetValue = habit.TargetValue,
+                    IncrementValue = habit.IncrementValue,
+                    Unit = habit.Unit,
                     Frequency = userHabitFrequency,
                     LastCompletedDate = null,
                     IsActive = true,
@@ -180,6 +188,10 @@ namespace GrowDay.Persistance.Services
                     LongestStreak = 0,
                     StartDate = DateTime.UtcNow,
                     EndDate = addUserOwnHabitDTO.EndDate,
+                    CurrentValue = 0,
+                    TargetValue = addUserOwnHabitDTO.TargetValue,
+                    IncrementValue = addUserOwnHabitDTO.IncrementValue,
+                    Unit = addUserOwnHabitDTO.Unit,
                     NotificationTime = addUserOwnHabitDTO.NotificationTime,
                     DurationInMinutes = addUserOwnHabitDTO.DurationInMinutes,
                     LastCompletedDate = null,
@@ -208,6 +220,9 @@ namespace GrowDay.Persistance.Services
                 }
                 foreach (var habit in userHabits)
                 {
+                    var userTasks = await _readUserTaskRepository.GetTasksByHabitIdAsync(userId, habit.Id);
+                    if (userTasks != null && userTasks.Any())
+                        await _writeUserTaskRepository.RemoveRangeAsync(userTasks);
                     await _writeUserHabitRepository.DeleteAsync(habit);
                 }
                 return Result.SuccessResult("User habits cleared successfully.");
@@ -232,61 +247,91 @@ namespace GrowDay.Persistance.Services
                 var existingHabitRecord = await _readHabitRecordRepository.GetByUserHabitIdAndDateAsync(userHabit.Id, today);
 
                 if (existingHabitRecord != null && existingHabitRecord.IsCompleted && !existingHabitRecord.IsDeleted)
-                {
                     return Result<UserHabitDTO>.FailureResult("Habit already completed for today.");
-                }
 
-                if (userHabit.LastCompletedDate.HasValue && userHabit.LastCompletedDate.Value.Date == today.AddDays(-1))
+                if (userHabit.IncrementValue.HasValue && userHabit.TargetValue.HasValue)
                 {
-                    userHabit.CurrentStreak++;
-                }
-                else
-                {
-                    userHabit.CurrentStreak = 1;
-                }
+                    userHabit.CurrentValue += userHabit.IncrementValue.Value;
 
-                if (userHabit.CurrentStreak > userHabit.LongestStreak)
-                    userHabit.LongestStreak = userHabit.CurrentStreak;
-
-                userHabit.LastCompletedDate = today;
-
-                await _writeUserHabitRepository.UpdateAsync(userHabit);
-
-                if (existingHabitRecord == null || existingHabitRecord.IsDeleted)
-                {
-                    var habitRecord = new HabitRecord
+                    if (userHabit.CurrentValue >= userHabit.TargetValue.Value)
                     {
-                        UserHabitId = userHabit.Id,
-                        Date = today,
-                        Note = note,
-                        CreatedAt = DateTime.UtcNow,
-                        LastModifiedAt = DateTime.UtcNow,
-                        IsCompleted = true,
-                        IsDeleted = false
-                    };
-                    await _writeHabitRecordRepository.AddAsync(habitRecord);
-                }
-                else
-                {
+                        userHabit.CurrentValue = 0; // növbəti dövr üçün sıfırla
+                        userHabit.LastCompletedDate = today;
 
-                    existingHabitRecord.IsCompleted = true;
-                    if (!string.IsNullOrEmpty(note))
-                        existingHabitRecord.Note = note;
-                    existingHabitRecord.LastModifiedAt = DateTime.UtcNow;
-                    await _writeHabitRecordRepository.UpdateAsync(existingHabitRecord);
+                        if (userHabit.LastCompletedDate.HasValue && userHabit.LastCompletedDate.Value.Date == today.AddDays(-1))
+                            userHabit.CurrentStreak++;
+                        else
+                            userHabit.CurrentStreak = 1;
 
+                        if (userHabit.CurrentStreak > userHabit.LongestStreak)
+                            userHabit.LongestStreak = userHabit.CurrentStreak;
+
+
+                        if(existingHabitRecord!=null && !existingHabitRecord.IsDeleted)
+                        {
+                            existingHabitRecord.IsCompleted = true;
+                            if (!string.IsNullOrEmpty(note))
+                                existingHabitRecord.Note = note;
+                            existingHabitRecord.LastModifiedAt = DateTime.UtcNow;
+                            await _writeHabitRecordRepository.UpdateAsync(existingHabitRecord);
+                        }
+                        else
+                        {
+                            var habitRecord = new HabitRecord
+                            {
+                                UserHabitId = userHabit.Id,
+                                Date = today,
+                                Note = note,
+                                CreatedAt = DateTime.UtcNow,
+                                LastModifiedAt = DateTime.UtcNow,
+                                IsCompleted = true,
+                                IsDeleted = false
+                            };
+
+                            await _writeHabitRecordRepository.AddAsync(habitRecord);
+                        }
+
+
+                        await _notificationService.CreateAndSendNotificationAsync(
+                            userHabit.Id,
+                            userId,
+                            "Habit Completed ✅",
+                            $"You reached your goal for {(!string.IsNullOrEmpty(userHabit.Title) ? userHabit.Title : userHabit.Habit?.Title)}! Great job!",
+                            NotificationType.Achievement
+                        );
+                    }
+                    else
+                    {
+                        if (existingHabitRecord == null || existingHabitRecord.IsDeleted)
+                        {
+                            var habitRecord = new HabitRecord
+                            {
+                                UserHabitId = userHabit.Id,
+                                Date = today,
+                                Note = note,
+                                CreatedAt = DateTime.UtcNow,
+                                LastModifiedAt = DateTime.UtcNow,
+                                IsCompleted = false,
+                                IsDeleted = false
+                            };
+                            await _writeHabitRecordRepository.AddAsync(habitRecord);
+                        }
+                        else
+                        {
+                            existingHabitRecord.IsCompleted = false;
+                            if (!string.IsNullOrEmpty(note))
+                                existingHabitRecord.Note = note;
+                            existingHabitRecord.LastModifiedAt = DateTime.UtcNow;
+                            await _writeHabitRecordRepository.UpdateAsync(existingHabitRecord);
+                        }
+                    }
                 }
+
                 var relatedUserTasks = await _readUserTaskRepository.GetTasksByHabitIdAsync(userId, userHabit.Id);
                 foreach (var userTask in relatedUserTasks)
-                {
                     await CompleteTaskProgressAsync(userId, userTask);
-                }
-                await _notificationService.CreateAndSendNotificationAsync(
-                    userHabit.Id,
-                    userId,
-                    "Habit Completed ✅", $"Great job! You completed the habit: {(!string.IsNullOrEmpty(userHabit.Title) ? userHabit.Title : userHabit.Habit?.Title)}",
-                    NotificationType.Reminder);
 
+                await _writeUserHabitRepository.UpdateAsync(userHabit);
 
                 var habitDTO = new UserHabitDTO
                 {
@@ -299,6 +344,10 @@ namespace GrowDay.Persistance.Services
                     Frequency = userHabit.Frequency ?? userHabit.Habit?.Frequency,
                     StartDate = userHabit.CreatedAt,
                     EndDate = userHabit.EndDate,
+                    CurrentValue = userHabit.CurrentValue,
+                    TargetValue = userHabit.TargetValue,
+                    IncrementValue = userHabit.IncrementValue,
+                    Unit = userHabit.Unit,
                     CurrentStreak = userHabit.CurrentStreak,
                     LongestStreak = userHabit.LongestStreak,
                     NotificationTime = userHabit.NotificationTime,
@@ -306,7 +355,7 @@ namespace GrowDay.Persistance.Services
                     LastCompletedDate = userHabit.LastCompletedDate
                 };
 
-                return Result<UserHabitDTO>.SuccessResult(habitDTO, "Habit completed successfully.");
+                return Result<UserHabitDTO>.SuccessResult(habitDTO, "Habit progress updated successfully.");
             }
             catch (Exception ex)
             {
@@ -314,6 +363,7 @@ namespace GrowDay.Persistance.Services
                 return Result<UserHabitDTO>.FailureResult("An error occurred while completing the habit.");
             }
         }
+
 
         private async Task CompleteTaskProgressAsync(string userId, UserTask userTask)
         {
@@ -379,6 +429,10 @@ namespace GrowDay.Persistance.Services
                     IsActive = !uh.IsDeleted,
                     StartDate = uh.CreatedAt,
                     EndDate = uh.EndDate,
+                    CurrentValue = uh.CurrentValue,
+                    TargetValue = uh.TargetValue,
+                    IncrementValue = uh.IncrementValue,
+                    Unit = uh.Unit,
                     CurrentStreak = uh.CurrentStreak,
                     LongestStreak = uh.LongestStreak,
                     NotificationTime = uh.NotificationTime,
@@ -414,6 +468,10 @@ namespace GrowDay.Persistance.Services
                     IsActive = !userHabit.IsDeleted,
                     StartDate = userHabit.CreatedAt,
                     EndDate = userHabit.EndDate,
+                    CurrentValue = userHabit.CurrentValue,
+                    TargetValue = userHabit.TargetValue,
+                    IncrementValue = userHabit.IncrementValue,
+                    Unit = userHabit.Unit,
                     CurrentStreak = userHabit.CurrentStreak,
                     LongestStreak = userHabit.LongestStreak,
                     NotificationTime = userHabit.NotificationTime,
@@ -534,6 +592,10 @@ namespace GrowDay.Persistance.Services
                     IsActive = !userHabit.IsDeleted,
                     StartDate = userHabit.CreatedAt,
                     EndDate = userHabit.EndDate,
+                    CurrentValue = userHabit.CurrentValue,
+                    TargetValue = userHabit.TargetValue,
+                    IncrementValue = userHabit.IncrementValue,
+                    Unit = userHabit.Unit,
                     CurrentStreak = userHabit.CurrentStreak,
                     LongestStreak = userHabit.LongestStreak,
                     NotificationTime = userHabit.NotificationTime,
@@ -552,7 +614,7 @@ namespace GrowDay.Persistance.Services
         public async Task<Result<ICollection<WeeklyHabitProgressDTO>>> GetWeeklyHabitProgressAsync(string userId,string userHabitId)
         {
             try
-            {
+            {   
                 var userHabit = await _readUserHabitRepository.GetByUserAndHabitAsync(userId, userHabitId);
                 if (userHabit == null || userHabit.UserId != userId)
                 {

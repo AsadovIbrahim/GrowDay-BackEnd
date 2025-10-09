@@ -13,5 +13,9 @@ namespace GrowDay.Domain.DTO
         public int? DurationInMinutes { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
+
+        public int? TargetValue { get; set; }
+        public int? IncrementValue { get; set; }
+        public string? Unit { get; set; }
     }
 }

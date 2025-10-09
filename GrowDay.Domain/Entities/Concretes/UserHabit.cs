@@ -20,6 +20,11 @@ namespace GrowDay.Domain.Entities.Concretes
         public int LongestStreak { get; set; }
         public DateTime? LastCompletedDate { get; set; }
 
+        public int? CurrentValue { get; set; }
+        public int? TargetValue { get; set; }
+        public int? IncrementValue { get; set; }
+        public string? Unit { get; set; }
+
         public TimeSpan? NotificationTime { get; set; }
         public int? DurationInMinutes { get; set; }
 

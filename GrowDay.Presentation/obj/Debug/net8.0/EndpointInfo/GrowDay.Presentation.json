@@ -1674,6 +1674,20 @@
             "format": "date-time",
             "nullable": true
           },
+          "targetValue": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "incrementValue": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "unit": {
+            "type": "string",
+            "nullable": true
+          },
           "notificationTime": {
             "type": "string",
             "format": "date-span",
@@ -1728,6 +1742,20 @@
             "nullable": true
           },
           "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "targetValue": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "incrementValue": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "unit": {
             "type": "string",
             "nullable": true
           },
@@ -1812,6 +1840,20 @@
           "endDate": {
             "type": "string",
             "format": "date-time",
+            "nullable": true
+          },
+          "targetValue": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "incrementValue": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "unit": {
+            "type": "string",
             "nullable": true
           }
         },
@@ -2102,6 +2144,20 @@
             "type": "string",
             "nullable": true
           },
+          "targetValue": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "incrementValue": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "unit": {
+            "type": "string",
+            "nullable": true
+          },
           "frequency": {
             "$ref": "#/components/schemas/HabitFrequency"
           },
@@ -2182,6 +2238,20 @@
             "type": "string",
             "format": "date-time",
             "nullable": true
+          },
+          "targetValue": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "incrementValue": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "unit": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -2238,6 +2308,20 @@
           },
           "frequency": {
             "$ref": "#/components/schemas/HabitFrequency"
+          },
+          "targetValue": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "incrementValue": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "unit": {
+            "type": "string",
+            "nullable": true
           },
           "notificationTime": {
             "type": "string",

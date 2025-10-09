@@ -63,7 +63,7 @@ namespace GrowDay.Persistance.Migrations
 
                     b.HasIndex("HabitId");
 
-                    b.ToTable("Achievements");
+                    b.ToTable("Achievements", (string)null);
                 });
 
             modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.Habit", b =>
@@ -89,6 +89,9 @@ namespace GrowDay.Persistance.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("IncrementValue")
+                        .HasColumnType("int");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
@@ -104,14 +107,20 @@ namespace GrowDay.Persistance.Migrations
                     b.Property<DateTime?>("StartDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("TargetValue")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<string>("Unit")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Habits");
+                    b.ToTable("Habits", (string)null);
                 });
 
             modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.HabitRecord", b =>
@@ -146,7 +155,7 @@ namespace GrowDay.Persistance.Migrations
 
                     b.HasIndex("UserHabitId");
 
-                    b.ToTable("HabitRecords");
+                    b.ToTable("HabitRecords", (string)null);
                 });
 
             modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.JobExecutionLog", b =>
@@ -172,7 +181,7 @@ namespace GrowDay.Persistance.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("JobExecutionLogs");
+                    b.ToTable("JobExecutionLogs", (string)null);
                 });
 
             modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.Notification", b =>
@@ -224,7 +233,7 @@ namespace GrowDay.Persistance.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Notifications");
+                    b.ToTable("Notifications", (string)null);
                 });
 
             modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.Statistic", b =>
@@ -265,7 +274,7 @@ namespace GrowDay.Persistance.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Statistics");
+                    b.ToTable("Statistics", (string)null);
                 });
 
             modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.SuggestedHabit", b =>
@@ -292,6 +301,9 @@ namespace GrowDay.Persistance.Migrations
                     b.Property<int?>("Frequency")
                         .HasColumnType("int");
 
+                    b.Property<int?>("IncrementValue")
+                        .HasColumnType("int");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
@@ -310,8 +322,14 @@ namespace GrowDay.Persistance.Migrations
                     b.Property<DateTime?>("StartDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("TargetValue")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Unit")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserHabitId")
@@ -321,7 +339,7 @@ namespace GrowDay.Persistance.Migrations
 
                     b.HasIndex("UserHabitId");
 
-                    b.ToTable("SuggestedHabits");
+                    b.ToTable("SuggestedHabits", (string)null);
                 });
 
             modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.TaskEntity", b =>
@@ -365,7 +383,7 @@ namespace GrowDay.Persistance.Migrations
 
                     b.HasIndex("HabitId");
 
-                    b.ToTable("Tasks");
+                    b.ToTable("Tasks", (string)null);
                 });
 
             modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.User", b =>
@@ -486,7 +504,7 @@ namespace GrowDay.Persistance.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserAchievements");
+                    b.ToTable("UserAchievements", (string)null);
                 });
 
             modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.UserHabit", b =>
@@ -498,6 +516,9 @@ namespace GrowDay.Persistance.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<int>("CurrentStreak")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CurrentValue")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -514,6 +535,9 @@ namespace GrowDay.Persistance.Migrations
 
                     b.Property<string>("HabitId")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<int?>("IncrementValue")
+                        .HasColumnType("int");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -536,7 +560,13 @@ namespace GrowDay.Persistance.Migrations
                     b.Property<DateTime?>("StartDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("TargetValue")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Unit")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
@@ -549,7 +579,7 @@ namespace GrowDay.Persistance.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserHabits");
+                    b.ToTable("UserHabits", (string)null);
                 });
 
             modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.UserPreferences", b =>
@@ -589,7 +619,7 @@ namespace GrowDay.Persistance.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserPreferences");
+                    b.ToTable("UserPreferences", (string)null);
                 });
 
             modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.UserTask", b =>
@@ -654,7 +684,7 @@ namespace GrowDay.Persistance.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserTasks");
+                    b.ToTable("UserTasks", (string)null);
                 });
 
             modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.UserTaskCompletion", b =>
@@ -691,7 +721,7 @@ namespace GrowDay.Persistance.Migrations
 
                     b.HasIndex("UserTaskId");
 
-                    b.ToTable("UserTaskCompletions");
+                    b.ToTable("UserTaskCompletions", (string)null);
                 });
 
             modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.UserToken", b =>
@@ -729,7 +759,7 @@ namespace GrowDay.Persistance.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserTokens");
+                    b.ToTable("UserTokens", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

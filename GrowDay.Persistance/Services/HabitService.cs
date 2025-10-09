@@ -1,9 +1,9 @@
-﻿using GrowDay.Application.Repositories;
-using GrowDay.Application.Services;
-using GrowDay.Domain.DTO;
-using GrowDay.Domain.Entities.Concretes;
+﻿using GrowDay.Domain.DTO;
 using GrowDay.Domain.Helpers;
 using Microsoft.Extensions.Logging;
+using GrowDay.Application.Services;
+using GrowDay.Application.Repositories;
+using GrowDay.Domain.Entities.Concretes;
 
 namespace GrowDay.Persistance.Services
 {
@@ -31,10 +31,6 @@ namespace GrowDay.Persistance.Services
                 }
                 foreach (var habit in habits)
                 {
-                    foreach (var userHabit in habit.UserHabits!)
-                    {
-                        userHabit.IsDeleted = true;
-                    }
                     await _habitRepository.DeleteAsync(habit);
                 }
                 return Result.SuccessResult("All habits cleared successfully.");
@@ -61,6 +57,9 @@ namespace GrowDay.Persistance.Services
                     Frequency = dto.Frequency,
                     StartDate = dto.StartDate,
                     EndDate = dto.EndDate,
+                    TargetValue = dto.TargetValue,
+                    IncrementValue = dto.IncrementValue,
+                    Unit = dto.Unit,
                     IsActive = true,
                     CreatedAt = DateTime.UtcNow,
                 };
@@ -74,6 +73,9 @@ namespace GrowDay.Persistance.Services
                     IsActive = habit.IsActive,
                     StartDate = habit.StartDate,
                     EndDate = habit.EndDate,
+                    TargetValue = habit.TargetValue,
+                    IncrementValue = habit.IncrementValue,
+                    Unit = habit.Unit
                 };
                 return Result<HabitDTO>.SuccessResult(result, "Habit created successfully.");
             }
@@ -119,7 +121,10 @@ namespace GrowDay.Persistance.Services
                     Frequency = h.Frequency,
                     IsActive = h.IsActive,
                     StartDate = h.StartDate,
-                    EndDate = h.EndDate
+                    EndDate = h.EndDate,
+                    TargetValue = h.TargetValue,
+                    IncrementValue = h.IncrementValue,
+                    Unit = h.Unit
                 }).ToList();
                 return Result<IEnumerable<HabitDTO>>.SuccessResult(habitDtos, "Habits retrieved successfully.");
             }
@@ -146,7 +151,10 @@ namespace GrowDay.Persistance.Services
                     Frequency = habit.Frequency,
                     IsActive = habit.IsActive,
                     StartDate = habit.StartDate,
-                    EndDate = habit.EndDate
+                    EndDate = habit.EndDate,
+                    TargetValue = habit.TargetValue,
+                    IncrementValue = habit.IncrementValue,
+                    Unit = habit.Unit
                 }, "Habit retrieved successfully.");
 
             }
@@ -172,6 +180,9 @@ namespace GrowDay.Persistance.Services
                 habit.IsActive = dto.IsActive;
                 habit.StartDate = dto.StartDate;
                 habit.EndDate = dto.EndDate;
+                habit.TargetValue = dto.TargetValue;
+                habit.IncrementValue = dto.IncrementValue;
+                habit.Unit = dto.Unit;
                 await _habitRepository.UpdateAsync(habit);
 
                 return Result<HabitDTO>.SuccessResult(new HabitDTO
@@ -182,7 +193,10 @@ namespace GrowDay.Persistance.Services
                     Frequency = habit.Frequency,
                     IsActive = habit.IsActive,
                     StartDate = habit.StartDate,
-                    EndDate = habit.EndDate
+                    EndDate = habit.EndDate,
+                    TargetValue = habit.TargetValue,
+                    IncrementValue = habit.IncrementValue,
+                    Unit = habit.Unit
                 }, "Habit updated successfully.");
             }
             catch (Exception ex)

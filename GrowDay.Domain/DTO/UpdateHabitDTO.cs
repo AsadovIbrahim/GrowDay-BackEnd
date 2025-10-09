@@ -7,6 +7,11 @@ namespace GrowDay.Domain.DTO
         public string Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
+
+        public int? TargetValue { get; set; }
+        public int? IncrementValue { get; set; }
+        public string? Unit { get; set; }
+
         public HabitFrequency Frequency { get; set; }
         public bool IsActive { get; set; }
         public DateTime? StartDate { get; set; }
