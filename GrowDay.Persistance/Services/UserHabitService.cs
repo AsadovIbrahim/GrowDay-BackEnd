@@ -1,10 +1,10 @@
-﻿using GrowDay.Application.Repositories;
-using GrowDay.Application.Services;
-using GrowDay.Domain.DTO;
-using GrowDay.Domain.Entities.Concretes;
+﻿using GrowDay.Domain.DTO;
 using GrowDay.Domain.Enums;
 using GrowDay.Domain.Helpers;
 using Microsoft.Extensions.Logging;
+using GrowDay.Application.Services;
+using GrowDay.Application.Repositories;
+using GrowDay.Domain.Entities.Concretes;
 
 namespace GrowDay.Persistance.Services
 {
@@ -255,7 +255,7 @@ namespace GrowDay.Persistance.Services
 
                     if (userHabit.CurrentValue >= userHabit.TargetValue.Value)
                     {
-                        userHabit.CurrentValue = 0; // növbəti dövr üçün sıfırla
+                        userHabit.CurrentValue = 0;
                         userHabit.LastCompletedDate = today;
 
                         if (userHabit.LastCompletedDate.HasValue && userHabit.LastCompletedDate.Value.Date == today.AddDays(-1))
@@ -332,7 +332,8 @@ namespace GrowDay.Persistance.Services
                     await CompleteTaskProgressAsync(userId, userTask);
 
                 await _writeUserHabitRepository.UpdateAsync(userHabit);
-
+                
+                
                 var habitDTO = new UserHabitDTO
                 {
                     UserHabitId = userHabit.Id,
@@ -348,6 +349,8 @@ namespace GrowDay.Persistance.Services
                     TargetValue = userHabit.TargetValue,
                     IncrementValue = userHabit.IncrementValue,
                     Unit = userHabit.Unit,
+                    ProgressPercentage = (userHabit.TargetValue.HasValue && userHabit.TargetValue.Value > 0) 
+                    ? (userHabit.CurrentValue / userHabit.TargetValue.Value) * 100 : 0,
                     CurrentStreak = userHabit.CurrentStreak,
                     LongestStreak = userHabit.LongestStreak,
                     NotificationTime = userHabit.NotificationTime,
@@ -433,6 +436,8 @@ namespace GrowDay.Persistance.Services
                     TargetValue = uh.TargetValue,
                     IncrementValue = uh.IncrementValue,
                     Unit = uh.Unit,
+                    ProgressPercentage = (uh.TargetValue.HasValue && uh.TargetValue.Value > 0) 
+                    ? (uh.CurrentValue / uh.TargetValue.Value) * 100 : 0,
                     CurrentStreak = uh.CurrentStreak,
                     LongestStreak = uh.LongestStreak,
                     NotificationTime = uh.NotificationTime,
@@ -472,6 +477,8 @@ namespace GrowDay.Persistance.Services
                     TargetValue = userHabit.TargetValue,
                     IncrementValue = userHabit.IncrementValue,
                     Unit = userHabit.Unit,
+                    ProgressPercentage=userHabit.TargetValue.HasValue && userHabit.TargetValue.Value > 0
+                    ? (userHabit.CurrentValue / userHabit.TargetValue.Value) * 100 : 0,
                     CurrentStreak = userHabit.CurrentStreak,
                     LongestStreak = userHabit.LongestStreak,
                     NotificationTime = userHabit.NotificationTime,

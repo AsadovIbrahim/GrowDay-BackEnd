@@ -18,8 +18,8 @@ namespace GrowDay.Domain.Entities.Concretes
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
 
-        public int? TargetValue { get; set; }
-        public int? IncrementValue { get; set; }
+        public double? TargetValue { get; set; }
+        public double? IncrementValue { get; set; }
         public string? Unit { get; set; }
 
         // Navigation Properties

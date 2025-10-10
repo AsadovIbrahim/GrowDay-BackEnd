@@ -12,8 +12,8 @@ namespace GrowDay.Domain.DTO
         public DateTime? EndDate { get; set; }
 
 
-        public int? TargetValue { get; set; }
-        public int? IncrementValue { get; set; }
+        public double? TargetValue { get; set; }
+        public double? IncrementValue { get; set; }
         public string? Unit { get; set; }
 
         public TimeSpan? NotificationTime { get; set; } 
