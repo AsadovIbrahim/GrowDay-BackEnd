@@ -116,7 +116,6 @@ namespace GrowDay.Persistance.Services
                 if (existingUserHabit != null && !existingUserHabit.IsDeleted)
                     return Result.FailureResult("User habit already exists.");
 
-                var userHabitFrequency = dto.Frequency ?? habit.Frequency;
 
                 var userHabit = new UserHabit
                 {
@@ -133,7 +132,6 @@ namespace GrowDay.Persistance.Services
                     TargetValue = habit.TargetValue,
                     IncrementValue = habit.IncrementValue,
                     Unit = habit.Unit,
-                    Frequency = userHabitFrequency,
                     LastCompletedDate = null,
                     IsActive = true,
                     IsDeleted = false

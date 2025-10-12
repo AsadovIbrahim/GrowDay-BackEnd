@@ -35,7 +35,11 @@ namespace GrowDay.Persistance.Repositories
 
         public async Task<UserTask?> GetUserTaskByIdAsync(string userId, string userTaskId)
         {
-            return await _table.FirstOrDefaultAsync(ut => ut.Id == userTaskId && ut.UserId == userId);
+            return await _table
+                .Include(ut => ut.Task)
+                .Include(ut=>ut.UserHabit)
+                    .ThenInclude(uh=>uh!.Habit)
+                .FirstOrDefaultAsync(ut => ut.UserId == userId && ut.Id == userTaskId);
         }
 
         public async Task<UserTask?> GetUserTaskByTaskIdAndUserIdAsync(string userId, string taskId)

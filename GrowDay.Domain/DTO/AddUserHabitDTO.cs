@@ -1,6 +1,4 @@
-﻿using GrowDay.Domain.Enums;
-
-namespace GrowDay.Domain.DTO
+﻿namespace GrowDay.Domain.DTO
 {
     public class AddUserHabitDTO
     {
@@ -10,6 +8,5 @@ namespace GrowDay.Domain.DTO
 
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
-        public HabitFrequency? Frequency { get; set; }
     }
 }

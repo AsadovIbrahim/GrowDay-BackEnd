@@ -1,4 +1,6 @@
-﻿namespace GrowDay.Domain.DTO
+﻿using GrowDay.Domain.Enums;
+
+namespace GrowDay.Domain.DTO
 {
     public class UserTaskStatisticDTO
     {
@@ -6,7 +8,7 @@
         public string Title { get; set; }
         public int Point { get; set; }
         public DateTime? CompletedAt { get; set; }
-
+        public HabitFrequency? Frequency { get; set; }
         public int RequiredPoints { get; set; }
         public int TotalRequiredCompletions { get; set; }
         public int TotalPoints { get; set; }

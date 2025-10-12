@@ -1643,9 +1643,6 @@
             "type": "string",
             "format": "date-time",
             "nullable": true
-          },
-          "frequency": {
-            "$ref": "#/components/schemas/HabitFrequency"
           }
         },
         "additionalProperties": false
