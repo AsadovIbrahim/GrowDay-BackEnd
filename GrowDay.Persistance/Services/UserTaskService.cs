@@ -15,6 +15,7 @@ namespace GrowDay.Persistance.Services
         protected readonly IWriteUserAchievementRepository _writeUserAchievementRepository;
         protected readonly IReadUserAchievementRepository _readUserAchievementRepository;
         protected readonly IReadUserTaskRepository _readUserTaskRepository;
+        protected readonly IWriteUserHabitRepository _writeUserHabitRepository;
         protected readonly IReadUserHabitRepository _readUserHabitRepository;
         protected readonly IStatisticService _statisticService;
         protected readonly INotificationService _notificationService;
@@ -27,7 +28,7 @@ namespace GrowDay.Persistance.Services
             IReadAchievementRepository readAchievementRepository, IWriteUserAchievementRepository writeUserAchievementRepository,
             IReadUserAchievementRepository readUserAchievementRepository, IStatisticService statisticService, IReadUserHabitRepository readUserHabitRepository,
             INotificationService notificationService, IUserHabitService userHabitService, IReadUserTaskCompletionRepository readUserTaskCompletionRepository,
-            IWriteUserTaskCompletionRepository writeUserTaskCompletionRepository)
+            IWriteUserTaskCompletionRepository writeUserTaskCompletionRepository, IWriteUserHabitRepository writeUserHabitRepository)
         {
             _writeUserTaskRepository = writeUserTaskRepository;
             _readUserTaskRepository = readUserTaskRepository;
@@ -41,6 +42,7 @@ namespace GrowDay.Persistance.Services
             _userHabitService = userHabitService;
             _readUserTaskCompletionRepository = readUserTaskCompletionRepository;
             _writeUserTaskCompletionRepository = writeUserTaskCompletionRepository;
+            _writeUserHabitRepository = writeUserHabitRepository;
         }
 
         public async Task<Result<UserTaskDTO>> CompleteTaskAsync(string userId, string taskId)
@@ -106,6 +108,27 @@ namespace GrowDay.Persistance.Services
                     userTask.CompletedAt = DateTime.UtcNow;
                     await _writeUserTaskRepository.UpdateAsync(userTask);
                 }
+                if (userTask.UserHabitId != null)
+                {
+                    var userHabit = await _readUserHabitRepository.GetByIdAsync(userTask.UserHabitId);
+
+                    if (userHabit != null)
+                    {
+                        if (userHabit.IncrementValue.HasValue)
+                            userHabit.CurrentValue += userHabit.IncrementValue.Value;
+
+                        if (userHabit.TargetValue.HasValue && userHabit.CurrentValue >= userHabit.TargetValue.Value)
+                        {
+                            userHabit.CurrentValue = 0;
+                            userHabit.LastCompletedDate = DateTime.UtcNow.Date;
+                            userHabit.CurrentStreak++;
+                            if (userHabit.CurrentStreak > userHabit.LongestStreak)
+                                userHabit.LongestStreak = userHabit.CurrentStreak;
+                        }
+
+                        await _writeUserHabitRepository.UpdateAsync(userHabit);
+                    }
+                }
 
                 await CheckAndGrantAchievementsAsync(userId);
 
@@ -162,6 +185,7 @@ namespace GrowDay.Persistance.Services
                         Points = ut.Points,
                         IsCompleted = ut.IsCompleted,
                         CompletedAt = ut.CompletedAt,
+                        UserHabitId = ut.UserHabitId,
                         TotalRequiredCompletions = ut.Task.TotalRequiredCompletions,
                         RequiredPoints = ut.Task.RequiredPoints,
                         TotalPointsEarned = totalPoints,
@@ -315,6 +339,8 @@ namespace GrowDay.Persistance.Services
                         TotalRequiredCompletions = userTask.Task.TotalRequiredCompletions ?? 0,
                         CurrentStreak = 0,
                         LongestStreak = 0,
+                        CurrentValue = 0,
+                        TargettValue = 0,
                         CompletionPercentage = 0
                     }, "No completions found for the specified task.");
                 }
@@ -339,6 +365,8 @@ namespace GrowDay.Persistance.Services
                     TotalRequiredCompletions = latestCompletion.UserTask.Task.TotalRequiredCompletions ?? 0,
                     CurrentStreak = userHabit?.CurrentStreak ?? 0,
                     LongestStreak = userHabit?.LongestStreak ?? 0,
+                    CurrentValue = userHabit?.CurrentValue ?? 0,
+                    TargettValue = userHabit?.TargetValue ?? 0,
                     CompletionPercentage =
                         latestCompletion.UserTask.Task.TotalRequiredCompletions.HasValue &&
                         latestCompletion.UserTask.Task.TotalRequiredCompletions.Value > 0

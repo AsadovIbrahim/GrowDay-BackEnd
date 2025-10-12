@@ -13,6 +13,8 @@
         public int TotalTasksCompleted { get; set; }
         public int CurrentStreak { get; set; }
         public int LongestStreak { get; set; }
+        public double CurrentValue { get; set; }
+        public double TargettValue { get; set; }
         public double CompletionPercentage { get; set; }
     }
 }
