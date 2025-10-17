@@ -8,6 +8,8 @@ namespace GrowDay.Application.Services
         Task<Result<UserActivityDTO>> CreateActivityAsync(CreateActivityDTO createActivityDTO);
         Task<Result<IEnumerable<UserActivityDTO>>> GetUserActivitiesAsync(string userId);
         Task<Result> DeleteActivityAsync(string userId, string activityId);
+        Task<Result> ClearActivityAsync(string userId);
+        Task<Result<int>>GetUserTotalPointsAsync(string userId);
 
     }
 }

@@ -15,7 +15,16 @@ namespace GrowDay.Persistance.Repositories
         public async Task<ICollection<UserTaskCompletion>> GetUserTaskCompletions(string userId, string taskId)
         {
             return await _table
-                .Where(t=>t.UserTask.UserId==userId && t.UserTaskId==taskId)
+                .Where(t => t.UserTask.UserId == userId && t.UserTaskId == taskId)
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<UserTaskCompletion>> GetUserCompletionsByUserIdAsync(string userId)
+        {
+            return await _table
+                .Include(utc => utc.UserTask)
+                .ThenInclude(ut => ut.Task)
+                .Where(utc => utc.UserTask.UserId == userId)
                 .ToListAsync();
         }
     }

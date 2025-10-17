@@ -33,15 +33,46 @@ namespace GrowDay.Presentation.Controllers
         [HttpDelete("{activityId}")]
         public async Task<IActionResult> DeleteUserActivity(string activityId)
         {
-            var userId= User.FindFirstValue(ClaimTypes.NameIdentifier);
-            if (string.IsNullOrEmpty(userId)) {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userId))
+            {
                 return BadRequest("User ID is required.");
             }
             if (string.IsNullOrEmpty(activityId))
             {
                 return BadRequest("Activity ID is required.");
             }
-            var result = await _userActivityService.DeleteActivityAsync(userId,activityId);
+            var result = await _userActivityService.DeleteActivityAsync(userId, activityId);
+            if (!result.Success)
+            {
+                return BadRequest(result.Message);
+            }
+            return Ok(result);
+        }
+        [HttpDelete("ClearActivities")]
+        public async Task<IActionResult> ClearUserActivities()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userId))
+            {
+                return BadRequest("User ID is required.");
+            }
+            var result = await _userActivityService.ClearActivityAsync(userId);
+            if (!result.Success)
+            {
+                return BadRequest(result.Message);
+            }
+            return Ok(result);
+        }
+        [HttpGet("GetTotalPoints")]
+        public async Task<IActionResult> GetUserTotalPoints()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userId))
+            {
+                return BadRequest("User ID is required.");
+            }
+            var result = await _userActivityService.GetUserTotalPointsAsync(userId);
             if (!result.Success)
             {
                 return BadRequest(result.Message);

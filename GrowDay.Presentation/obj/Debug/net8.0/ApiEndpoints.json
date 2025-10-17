@@ -746,6 +746,26 @@
   },
   {
     "ContainingType": "GrowDay.Presentation.Controllers.UserActivityController",
+    "Method": "ClearUserActivities",
+    "RelativePath": "api/UserActivity/ClearActivities",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.UserActivityController",
+    "Method": "GetUserTotalPoints",
+    "RelativePath": "api/UserActivity/GetTotalPoints",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.UserActivityController",
     "Method": "GetUserActivities",
     "RelativePath": "api/UserActivity/GetUserActivities",
     "HttpMethod": "GET",

@@ -11,13 +11,36 @@ namespace GrowDay.Persistance.Services
     {
         protected readonly IWriteUserActivityRepository _writeUserActivityRepository;
         protected readonly IReadUserActivityRepository _readUserActivityRepository;
+        protected readonly IReadUserTaskCompletionRepository _readUserTaskCompletionRepository;
         protected readonly ILogger<UserActivityService> _logger;
         public UserActivityService(IWriteUserActivityRepository writeUserActivityRepository, IReadUserActivityRepository readUserActivityRepository,
-            ILogger<UserActivityService> logger)
+            ILogger<UserActivityService> logger, IReadUserTaskCompletionRepository readUserTaskCompletionRepository)
         {
             _writeUserActivityRepository = writeUserActivityRepository;
             _readUserActivityRepository = readUserActivityRepository;
+            _readUserTaskCompletionRepository = readUserTaskCompletionRepository;
             _logger = logger;
+        }
+        public async Task<Result> ClearActivityAsync(string userId)
+        {
+            try
+            {
+                var activities = await _readUserActivityRepository.GetUserActivitiesAsync(userId);
+                if (activities == null || !activities.Any())
+                {
+                    return Result.FailureResult("No activities found for the user.");
+                }
+                foreach (var activity in activities)
+                {
+                    await _writeUserActivityRepository.DeleteAsync(activity);
+                }
+                return Result.SuccessResult("All user activities cleared successfully.");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while clearing user activities.");
+                return Result.FailureResult("An error occurred while clearing activities.");
+            }
         }
         public async Task<Result<UserActivityDTO>> CreateActivityAsync(CreateActivityDTO createActivityDTO)
         {
@@ -95,6 +118,21 @@ namespace GrowDay.Persistance.Services
             {
                 _logger.LogError(ex, "Error occurred while retrieving user activities.");
                 return Result<IEnumerable<UserActivityDTO>>.FailureResult("An error occurred while retrieving activities.");
+            }
+        }
+
+        public async Task<Result<int>> GetUserTotalPointsAsync(string userId)   
+        {
+            try
+            {
+                var taskCompletions = await _readUserTaskCompletionRepository.GetUserCompletionsByUserIdAsync(userId);
+                int totalPoints = taskCompletions.Sum(utc => utc.Points);
+                return Result<int>.SuccessResult(totalPoints, "User total points calculated successfully.");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while calculating user total points.");
+                return Result<int>.FailureResult("An error occurred while calculating total points.");
             }
         }
     }

@@ -89,11 +89,17 @@ namespace GrowDay.Persistance.Services
                     CompletedAt = DateTime.UtcNow
                 };
                 await _writeUserTaskCompletionRepository.AddAsync(completion);
+                await _userActivityService.CreateActivityAsync(new CreateActivityDTO
+                {
+                    UserId = userId,
+                    Title = $"Task Completed: {userTask.Title}, {userTask.Points} points earned",
+                    Description = $"You have completed the task '{userTask.Title}' and earned {userTask.Points} points!",
+                    ActivityType = ActivityType.TaskCompleted,
+                });
 
                 completions = await _readUserTaskCompletionRepository.GetUserTaskCompletions(userId, taskId);
                 totalPoints = completions.Sum(c => c.Points);
                 totalCompleted = completions.Count;
-
 
 
                 bool requirementsMet = true;
@@ -111,13 +117,15 @@ namespace GrowDay.Persistance.Services
                     userTask.IsCompleted = true;
                     userTask.CompletedAt = DateTime.UtcNow;
                     await _writeUserTaskRepository.UpdateAsync(userTask);
+
                     await _userActivityService.CreateActivityAsync(new CreateActivityDTO
                     {
                         UserId = userId,
-                        Title = $"Task Completed: {userTask.Title}, {userTask.TotalPointsEarned} points earned",
-                        Description = $"You have completed the task '{userTask.Title}' and earned {userTask.Points} points!",
-                        ActivityType = ActivityType.TaskCompleted,
+                        Title = $"Task Completed: {userTask.Title}",
+                        Description = $"You have completed the task '{userTask.Title}' successfully!",
+                        ActivityType = ActivityType.TaskCompleted
                     });
+
                 }
                 if (userTask.UserHabitId != null)
                 {
