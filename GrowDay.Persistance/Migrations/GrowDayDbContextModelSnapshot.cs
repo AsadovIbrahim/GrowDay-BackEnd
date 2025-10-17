@@ -507,6 +507,42 @@ namespace GrowDay.Persistance.Migrations
                     b.ToTable("UserAchievements");
                 });
 
+            modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.UserActivity", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("ActivityType")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("LastModifiedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserActivities");
+                });
+
             modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.UserHabit", b =>
                 {
                     b.Property<string>("Id")
@@ -983,6 +1019,15 @@ namespace GrowDay.Persistance.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.UserActivity", b =>
+                {
+                    b.HasOne("GrowDay.Domain.Entities.Concretes.User", null)
+                        .WithMany("UserActivities")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("GrowDay.Domain.Entities.Concretes.UserHabit", b =>
                 {
                     b.HasOne("GrowDay.Domain.Entities.Concretes.Habit", "Habit")
@@ -1134,6 +1179,8 @@ namespace GrowDay.Persistance.Migrations
                     b.Navigation("Notifications");
 
                     b.Navigation("Statistics");
+
+                    b.Navigation("UserActivities");
 
                     b.Navigation("UserHabits");
 

@@ -729,6 +729,32 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "GrowDay.Presentation.Controllers.UserActivityController",
+    "Method": "DeleteUserActivity",
+    "RelativePath": "api/UserActivity/{activityId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "activityId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.UserActivityController",
+    "Method": "GetUserActivities",
+    "RelativePath": "api/UserActivity/GetUserActivities",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "GrowDay.Presentation.Controllers.UserHabitController",
     "Method": "GetUserHabitById",
     "RelativePath": "api/UserHabit/{userHabitId}",

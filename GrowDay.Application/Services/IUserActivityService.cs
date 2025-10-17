@@ -1,0 +1,13 @@
+﻿using GrowDay.Domain.DTO;
+using GrowDay.Domain.Helpers;
+
+namespace GrowDay.Application.Services
+{
+    public interface IUserActivityService
+    {
+        Task<Result<UserActivityDTO>> CreateActivityAsync(CreateActivityDTO createActivityDTO);
+        Task<Result<IEnumerable<UserActivityDTO>>> GetUserActivitiesAsync(string userId);
+        Task<Result> DeleteActivityAsync(string userId, string activityId);
+
+    }
+}

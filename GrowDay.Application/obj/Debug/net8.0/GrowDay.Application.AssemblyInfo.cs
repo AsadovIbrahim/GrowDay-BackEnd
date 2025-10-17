@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GrowDay.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+41b21f671f3eebd488d1ec4d0324892e79c1a112")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+50788916724eaae9d520ead6ceb853dc50f99f1e")]
 [assembly: System.Reflection.AssemblyProductAttribute("GrowDay.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GrowDay.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

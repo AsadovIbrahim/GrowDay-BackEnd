@@ -28,6 +28,7 @@ namespace GrowDay.Persistance
             services.AddScoped<IAchievementService, AchievementService>();
             services.AddScoped<IUserAchievementService, UserAchievementService>();
             services.AddScoped<ITaskService, TaskService>();
+            services.AddScoped<IUserActivityService, UserActivityService>();
 
             // Context
 
@@ -56,6 +57,7 @@ namespace GrowDay.Persistance
             services.AddScoped<IWriteUserTaskRepository, WriteUserTaskRepository>();
             services.AddScoped<IWriteTaskRepository, WriteTaskRepository>();
             services.AddScoped<IWriteUserTaskCompletionRepository, WriteUserTaskCompletionRepository>();
+            services.AddScoped<IWriteUserActivityRepository, WriteUserActivityRepository>();
           
 
 
@@ -76,6 +78,7 @@ namespace GrowDay.Persistance
             services.AddScoped<IReadUserTaskRepository, ReadUserTaskRepository>();
             services.AddScoped<IReadTaskRepository, ReadTaskRepository>();
             services.AddScoped<IReadUserTaskCompletionRepository, ReadUserTaskCompletionRepository>();
+            services.AddScoped<IReadUserActivityRepository, ReadUserActivityRepository>();
         }
 
     }

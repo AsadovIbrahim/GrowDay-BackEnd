@@ -26,6 +26,7 @@ namespace GrowDay.Persistance.Services
         protected readonly IReadUserTaskCompletionRepository _readUserTaskCompletionRepository;
         protected readonly IWriteUserTaskCompletionRepository _writeUserTaskCompletionRepository;
         protected readonly INotificationService _notificationService;
+        protected readonly IUserActivityService _userActivityService;
 
 
         protected readonly ILogger<UserHabitService> _logger;
@@ -35,8 +36,8 @@ namespace GrowDay.Persistance.Services
             IReadSuggestedHabitRepository readSuggestedHabitRepository, IWriteNotificationRepository writeNotificationRepository,
             IReadHabitRecordRepository readHabitRecordRepository, IWriteHabitRecordRepository writeHabitRecordRepository, IWriteTaskRepository writeTaskRepository,
             IReadTaskRepository readTaskRepository, IWriteUserTaskRepository writeUserTaskRepository, IWriteSuggestedHabitRepository writeSuggestedHabitRepository,
-            IReadUserTaskCompletionRepository readUserTaskCompletionRepository, IWriteUserTaskCompletionRepository writeUserTaskCompletionRepository, 
-            IReadUserTaskRepository readUserTaskRepository)
+            IReadUserTaskCompletionRepository readUserTaskCompletionRepository, IWriteUserTaskCompletionRepository writeUserTaskCompletionRepository,
+            IReadUserTaskRepository readUserTaskRepository, IUserActivityService userActivityService)
         {
             _writeUserHabitRepository = userHabitRepository;
             _logger = logger;
@@ -55,6 +56,7 @@ namespace GrowDay.Persistance.Services
             _readUserTaskCompletionRepository = readUserTaskCompletionRepository;
             _writeUserTaskCompletionRepository = writeUserTaskCompletionRepository;
             _readUserTaskRepository = readUserTaskRepository;
+            _userActivityService = userActivityService;
         }
 
         public async Task<Result> AddFromSuggestedHabitAsync(string userId, AddSuggestedHabitDTO addSuggestedHabitDTO)
@@ -241,11 +243,30 @@ namespace GrowDay.Persistance.Services
                     return Result<UserHabitDTO>.FailureResult("User habit not found.");
 
                 var today = DateTime.UtcNow.Date;
+                var yesterday = today.AddDays(-1);
 
                 var existingHabitRecord = await _readHabitRecordRepository.GetByUserHabitIdAndDateAsync(userHabit.Id, today);
 
                 if (existingHabitRecord != null && existingHabitRecord.IsCompleted && !existingHabitRecord.IsDeleted)
                     return Result<UserHabitDTO>.FailureResult("Habit already completed for today.");
+
+                var yesterdayRecord = await _readHabitRecordRepository.GetByUserHabitIdAndDateAsync(userHabit.Id, yesterday);
+                if (yesterdayRecord == null || !yesterdayRecord.IsCompleted)
+                {
+                    if (userHabit.CurrentStreak > 0)
+                    {
+                        userHabit.CurrentStreak = 0;
+
+                        await _userActivityService.CreateActivityAsync(new CreateActivityDTO
+                        {
+                            UserId = userId,
+                            Title="Streak Broken",
+                            ActivityType = ActivityType.StreakBroken,
+                            Description = $"Your streak for habit '{(!string.IsNullOrEmpty(userHabit.Title) ? userHabit.Title : userHabit.Habit?.Title)}' was broken.",
+                            CreatedAt = DateTime.UtcNow
+                        });
+                    }
+                }
 
                 if (userHabit.IncrementValue.HasValue && userHabit.TargetValue.HasValue)
                 {
@@ -255,17 +276,12 @@ namespace GrowDay.Persistance.Services
                     {
                         userHabit.CurrentValue = 0;
                         userHabit.LastCompletedDate = today;
-
-                        if (userHabit.LastCompletedDate.HasValue && userHabit.LastCompletedDate.Value.Date == today.AddDays(-1))
-                            userHabit.CurrentStreak++;
-                        else
-                            userHabit.CurrentStreak = 1;
+                        userHabit.CurrentStreak++;
 
                         if (userHabit.CurrentStreak > userHabit.LongestStreak)
                             userHabit.LongestStreak = userHabit.CurrentStreak;
 
-
-                        if(existingHabitRecord!=null && !existingHabitRecord.IsDeleted)
+                        if (existingHabitRecord != null && !existingHabitRecord.IsDeleted)
                         {
                             existingHabitRecord.IsCompleted = true;
                             if (!string.IsNullOrEmpty(note))
@@ -289,7 +305,6 @@ namespace GrowDay.Persistance.Services
                             await _writeHabitRecordRepository.AddAsync(habitRecord);
                         }
 
-
                         await _notificationService.CreateAndSendNotificationAsync(
                             userHabit.Id,
                             userId,
@@ -297,6 +312,15 @@ namespace GrowDay.Persistance.Services
                             $"You reached your goal for {(!string.IsNullOrEmpty(userHabit.Title) ? userHabit.Title : userHabit.Habit?.Title)}! Great job!",
                             NotificationType.Achievement
                         );
+
+                        await _userActivityService.CreateActivityAsync(new CreateActivityDTO
+                        {
+                            UserId = userId,
+                            Title="Habit Completed",
+                            ActivityType = ActivityType.HabitCompleted,
+                            Description = $"Completed habit: {(!string.IsNullOrEmpty(userHabit.Title) ? userHabit.Title : userHabit.Habit?.Title)}",
+                            CreatedAt = DateTime.UtcNow
+                        });
                     }
                     else
                     {
@@ -330,8 +354,7 @@ namespace GrowDay.Persistance.Services
                     await CompleteTaskProgressAsync(userId, userTask);
 
                 await _writeUserHabitRepository.UpdateAsync(userHabit);
-                
-                
+
                 var habitDTO = new UserHabitDTO
                 {
                     UserHabitId = userHabit.Id,
@@ -347,8 +370,9 @@ namespace GrowDay.Persistance.Services
                     TargetValue = userHabit.TargetValue,
                     IncrementValue = userHabit.IncrementValue,
                     Unit = userHabit.Unit,
-                    ProgressPercentage = (userHabit.TargetValue.HasValue && userHabit.TargetValue.Value > 0) 
-                    ? (userHabit.CurrentValue / userHabit.TargetValue.Value) * 100 : 0,
+                    ProgressPercentage = (userHabit.TargetValue.HasValue && userHabit.TargetValue.Value > 0)
+                        ? (userHabit.CurrentValue / userHabit.TargetValue.Value) * 100
+                        : 0,
                     CurrentStreak = userHabit.CurrentStreak,
                     LongestStreak = userHabit.LongestStreak,
                     NotificationTime = userHabit.NotificationTime,
@@ -364,6 +388,7 @@ namespace GrowDay.Persistance.Services
                 return Result<UserHabitDTO>.FailureResult("An error occurred while completing the habit.");
             }
         }
+
 
 
         private async Task CompleteTaskProgressAsync(string userId, UserTask userTask)

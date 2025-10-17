@@ -21,6 +21,7 @@ namespace GrowDay.Domain.Entities.Concretes
         public virtual ICollection<Notification>? Notifications { get; set; }
         public virtual ICollection<Statistic>? Statistics { get; set; }
         public virtual ICollection<UserPreferences>? UserPreferences { get; set; }
+        public virtual ICollection<UserActivity>? UserActivities { get; set; }
 
     }
 

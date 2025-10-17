@@ -22,13 +22,16 @@ namespace GrowDay.Persistance.Services
         protected readonly IUserHabitService _userHabitService;
         protected readonly IWriteUserTaskCompletionRepository _writeUserTaskCompletionRepository;
         protected readonly IReadUserTaskCompletionRepository _readUserTaskCompletionRepository;
+        protected readonly IUserActivityService _userActivityService;
         protected readonly ILogger<UserTaskService> _logger;
+
 
         public UserTaskService(IWriteUserTaskRepository writeUserTaskRepository, IReadUserTaskRepository readUserTaskRepository, ILogger<UserTaskService> logger,
             IReadAchievementRepository readAchievementRepository, IWriteUserAchievementRepository writeUserAchievementRepository,
             IReadUserAchievementRepository readUserAchievementRepository, IStatisticService statisticService, IReadUserHabitRepository readUserHabitRepository,
             INotificationService notificationService, IUserHabitService userHabitService, IReadUserTaskCompletionRepository readUserTaskCompletionRepository,
-            IWriteUserTaskCompletionRepository writeUserTaskCompletionRepository, IWriteUserHabitRepository writeUserHabitRepository)
+            IWriteUserTaskCompletionRepository writeUserTaskCompletionRepository, IWriteUserHabitRepository writeUserHabitRepository, 
+            IUserActivityService userActivityService)
         {
             _writeUserTaskRepository = writeUserTaskRepository;
             _readUserTaskRepository = readUserTaskRepository;
@@ -43,6 +46,7 @@ namespace GrowDay.Persistance.Services
             _readUserTaskCompletionRepository = readUserTaskCompletionRepository;
             _writeUserTaskCompletionRepository = writeUserTaskCompletionRepository;
             _writeUserHabitRepository = writeUserHabitRepository;
+            _userActivityService = userActivityService;
         }
 
         public async Task<Result<UserTaskDTO>> CompleteTaskAsync(string userId, string taskId)
@@ -107,6 +111,13 @@ namespace GrowDay.Persistance.Services
                     userTask.IsCompleted = true;
                     userTask.CompletedAt = DateTime.UtcNow;
                     await _writeUserTaskRepository.UpdateAsync(userTask);
+                    await _userActivityService.CreateActivityAsync(new CreateActivityDTO
+                    {
+                        UserId = userId,
+                        Title = $"Task Completed: {userTask.Title}, {userTask.TotalPointsEarned} points earned",
+                        Description = $"You have completed the task '{userTask.Title}' and earned {userTask.Points} points!",
+                        ActivityType = ActivityType.TaskCompleted,
+                    });
                 }
                 if (userTask.UserHabitId != null)
                 {
@@ -246,6 +257,14 @@ namespace GrowDay.Persistance.Services
                             "New Achievement Unlocked! 🏆",
                             $"Congratulations! You've unlocked the achievement: {achievement.Title}",
                             NotificationType.Achievement);
+
+                        await _userActivityService.CreateActivityAsync(new CreateActivityDTO
+                        {
+                            UserId = userId,
+                            Title = $"Achievement Unlocked: {achievement.Title}",
+                            Description = $"You have unlocked a new achievement: '{achievement.Title}'!",
+                            ActivityType = ActivityType.AchievementEarned,
+                        });
                     }
                 }
             }
