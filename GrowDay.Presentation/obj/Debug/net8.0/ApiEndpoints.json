@@ -452,6 +452,16 @@
   },
   {
     "ContainingType": "GrowDay.Presentation.Controllers.NotificationController",
+    "Method": "MarkAllNotificationsAsRead",
+    "RelativePath": "api/Notification/readall",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.NotificationController",
     "Method": "SetNotificationTime",
     "RelativePath": "api/Notification/SetNotificationTime",
     "HttpMethod": "PUT",
@@ -462,6 +472,27 @@
         "Name": "setNotificationTimeDTO",
         "Type": "GrowDay.Domain.DTO.SetNotificationTimeDTO",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.NotificationController",
+    "Method": "GetUnreadNotificationsByUser",
+    "RelativePath": "api/Notification/unreadnotifications",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pageIndex",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

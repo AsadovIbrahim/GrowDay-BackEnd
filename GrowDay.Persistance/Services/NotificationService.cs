@@ -113,6 +113,37 @@ namespace GrowDay.Persistance.Services
             }
         }
 
+        public async Task<Result<IEnumerable<NotificationDTO>>> GetUnreadUserNotificationsAsync(string userId, int pageIndex = 0, int pageSize = 10)
+        {
+            try
+            {
+                var notifications = await _readNotificationRepository.GetNotificationsByUserIdAsync(userId, pageIndex, pageSize);
+                if (notifications == null || !notifications.Any())
+                {
+                    return Result<IEnumerable<NotificationDTO>>.FailureResult("No notifications found for the specified user.");
+                }
+                var unreadNotifications = notifications.Where(n => !n.IsRead && n.SentAt != null).ToList();
+                var notificationDTOs = unreadNotifications.Select(n => new NotificationDTO
+                {
+                    Id = n.Id,
+                    UserHabitId = n.UserHabitId,
+                    UserId = n.UserId,
+                    HabitTitle = n.Title,
+                    Message = n.Message,
+                    IsRead = n.IsRead,
+                    CreatedAt = n.CreatedAt,
+                    SentAt = n.SentAt,
+                    NotificationType = n.NotificationType
+                }).ToList();
+                return Result<IEnumerable<NotificationDTO>>.SuccessResult(notificationDTOs, "Unread user notifications retrieved successfully.");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error while retrieving unread user notifications");
+                return Result<IEnumerable<NotificationDTO>>.FailureResult("An error occurred while retrieving unread user notifications.");
+            }
+        }
+
         public async Task<Result<NotificationDTO>> GetUserNotificationByIdAsync(string notificationId)
         {
             try
@@ -172,6 +203,32 @@ namespace GrowDay.Persistance.Services
             {
                 _logger.LogError(ex, "Error while retrieving paginated user notifications");
                 return Result<IEnumerable<NotificationDTO>>.FailureResult("An error occurred while retrieving paginated user notifications.");
+            }
+        }
+
+        public async Task<Result> MarkAllAsReadAsync(string userId)
+        {
+            try
+            {
+                var notifications = await _readNotificationRepository.GetNotificationsByUserIdAsync(userId, 0, int.MaxValue);
+                if (notifications == null || !notifications.Any())
+                {
+                    return Result.FailureResult("No notifications found for the specified user.");
+                }
+                foreach (var notification in notifications)
+                {
+                    if (!notification.IsRead)
+                    {
+                        notification.IsRead = true;
+                        await _writeNotificationRepository.UpdateAsync(notification);
+                    }
+                }
+                return Result.SuccessResult("All notifications marked as read.");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error while marking all notifications as read");
+                return Result.FailureResult("An error occurred while marking all notifications as read.");
             }
         }
 

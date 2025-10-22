@@ -26,7 +26,7 @@ namespace GrowDay.Presentation.Controllers
             }
 
             var result = await _notificationService.CreateAndSendNotificationAsync(
-                createNotificationDTO.HabitId,
+                createNotificationDTO.HabitId!,
                 createNotificationDTO.UserId,
                 createNotificationDTO.Title,
                 createNotificationDTO.Message,
@@ -38,7 +38,8 @@ namespace GrowDay.Presentation.Controllers
 
             return Ok(result);
         }
-        [Authorize(Roles ="User")]
+
+        [Authorize(Roles = "User")]
         [HttpGet("{notificationId}")]
         public async Task<IActionResult> GetNotificationById(string notificationId)
         {
@@ -74,6 +75,23 @@ namespace GrowDay.Presentation.Controllers
         }
 
         [Authorize(Roles = "User")]
+        [HttpGet("unreadnotifications")]
+        public async Task<IActionResult> GetUnreadNotificationsByUser([FromQuery] int pageIndex = 0, [FromQuery] int pageSize = 10)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userId))
+            {
+                return BadRequest("User ID cannot be null or empty.");
+            }
+            var result = await _notificationService.GetUnreadUserNotificationsAsync(userId, pageIndex, pageSize);
+            if (!result.Success)
+            {
+                return BadRequest(result.Message);
+            }
+            return Ok(result.Data);
+        }
+
+        [Authorize(Roles = "User")]
         [HttpPut("read/{notificationId}")]
         public async Task<IActionResult> MarkNotificationAsRead(string notificationId)
         {
@@ -90,6 +108,24 @@ namespace GrowDay.Presentation.Controllers
 
             return Ok(result);
         }
+
+        [Authorize(Roles ="User")]
+        [HttpPut("readall")]
+        public async Task<IActionResult> MarkAllNotificationsAsRead()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userId))
+            {
+                return BadRequest("User ID cannot be null or empty.");
+            }
+            var result = await _notificationService.MarkAllAsReadAsync(userId);
+            if (!result.Success)
+            {
+                return BadRequest(result.Message);
+            }
+            return Ok(result);
+        }
+
         [Authorize(Roles = "User")]
         [HttpPut("SetNotificationTime")]
         public async Task<IActionResult> SetNotificationTime([FromBody] SetNotificationTimeDTO setNotificationTimeDTO)
@@ -123,7 +159,7 @@ namespace GrowDay.Presentation.Controllers
 
             return Ok(result);
         }
-        [Authorize(Roles ="User")]
+        [Authorize(Roles = "User")]
         [HttpDelete("ClearAllNotifications")]
         public async Task<IActionResult> ClearAllNotifications()
         {
@@ -134,7 +170,5 @@ namespace GrowDay.Presentation.Controllers
             }
             return Ok(result);
         }
-
-
     }
 }
