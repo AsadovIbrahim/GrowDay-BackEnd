@@ -90,6 +90,22 @@ namespace GrowDay.Presentation.Controllers
             }
             return Ok(result.Data);
         }
+        [Authorize(Roles ="User")]
+        [HttpGet("unreadcount")]
+        public async Task<IActionResult> GetUnreadNotificationCount()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userId))
+            {
+                return BadRequest("User ID cannot be null or empty.");
+            }
+            var result = await _notificationService.GetUserUnReadNotificationsCountAsync(userId);
+            if (!result.Success)
+            {
+                return BadRequest(result.Message);
+            }
+            return Ok(result.Data);
+        }
 
         [Authorize(Roles = "User")]
         [HttpPut("read/{notificationId}")]

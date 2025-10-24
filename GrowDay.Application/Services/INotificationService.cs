@@ -15,8 +15,7 @@ namespace GrowDay.Application.Services
         Task<Result> DeleteNotificationAsync(string notificationId);
 
         Task<Result> SetNotificationTimeAsync(SetNotificationTimeDTO setNotificationTimeDTO);
+        Task<Result<int>>GetUserUnReadNotificationsCountAsync(string userId);
         Task<Result> ClearAllNotifications();
-
-
     }
 }

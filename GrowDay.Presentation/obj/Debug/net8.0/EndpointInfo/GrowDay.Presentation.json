@@ -704,6 +704,18 @@
         }
       }
     },
+    "/api/Notification/unreadcount": {
+      "get": {
+        "tags": [
+          "Notification"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Notification/read/{notificationId}": {
       "put": {
         "tags": [

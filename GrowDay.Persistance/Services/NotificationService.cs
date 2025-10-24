@@ -206,6 +206,25 @@ namespace GrowDay.Persistance.Services
             }
         }
 
+        public async Task<Result<int>> GetUserUnReadNotificationsCountAsync(string userId)
+        {
+            try
+            {
+                var count = await _readNotificationRepository.GetNotificationsByUserIdAsync(userId);
+                if (count == null || !count.Any())
+                {
+                    return Result<int>.SuccessResult(0, "No notifications found for the specified user.");
+                }
+                var unreadCount = count.Count(n => !n.IsRead && n.SentAt != null);
+                return Result<int>.SuccessResult(unreadCount, "Unread notifications count retrieved successfully.");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error while retrieving unread notifications count");
+                return Result<int>.FailureResult("An error occurred while retrieving unread notifications count.");
+            }
+        }
+
         public async Task<Result> MarkAllAsReadAsync(string userId)
         {
             try

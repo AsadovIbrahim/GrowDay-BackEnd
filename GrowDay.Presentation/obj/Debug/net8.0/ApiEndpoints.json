@@ -478,6 +478,16 @@
   },
   {
     "ContainingType": "GrowDay.Presentation.Controllers.NotificationController",
+    "Method": "GetUnreadNotificationCount",
+    "RelativePath": "api/Notification/unreadcount",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.NotificationController",
     "Method": "GetUnreadNotificationsByUser",
     "RelativePath": "api/Notification/unreadnotifications",
     "HttpMethod": "GET",
