@@ -128,11 +128,11 @@ namespace GrowDay.Persistance.Services
             }
         }
 
-        public async Task<Result<IEnumerable<TaskDTO>>> GetAllTasksAsync()
+        public async Task<Result<IEnumerable<TaskDTO>>> GetAllTasksAsync(int pageIndex = 0, int pageSize = 10)
         {
             try
             {
-                var tasks = await _readTaskRepository.GetAllAsync();
+                var tasks = await _readTaskRepository.GetAllTasksAsync(pageIndex,pageSize);
                 if (!tasks.Any())
                 {
                     return Result<IEnumerable<TaskDTO>>

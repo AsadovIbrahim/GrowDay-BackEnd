@@ -12,10 +12,13 @@ namespace GrowDay.Persistance.Repositories
         {
         }
 
-        public async Task<ICollection<UserHabit>> GetAllActiveUserHabitsAsync()
+        public async Task<ICollection<UserHabit>> GetAllActiveUserHabitsAsync(int pageIndex = 0, int pageSize = 10)
         {
             return await _table
-                .Where(uh=>!uh.IsDeleted && uh.IsActive)
+                .Include(uh => uh.Habit)
+                .Where(uh => uh.IsActive && !uh.IsDeleted)
+                .Skip(pageIndex * pageSize)
+                .Take(pageSize)
                 .ToListAsync();
         }
 

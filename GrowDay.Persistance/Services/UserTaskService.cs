@@ -177,11 +177,11 @@ namespace GrowDay.Persistance.Services
 
 
 
-        public async Task<Result<IEnumerable<UserTaskDTO>>> GetAllTasksAsync(string userId)
+        public async Task<Result<IEnumerable<UserTaskDTO>>> GetAllTasksAsync(string userId,int pageIndex=0,int pageSize=10)
         {
             try
             {
-                var userTasks = await _readUserTaskRepository.GetUserTasksByUserIdAsync(userId);
+                var userTasks = await _readUserTaskRepository.GetUserTasksByUserIdAsync(userId,pageIndex,pageSize);
                 if (!userTasks.Any())
                 {
                     return Result<IEnumerable<UserTaskDTO>>

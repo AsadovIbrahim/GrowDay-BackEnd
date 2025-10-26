@@ -65,11 +65,11 @@ namespace GrowDay.Persistance.Services
             }
         }
 
-        public async Task<Result<IEnumerable<UserAchievementDTO>>> GetUserAchievementsAsync(string userId)
+        public async Task<Result<IEnumerable<UserAchievementDTO>>> GetUserAchievementsAsync(string userId, int pageIndex = 0, int pageSize = 10)
         {
             try
             {
-                var userAchievements = await _readUserAchievementRepository.GetUserAchievementsAsync(userId);
+                var userAchievements = await _readUserAchievementRepository.GetUserAchievementsAsync(userId,pageIndex,pageSize);
                 if (!userAchievements.Any())
                 {
                     return Result<IEnumerable<UserAchievementDTO>>

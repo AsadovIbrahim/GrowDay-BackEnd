@@ -47,9 +47,17 @@ namespace GrowDay.Persistance.Repositories
             return await _table.FirstOrDefaultAsync(ut => ut.UserId == userId && ut.TaskId == taskId);
         }
 
-        public async Task<IEnumerable<UserTask>> GetUserTasksByUserIdAsync(string userId)
+        public async Task<IEnumerable<UserTask>> GetUserTasksByUserIdAsync(string userId, int pageIndex = 0, int pageSize = 10)
         {
-            return await _table.Where(ut => ut.UserId == userId).ToListAsync();
+            //return await _table.Where(ut => ut.UserId == userId).ToListAsync();
+            return await _table
+                .Include(ut => ut.Task)
+                .Include(ut => ut.UserHabit)
+                    .ThenInclude(uh => uh!.Habit)
+                .Where(ut => ut.UserId == userId && !ut.IsDeleted)
+                .Skip(pageIndex * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
         }
     }
 }

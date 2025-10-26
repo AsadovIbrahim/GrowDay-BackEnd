@@ -9,7 +9,7 @@ namespace GrowDay.Application.Services
         Task<Result<HabitDTO>> UpdateHabitAsync(UpdateHabitDTO dto);
         Task<Result> DeleteHabitAsync(string habitId);
         Task<Result<HabitDTO>> GetHabitByIdAsync(string habitId);
-        Task<Result<IEnumerable<HabitDTO>>> GetAllHabitsAsync();
+        Task<Result<IEnumerable<HabitDTO>>> GetAllHabitsAsync(int pageIndex = 0, int pageSize = 10);
         Task<Result> ClearAllHabitsAsync();
 
     }

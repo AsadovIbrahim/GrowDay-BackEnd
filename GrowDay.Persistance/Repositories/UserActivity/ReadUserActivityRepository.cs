@@ -12,11 +12,13 @@ namespace GrowDay.Persistance.Repositories
         {
         }
 
-        public async Task<IEnumerable<UserActivity>> GetUserActivitiesAsync(string userId)
+        public async Task<IEnumerable<UserActivity>> GetUserActivitiesAsync(string userId, int pageIndex = 0, int pageSize = 10)
         {
             return await _table
                 .Where(ua => ua.UserId == userId && !ua.IsDeleted)
-                .OrderByDescending(x=>x.CreatedAt)
+                .OrderByDescending(x => x.CreatedAt)
+                .Skip(pageIndex * pageSize)
+                .Take(pageSize)
                 .ToListAsync();
         }
     }

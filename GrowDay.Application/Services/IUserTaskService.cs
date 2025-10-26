@@ -7,7 +7,7 @@ namespace GrowDay.Application.Services
     public interface IUserTaskService
     {
        
-        Task<Result<IEnumerable<UserTaskDTO>>>GetAllTasksAsync(string userId);
+        Task<Result<IEnumerable<UserTaskDTO>>>GetAllTasksAsync(string userId, int pageIndex = 0, int pageSize = 10);
         Task<Result<UserTaskDTO>>CompleteTaskAsync(string userId,string taskId);
         Task<Result<ICollection<UserTaskDTO>>>GetCompletedTasksAsync(string userId);
         Task CheckAndGrantAchievementsAsync(string userId);

@@ -5,12 +5,12 @@ namespace GrowDay.Application.Services
 {
     public interface ISuggestedHabitService
     {
-        Task<Result<IEnumerable<SuggestedHabitDTO>>>GetAllSuggestedHabitsAsync();
+        Task<Result<IEnumerable<SuggestedHabitDTO>>>GetAllSuggestedHabitsAsync(int pageIndex=0,int pageSize=10);
         Task<Result<SuggestedHabitDTO>> GetSuggestedHabitByIdAsync(string id);
         Task<Result<SuggestedHabitDTO>> CreateSuggestedHabitAsync(CreateSuggestedHabitDTO createSuggestedHabitDTO);
         Task<Result<SuggestedHabitDTO>> UpdateSuggestedHabitAsync(UpdateSuggestedHabitDTO updateSuggestedHabitDTO);
         Task<Result> DeleteSuggestedHabitAsync(string id);
-        Task<Result<IEnumerable<SuggestedHabitDTO>>> GetSuggestedHabitsForUserAsync(string userId);
+        Task<Result<IEnumerable<SuggestedHabitDTO>>> GetSuggestedHabitsForUserAsync(string userId,int pageIndex=0,int pageSize=10);
 
     }
 }

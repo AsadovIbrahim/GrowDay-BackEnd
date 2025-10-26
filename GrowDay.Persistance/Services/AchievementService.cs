@@ -100,11 +100,11 @@ namespace GrowDay.Persistance.Services
             }
         }
 
-        public async Task<Result<IEnumerable<AchievementDTO>>> GetAllAchievementsAsync()
+        public async Task<Result<IEnumerable<AchievementDTO>>> GetAllAchievementsAsync(int pageIndex=0,int pageSize=10)
         {
             try
             {
-                var achievements = await _readAchievementRepository.GetAllAsync();
+                var achievements = await _readAchievementRepository.GetAllAchievementsAsync(pageIndex,pageSize);
                 if (achievements == null || !achievements.Any())
                 {
                     return Result<IEnumerable<AchievementDTO>>.FailureResult("No achievements found.");

@@ -16,12 +16,12 @@ namespace GrowDay.Presentation.Controllers
             _userAchievementService = userAchievementService;
         }
         [HttpGet("GetMyAchievements")]
-        public async Task<IActionResult> GetUserAchievements()
+        public async Task<IActionResult> GetUserAchievements([FromQuery]int pageIndex = 0, [FromQuery]int pageSize=10)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (userId == null)
                 return Unauthorized("User is not authenticated.");
-            var result = await _userAchievementService.GetUserAchievementsAsync(userId);
+            var result = await _userAchievementService.GetUserAchievementsAsync(userId,pageIndex,pageSize);
             if (!result.Success)
                 return BadRequest(result.Message);
             return Ok(result);

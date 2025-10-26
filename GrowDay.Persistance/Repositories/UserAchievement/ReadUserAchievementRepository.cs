@@ -12,11 +12,13 @@ namespace GrowDay.Persistance.Repositories
         {
         }
 
-        public async Task<IEnumerable<UserAchievement>> GetUserAchievementsAsync(string userId)
+        public async Task<IEnumerable<UserAchievement>> GetUserAchievementsAsync(string userId, int pageIndex = 0, int pageSize = 10)
         {
             return await _table
                 .Include(ua => ua.Achievement)
                 .Where(ua => ua.UserId == userId)
+                .Skip(pageIndex * pageSize)
+                .Take(pageSize)
                 .ToListAsync();
         }
 

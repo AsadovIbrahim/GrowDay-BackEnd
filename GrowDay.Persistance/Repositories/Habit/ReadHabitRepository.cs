@@ -12,6 +12,16 @@ namespace GrowDay.Persistance.Repositories
         {
 
         }
+
+        public async Task<IEnumerable<Habit>> GetAllHabitsListAsync(int pageIndex = 0, int pageSize = 10)
+        {
+            return await _table
+                .Where(h => !h.IsGlobal)
+                .Skip(pageIndex * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+        }
+
         public async Task<Habit?> GetByTitleAndUserAsync(string title, string userId)
         {
             return await _table

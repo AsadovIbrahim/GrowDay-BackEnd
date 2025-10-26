@@ -38,9 +38,9 @@ namespace GrowDay.Presentation.Controllers
         }
         [HttpGet("GetAllTasks")]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> GetAllTasks()
+        public async Task<IActionResult> GetAllTasks([FromQuery] int pageIndex = 0, [FromQuery] int pageSize = 10)
         {
-            var result = await _taskService.GetAllTasksAsync();
+            var result = await _taskService.GetAllTasksAsync(pageIndex,pageSize);
             if (!result.Success)
             {
                 return BadRequest(result.Message);

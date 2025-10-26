@@ -14,17 +14,17 @@ namespace GrowDay.Presentation.Controllers
         {
             _userTaskService = userTaskService;
         }
-       
+
         [HttpGet("GetMyTasks")]
-        [Authorize(Roles ="Admin,User")]
-        public async Task<IActionResult> GetAllTasks()
+        [Authorize(Roles = "Admin,User")]
+        public async Task<IActionResult> GetAllTasks([FromQuery] int pageIndex = 0, [FromQuery] int pageSize = 10)
         {
-            var userId=User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (string.IsNullOrEmpty(userId))
             {
                 return Unauthorized(new { Message = "User is not authenticated." });
             }
-            var result = await _userTaskService.GetAllTasksAsync(userId!);
+            var result = await _userTaskService.GetAllTasksAsync(userId!,pageIndex,pageSize);
             if (!result.Success)
             {
                 return BadRequest(result.Message);
@@ -32,10 +32,10 @@ namespace GrowDay.Presentation.Controllers
             return Ok(result);
         }
         [HttpPut("CompleteTask/{userTaskId}")]
-        [Authorize(Roles ="User")]
+        [Authorize(Roles = "User")]
         public async Task<IActionResult> CompleteTask(string userTaskId)
         {
-            var userId=User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (string.IsNullOrEmpty(userId))
             {
                 return Unauthorized(new { Message = "User is not authenticated." });
@@ -48,10 +48,10 @@ namespace GrowDay.Presentation.Controllers
             return Ok(result);
         }
         [HttpGet("GetCompletedTasks")]
-        [Authorize(Roles ="User")]
+        [Authorize(Roles = "User")]
         public async Task<IActionResult> GetCompletedTasks()
         {
-            var userId=User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (string.IsNullOrEmpty(userId))
             {
                 return Unauthorized(new { Message = "User is not authenticated." });
@@ -64,7 +64,7 @@ namespace GrowDay.Presentation.Controllers
             return Ok(result);
         }
         [HttpDelete("DeleteMyTask/{userTaskId}")]
-        [Authorize(Roles ="User")]
+        [Authorize(Roles = "User")]
         public async Task<IActionResult> DeleteUserTask(string userTaskId)
         {
             var result = await _userTaskService.DeleteUserTaskAsync(userTaskId);
@@ -75,10 +75,10 @@ namespace GrowDay.Presentation.Controllers
             return Ok(result);
         }
         [HttpGet("GetTaskStats/{taskId}")]
-        [Authorize(Roles ="User")]
+        [Authorize(Roles = "User")]
         public async Task<IActionResult> GetUserTaskStats(string taskId)
         {
-            var userId=User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (string.IsNullOrEmpty(userId))
             {
                 return Unauthorized(new { Message = "User is not authenticated." });

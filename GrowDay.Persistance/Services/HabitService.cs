@@ -104,11 +104,11 @@ namespace GrowDay.Persistance.Services
                 return Result.FailureResult("An error occurred while deleting the habit.");
             }
         }
-        public async Task<Result<IEnumerable<HabitDTO>>> GetAllHabitsAsync()
+        public async Task<Result<IEnumerable<HabitDTO>>> GetAllHabitsAsync(int pageIndex = 0, int pageSize = 10)
         {
             try
             {
-                var habits = await _readHabitRepository.GetAllAsync();
+                var habits = await _readHabitRepository.GetAllHabitsListAsync(pageIndex,pageSize);
                 if (habits == null || !habits.Any())
                 {
                     return Result<IEnumerable<HabitDTO>>.FailureResult("No habits found.");

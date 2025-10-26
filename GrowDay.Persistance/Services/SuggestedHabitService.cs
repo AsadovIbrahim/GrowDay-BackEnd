@@ -98,11 +98,11 @@ namespace GrowDay.Persistance.Services
             }
         }
 
-        public async Task<Result<IEnumerable<SuggestedHabitDTO>>> GetAllSuggestedHabitsAsync()
+        public async Task<Result<IEnumerable<SuggestedHabitDTO>>> GetAllSuggestedHabitsAsync(int pageIndex=0,int pageSize=10)
         {
             try
             {
-                var suggestedHabits = await _readSuggestedHabitRepository.GetAllAsync();
+                var suggestedHabits = await _readSuggestedHabitRepository.GetSuggestedHabitsAsync(pageIndex,pageSize);
                 var suggestedHabitDTOs = suggestedHabits!
                     .Where(sh => !sh.IsDeleted)
                     .Select(sh => new SuggestedHabitDTO
@@ -165,7 +165,7 @@ namespace GrowDay.Persistance.Services
             }
         }
 
-        public async Task<Result<IEnumerable<SuggestedHabitDTO>>> GetSuggestedHabitsForUserAsync(string userId)
+        public async Task<Result<IEnumerable<SuggestedHabitDTO>>> GetSuggestedHabitsForUserAsync(string userId, int pageIndex = 0, int pageSize = 10)
         {
             try
             {
@@ -173,7 +173,7 @@ namespace GrowDay.Persistance.Services
                 if (preferences == null)
                     return Result<IEnumerable<SuggestedHabitDTO>>.FailureResult("User preferences not found.");
 
-                var allSuggestedHabits = await _readSuggestedHabitRepository.GetAllAsync();
+                var allSuggestedHabits = await _readSuggestedHabitRepository.GetSuggestedUserHabitsAsync(pageIndex,pageSize);
 
                 var matchedHabits = allSuggestedHabits!.Where(habit =>
                     MatchesCriteria(habit, preferences));

@@ -18,9 +18,9 @@ namespace GrowDay.Presentation.Controllers
         }
         [HttpGet("GetMyHabits")]
 
-        public async Task<IActionResult> GetAllUserHabits()
+        public async Task<IActionResult> GetAllUserHabits([FromQuery]int pageIndex = 0, [FromQuery]int pageSize=10)
         {
-            var userHabits = await _userHabitService.GetAllUserHabitAsync();
+            var userHabits = await _userHabitService.GetAllUserHabitAsync(pageIndex,pageSize);
             return Ok(userHabits);
         }
         [HttpGet("{userHabitId}")]

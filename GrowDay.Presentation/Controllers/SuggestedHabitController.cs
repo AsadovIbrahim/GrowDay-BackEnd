@@ -16,27 +16,27 @@ namespace GrowDay.Presentation.Controllers
             _suggestedHabitService = suggestedHabitService;
         }
 
-        [Authorize(Roles ="User")]
+        [Authorize(Roles = "User")]
         [HttpGet("GetUserSuggestedHabits")]
-        public async Task<IActionResult> GetUserSuggestedHabits()
+        public async Task<IActionResult> GetUserSuggestedHabits([FromQuery] int pageIndex = 0, [FromQuery] int pageSize = 10)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var result = await _suggestedHabitService.GetSuggestedHabitsForUserAsync(userId!);
+            var result = await _suggestedHabitService.GetSuggestedHabitsForUserAsync(userId!, pageIndex, pageSize);
             if (!result.Success)
                 return BadRequest(result.Message);
 
             return Ok(result);
         }
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles = "Admin")]
         [HttpGet("GetAllSuggestedHabits")]
-        public async Task<IActionResult> GetAllSuggestedHabits()
+        public async Task<IActionResult> GetAllSuggestedHabits([FromQuery] int pageIndex = 0, [FromQuery] int pageSize = 10)
         {
-            var result = await _suggestedHabitService.GetAllSuggestedHabitsAsync();
+            var result = await _suggestedHabitService.GetAllSuggestedHabitsAsync(pageIndex,pageSize);
             if (!result.Success)
                 return BadRequest(result.Message);
             return Ok(result);
         }
-        [Authorize (Roles ="User")]
+        [Authorize(Roles = "User")]
         [HttpGet("{suggestedHabitId}")]
         public async Task<IActionResult> GetSuggestedHabitById(string suggestedHabitId)
         {
@@ -45,7 +45,7 @@ namespace GrowDay.Presentation.Controllers
                 return BadRequest(result.Message);
             return Ok(result);
         }
-        [Authorize (Roles ="Admin")]
+        [Authorize(Roles = "Admin")]
         [HttpPost("CreateSuggestedHabit")]
         public async Task<IActionResult> CreateSuggestedHabit([FromBody] CreateSuggestedHabitDTO createSuggestedHabitDTO)
         {
@@ -54,8 +54,8 @@ namespace GrowDay.Presentation.Controllers
                 return BadRequest(result.Message);
             return Ok(result);
         }
-        
-        [Authorize (Roles ="Admin")]
+
+        [Authorize(Roles = "Admin")]
         [HttpPut("UpdateSuggestedHabit")]
         public async Task<IActionResult> UpdateSuggestedHabit([FromBody] UpdateSuggestedHabitDTO updateSuggestedHabitDTO)
         {
@@ -64,7 +64,7 @@ namespace GrowDay.Presentation.Controllers
                 return BadRequest(result.Message);
             return Ok(result);
         }
-        [Authorize (Roles ="Admin")]
+        [Authorize(Roles = "Admin")]
         [HttpDelete("DeleteSuggestedHabit/{suggestedHabitId}")]
         public async Task<IActionResult> DeleteSuggestedHabit(string suggestedHabitId)
         {

@@ -16,14 +16,14 @@ namespace GrowDay.Presentation.Controllers
             _userActivityService = userActivityService;
         }
         [HttpGet("GetUserActivities")]
-        public async Task<IActionResult> GetUserActivities()
+        public async Task<IActionResult> GetUserActivities([FromQuery] int pageIndex = 0, [FromQuery] int pageSize = 10)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (string.IsNullOrEmpty(userId))
             {
                 return BadRequest("User ID is required.");
             }
-            var result = await _userActivityService.GetUserActivitiesAsync(userId);
+            var result = await _userActivityService.GetUserActivitiesAsync(userId, pageIndex, pageSize);
             if (!result.Success)
             {
                 return BadRequest(result.Message);

@@ -435,11 +435,11 @@ namespace GrowDay.Persistance.Services
             }
         }
 
-        public async Task<Result<List<UserHabitDTO>>> GetAllUserHabitAsync()
+        public async Task<Result<List<UserHabitDTO>>> GetAllUserHabitAsync(int pageIndex=0,int pageSize=10)
         {
             try
             {
-                var userHabits = await _readUserHabitRepository.GetAllAsync();
+                var userHabits = await _readUserHabitRepository.GetAllActiveUserHabitsAsync(pageIndex,pageSize);
                 if (userHabits == null || !userHabits.Any())
                 {
                     return Result<List<UserHabitDTO>>.FailureResult("No user habits found.");

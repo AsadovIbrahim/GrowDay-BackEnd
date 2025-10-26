@@ -16,9 +16,9 @@ namespace GrowDay.Presentation.Controllers
         }
         [HttpGet("GetAllAchievements")]
         [Authorize(Roles ="Admin,User")]
-        public async Task<IActionResult> GetAllAchievements()
+        public async Task<IActionResult> GetAllAchievements([FromQuery]int pageIndex = 0, [FromQuery]int pageSize=10)
         {
-            var result = await _achievementService.GetAllAchievementsAsync();
+            var result = await _achievementService.GetAllAchievementsAsync(pageIndex,pageSize);
             if (!result.Success)
             {
                 return BadRequest(result.Message);

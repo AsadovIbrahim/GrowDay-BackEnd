@@ -93,11 +93,11 @@ namespace GrowDay.Persistance.Services
             }
         }
 
-        public async Task<Result<IEnumerable<UserActivityDTO>>> GetUserActivitiesAsync(string userId)
+        public async Task<Result<IEnumerable<UserActivityDTO>>> GetUserActivitiesAsync(string userId, int pageIndex = 0, int pageSize = 10)
         {
             try
             {
-                var activities = await _readUserActivityRepository.GetUserActivitiesAsync(userId);
+                var activities = await _readUserActivityRepository.GetUserActivitiesAsync(userId,pageIndex,pageSize);
                 if (activities == null || !activities.Any())
                 {
                     return Result<IEnumerable<UserActivityDTO>>.FailureResult("No activities found for the user.");
