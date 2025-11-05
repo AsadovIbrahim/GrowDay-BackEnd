@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace GrowDay.Presentation.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]")] 
     [ApiController]
     public class UserTaskController : ControllerBase
     {

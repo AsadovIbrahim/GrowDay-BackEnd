@@ -234,13 +234,19 @@ namespace GrowDay.Persistance.Services
                 {
                     return Result.FailureResult("No notifications found for the specified user.");
                 }
+                bool anyUnread = notifications.Any(n => !n.IsRead);
                 foreach (var notification in notifications)
                 {
                     if (!notification.IsRead)
                     {
                         notification.IsRead = true;
                         await _writeNotificationRepository.UpdateAsync(notification);
+                        anyUnread = true;
                     }
+                }
+                if (!anyUnread)
+                {
+                    return Result.SuccessResult("All notifications are already marked as read.");
                 }
                 return Result.SuccessResult("All notifications marked as read.");
             }

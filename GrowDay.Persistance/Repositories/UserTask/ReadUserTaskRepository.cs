@@ -49,7 +49,6 @@ namespace GrowDay.Persistance.Repositories
 
         public async Task<IEnumerable<UserTask>> GetUserTasksByUserIdAsync(string userId, int pageIndex = 0, int pageSize = 10)
         {
-            //return await _table.Where(ut => ut.UserId == userId).ToListAsync();
             return await _table
                 .Include(ut => ut.Task)
                 .Include(ut => ut.UserHabit)

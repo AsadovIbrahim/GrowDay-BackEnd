@@ -260,7 +260,7 @@ namespace GrowDay.Persistance.Services
                         await _userActivityService.CreateActivityAsync(new CreateActivityDTO
                         {
                             UserId = userId,
-                            Title="Streak Broken",
+                            Title = "Streak Broken",
                             ActivityType = ActivityType.StreakBroken,
                             Description = $"Your streak for habit '{(!string.IsNullOrEmpty(userHabit.Title) ? userHabit.Title : userHabit.Habit?.Title)}' was broken.",
                             CreatedAt = DateTime.UtcNow
@@ -316,7 +316,7 @@ namespace GrowDay.Persistance.Services
                         await _userActivityService.CreateActivityAsync(new CreateActivityDTO
                         {
                             UserId = userId,
-                            Title="Habit Completed",
+                            Title = "Habit Completed",
                             ActivityType = ActivityType.HabitCompleted,
                             Description = $"Completed habit: {(!string.IsNullOrEmpty(userHabit.Title) ? userHabit.Title : userHabit.Habit?.Title)}",
                             CreatedAt = DateTime.UtcNow
@@ -435,11 +435,11 @@ namespace GrowDay.Persistance.Services
             }
         }
 
-        public async Task<Result<List<UserHabitDTO>>> GetAllUserHabitAsync(int pageIndex=0,int pageSize=10)
+        public async Task<Result<List<UserHabitDTO>>> GetAllUserHabitAsync(int pageIndex = 0, int pageSize = 10)
         {
             try
             {
-                var userHabits = await _readUserHabitRepository.GetAllActiveUserHabitsAsync(pageIndex,pageSize);
+                var userHabits = await _readUserHabitRepository.GetAllActiveUserHabitsAsync(pageIndex, pageSize);
                 if (userHabits == null || !userHabits.Any())
                 {
                     return Result<List<UserHabitDTO>>.FailureResult("No user habits found.");
@@ -459,7 +459,7 @@ namespace GrowDay.Persistance.Services
                     TargetValue = uh.TargetValue,
                     IncrementValue = uh.IncrementValue,
                     Unit = uh.Unit,
-                    ProgressPercentage = (uh.TargetValue.HasValue && uh.TargetValue.Value > 0) 
+                    ProgressPercentage = (uh.TargetValue.HasValue && uh.TargetValue.Value > 0)
                     ? (uh.CurrentValue / uh.TargetValue.Value) * 100 : 0,
                     CurrentStreak = uh.CurrentStreak,
                     LongestStreak = uh.LongestStreak,
@@ -500,7 +500,7 @@ namespace GrowDay.Persistance.Services
                     TargetValue = userHabit.TargetValue,
                     IncrementValue = userHabit.IncrementValue,
                     Unit = userHabit.Unit,
-                    ProgressPercentage=userHabit.TargetValue.HasValue && userHabit.TargetValue.Value > 0
+                    ProgressPercentage = userHabit.TargetValue.HasValue && userHabit.TargetValue.Value > 0
                     ? (userHabit.CurrentValue / userHabit.TargetValue.Value) * 100 : 0,
                     CurrentStreak = userHabit.CurrentStreak,
                     LongestStreak = userHabit.LongestStreak,
@@ -520,7 +520,7 @@ namespace GrowDay.Persistance.Services
         public async Task<Result<bool>> IsHabitCompletedTodayAsync(string userId, string userHabitId, DateTime date)
         {
             try
-        
+
             {
 
                 var userHabit = await _readUserHabitRepository.GetByUserAndHabitAsync(userId, userHabitId);
@@ -610,6 +610,23 @@ namespace GrowDay.Persistance.Services
                 {
                     userHabit.Frequency = updateUserHabitDTO.Frequency;
                 }
+                if (!string.IsNullOrEmpty(updateUserHabitDTO.Unit))
+                {
+                    userHabit.Unit = updateUserHabitDTO.Unit;
+                }
+                if (updateUserHabitDTO.NotificationTime.HasValue)
+                {
+                    userHabit.NotificationTime = updateUserHabitDTO.NotificationTime;
+                }
+                if (updateUserHabitDTO.DurationInMinutes.HasValue)
+                {
+                    userHabit.DurationInMinutes = updateUserHabitDTO.DurationInMinutes;
+                }
+                if(updateUserHabitDTO.TargetValue.HasValue)
+                {
+                    userHabit.TargetValue = updateUserHabitDTO.TargetValue;
+                }
+
                 await _writeUserHabitRepository.UpdateAsync(userHabit);
                 var habitDTO = new UserHabitDTO
                 {
@@ -641,10 +658,10 @@ namespace GrowDay.Persistance.Services
             }
         }
 
-        public async Task<Result<ICollection<WeeklyHabitProgressDTO>>> GetWeeklyHabitProgressAsync(string userId,string userHabitId)
+        public async Task<Result<ICollection<WeeklyHabitProgressDTO>>> GetWeeklyHabitProgressAsync(string userId, string userHabitId)
         {
             try
-            {   
+            {
                 var userHabit = await _readUserHabitRepository.GetByUserAndHabitAsync(userId, userHabitId);
                 if (userHabit == null || userHabit.UserId != userId)
                 {
