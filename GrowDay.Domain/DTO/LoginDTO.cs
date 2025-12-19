@@ -4,7 +4,7 @@ namespace GrowDay.Domain.DTO
 {
     public class LoginDTO
     {
-        public string Username { get; set; }
+        public string UsernameOrEmail { get; set; }
         [DataType(DataType.Password)]
         public string Password { get; set; }
     }

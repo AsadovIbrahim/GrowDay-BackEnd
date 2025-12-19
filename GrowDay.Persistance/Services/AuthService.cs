@@ -54,9 +54,11 @@ namespace GrowDay.Persistance.Services
         {
             if (Response == null) Response = response;
 
-            var user = await _userManager.FindByNameAsync(loginDTO.Username);
+            var user = await _readUserRepository.GetUserByUsername(loginDTO.UsernameOrEmail);
             if (user is null)
-                return Result<LoginVM>.FailureResult("Username is wrong.");
+                user = await _readUserRepository.GetUserByEmail(loginDTO.UsernameOrEmail);
+            if (user is null)
+                return Result<LoginVM>.FailureResult("Username or email is wrong.");
 
             if (!user.EmailConfirmed)
                 return Result<LoginVM>.FailureResult("Email not confirmed.");
@@ -186,7 +188,7 @@ namespace GrowDay.Persistance.Services
         private async Task SendConfirmEmail(RegisterDTO registerDTO, User newUser)
         {
             var confirmEmailToken = _tokenService.CreateConfirmEmailToken();
-            var actionUrl = $@"https://localhost:7136/api/Auth/ConfirmEmail?token={confirmEmailToken.Token}";
+            var actionUrl = $@"http://localhost:5207/api/Auth/confirm-email?token={confirmEmailToken.Token}";
             await _emailService.sendMailAsync(registerDTO.Email, "Confirm Your Email", $"Confirm your password by <a href='{actionUrl}'>clicking here</a>.", true);
 
             var userConfirmEmailToken = new UserToken()
@@ -232,7 +234,7 @@ namespace GrowDay.Persistance.Services
                 token.IsDeleted = true;
 
             var forgotPasswordToken = await _tokenService.CreateRepasswordToken(user);
-            var actionUrl = $@"https://localhost:7136/api/resetpassword?token={forgotPasswordToken.Token}";
+            var actionUrl = $@"http://localhost:5207/api/Auth/reset-password?token={forgotPasswordToken.Token}";
             await _emailService.sendMailAsync(forgotPasswordDTO.Email, "Reset Your Password", $"Reset your password by <a href='{actionUrl}'>clicking here</a>.", true);
 
             var userForgotPasswordToken = new UserToken()

@@ -47,7 +47,18 @@ namespace GrowDay.Presentation
 
                 });
             });
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll", policy =>
+                {
+                    policy
+                    .AllowAnyOrigin()
+                    .AllowAnyOrigin()
+                    .AllowAnyHeader();
+                });
+            });
             var app = builder.Build();
+            app.UseCors("AllowAll");
 
             app.MapHub<NotificationHub>("/hub/notifications");
 

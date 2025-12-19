@@ -17,6 +17,13 @@ namespace GrowDay.Persistance.Repositories
             return await _table.FirstOrDefaultAsync(x=>x.Email == email && x.IsDeleted == false);
         }
 
+        public async Task<User?> GetUserById(string id)
+        {
+            return await _table
+                .AsNoTracking()
+                .FirstOrDefaultAsync(x => x.Id == id && x.IsDeleted == false);
+        }
+
         public async Task<User?> GetUserByUsername(string username)
         {
             return await _table.FirstOrDefaultAsync(x => x.UserName == username && x.IsDeleted == false);

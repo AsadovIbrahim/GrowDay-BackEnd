@@ -22,6 +22,8 @@ namespace GrowDay.Persistance.Configurations
                 .WithOne(h => h.User)
                 .HasForeignKey(h => h.UserId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            
         }
     }
 }

@@ -7,5 +7,6 @@ namespace GrowDay.Application.Repositories
     {
         Task<User?> GetUserByEmail(string email);
         Task<User?>GetUserByUsername(string username);
+        Task<User?> GetUserById(string id);
     }
 }

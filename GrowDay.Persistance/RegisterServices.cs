@@ -29,6 +29,7 @@ namespace GrowDay.Persistance
             services.AddScoped<IUserAchievementService, UserAchievementService>();
             services.AddScoped<ITaskService, TaskService>();
             services.AddScoped<IUserActivityService, UserActivityService>();
+            services.AddScoped<IUserService, UserService>();
 
             // Context
 
