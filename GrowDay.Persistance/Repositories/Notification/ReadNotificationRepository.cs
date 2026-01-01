@@ -16,7 +16,8 @@ namespace GrowDay.Persistance.Repositories
         {
             return await _table
                 .Where(n => n.UserId == userId)
-                .OrderByDescending(n => n.CreatedAt)
+                .OrderBy(n => n.IsRead)
+                    .ThenByDescending(n => n.CreatedAt)
                 .Skip(pageIndex * pageSize)
                 .Take(pageSize)
                 .ToListAsync();

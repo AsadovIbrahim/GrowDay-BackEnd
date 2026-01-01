@@ -22,18 +22,11 @@ namespace GrowDay.Persistance.Services
             try
             {
                 var habitRecords = await _readHabitRecordRepository.GetAllByUserAndDateRangeAsync(userId,startDate,endDate);
-                if (habitRecords == null || !habitRecords.Any())
-                {
-                    return Result<StatisticDTO>.FailureResult("No habit records found for the specified user.");
-                }
-                var filteredRecords = habitRecords
-                    .Where(hr => hr.Date >= startDate && hr.Date <= endDate)
-                    .ToList();
+                
+                var filteredRecords = habitRecords?
+                    .Where(hr => hr.Date >= startDate && hr.Date <= endDate && !hr.IsDeleted)
+                    .ToList() ?? new List<GrowDay.Domain.Entities.Concretes.HabitRecord>();
 
-                if (!filteredRecords.Any())
-                {
-                    return Result<StatisticDTO>.FailureResult("No habit records found for the specified date range.");
-                }
                 int completedCount = filteredRecords.Count(hr => hr.IsCompleted);
                 int missedCount = filteredRecords.Count(hr => !hr.IsCompleted);
                 double completionRate = (completedCount + missedCount) > 0
@@ -84,11 +77,22 @@ namespace GrowDay.Persistance.Services
             }
         }
 
-        public async Task<Result<StatisticDTO>> GetWeeklyStatisticAsync(string userId, DateTime weekStart)
+        public async Task<Result<StatisticDTO>> GetWeeklyStatisticAsync(string userId, DateTime? weekStart = null)
         {
             try
             {
-                var startDate = weekStart.Date;
+                DateTime startDate;
+                if (weekStart.HasValue)
+                {
+                    startDate = weekStart.Value.Date;
+                }
+                else
+                {
+                    var today = DateTime.UtcNow.Date;
+                    int daysUntilMonday = ((int)today.DayOfWeek - (int)DayOfWeek.Monday + 7) % 7;
+                    startDate = today.AddDays(-daysUntilMonday);
+                }
+                
                 var endDate = startDate.AddDays(6);
                 var result = await CalculateStatisticsAsync(userId, startDate, endDate);
                 if (result.Success && result.Data != null)
@@ -101,6 +105,25 @@ namespace GrowDay.Persistance.Services
             {
                 _logger.LogError(ex, "Error while getting weekly statistics");
                 return Result<StatisticDTO>.FailureResult("An error occurred while getting weekly statistics.");
+            }
+        }
+
+        public async Task<Result<StatisticDTO>> GetDailyStatisticAsync(string userId, DateTime? date = null)
+        {
+            try
+            {
+                var targetDate = date.HasValue ? date.Value.Date : DateTime.UtcNow.Date;
+                var result = await CalculateStatisticsAsync(userId, targetDate, targetDate);
+                if (result.Success && result.Data != null)
+                {
+                    result.Data.PeriodType = StatisticPeriodType.Daily;
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error while getting daily statistics");
+                return Result<StatisticDTO>.FailureResult("An error occurred while getting daily statistics.");
             }
         }
     }

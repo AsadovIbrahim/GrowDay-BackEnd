@@ -1,4 +1,5 @@
 ﻿using GrowDay.Domain.DTO;
+using GrowDay.Domain.Enums;
 using GrowDay.Domain.Helpers;
 
 namespace GrowDay.Application.Services
@@ -15,11 +16,13 @@ namespace GrowDay.Application.Services
         Task<Result<UserHabitDTO>> CompleteHabitAsync(string userId, string userHabitId, string? note = null);
         Task<Result<ICollection<HabitRecordDTO>>>GetAllCompletedHabitsAsync(string userId);
         Task<Result<List<UserHabitDTO>>> GetAllUserHabitAsync(int pageIndex = 0, int pageSize = 10);
+        Task<Result<int>>GetUserHabitsCountAsync(string userId);
+        Task<Result<ICollection<UserHabitDTO>>>GetUserHabitsByFrequencyAsync(string userId, HabitFrequency frequencyType);
 
         Task<Result> AddFromSuggestedHabitAsync(string userId, AddSuggestedHabitDTO addSuggestedHabitDTO);
 
         Task<Result<bool>> IsHabitCompletedTodayAsync(string userId, string userHabitId, DateTime date);
-        Task<Result<ICollection<WeeklyHabitProgressDTO>>> GetWeeklyHabitProgressAsync(string userId,string userHabitId);
+        Task<Result<ICollection<WeeklyHabitProgressDTO>>> GetWeeklyHabitProgressAsync(string userId, string userHabitId, DateTime? weekStartDate = null);
 
 
     }

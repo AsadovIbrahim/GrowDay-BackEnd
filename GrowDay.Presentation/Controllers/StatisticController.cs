@@ -27,10 +27,21 @@ namespace GrowDay.Presentation.Controllers
             return Ok(result);
         }
         [HttpGet("weekly")]
-        public async Task<IActionResult> GetWeeklyStatistics(DateTime weekStart)
+        public async Task<IActionResult> GetWeeklyStatistics([FromQuery] DateTime? weekStart = null)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var result = await _statisticService.GetWeeklyStatisticAsync(userId!, weekStart);
+            if (!result.Success)
+            {
+                return BadRequest(result.Message);
+            }
+            return Ok(result);
+        }
+        [HttpGet("daily")]
+        public async Task<IActionResult> GetDailyStatistics([FromQuery] DateTime? date = null)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var result = await _statisticService.GetDailyStatisticAsync(userId!, date);
             if (!result.Success)
             {
                 return BadRequest(result.Message);

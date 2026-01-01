@@ -622,7 +622,7 @@ namespace GrowDay.Persistance.Services
                 {
                     userHabit.DurationInMinutes = updateUserHabitDTO.DurationInMinutes;
                 }
-                if(updateUserHabitDTO.TargetValue.HasValue)
+                if (updateUserHabitDTO.TargetValue.HasValue)
                 {
                     userHabit.TargetValue = updateUserHabitDTO.TargetValue;
                 }
@@ -658,7 +658,7 @@ namespace GrowDay.Persistance.Services
             }
         }
 
-        public async Task<Result<ICollection<WeeklyHabitProgressDTO>>> GetWeeklyHabitProgressAsync(string userId, string userHabitId)
+        public async Task<Result<ICollection<WeeklyHabitProgressDTO>>> GetWeeklyHabitProgressAsync(string userId, string userHabitId, DateTime? weekStartDate = null)
         {
             try
             {
@@ -667,19 +667,51 @@ namespace GrowDay.Persistance.Services
                 {
                     return Result<ICollection<WeeklyHabitProgressDTO>>.FailureResult("User habit not found.");
                 }
-                var last7Days = Enumerable.Range(0, 7)
-                    .Select(i => DateTime.UtcNow.Date.AddDays(-i))
-                    .OrderBy(d => d)
+                
+                var today = DateTime.UtcNow.Date;
+                
+                // If no weekStartDate is provided, use the start of the current week (Monday)
+                DateTime startDate;
+                if (weekStartDate.HasValue)
+                {
+                    startDate = weekStartDate.Value.Date;
+                }
+                else
+                {
+                    // Get Monday of the current week
+                    int daysUntilMonday = ((int)today.DayOfWeek - (int)DayOfWeek.Monday + 7) % 7;
+                    startDate = today.AddDays(-daysUntilMonday);
+                }
+                
+                // Get 7 days starting from the start date (week view)
+                var weekDays = Enumerable.Range(0, 7)
+                    .Select(i => startDate.AddDays(i))
                     .ToList();
                 var progressList = new List<WeeklyHabitProgressDTO>();
-                foreach (var date in last7Days)
+                foreach (var date in weekDays)
                 {
-                    var habitRecord = await _readHabitRecordRepository.GetByUserHabitIdAndDateAsync(userHabitId, date);
+                    var habitRecord = await _readHabitRecordRepository.GetByUserHabitIdAndDateAsync(userHabit.Id, date);
+                    var dayOfWeek = date.DayOfWeek;
+                    var dayAbbreviation = dayOfWeek switch
+                    {
+                        DayOfWeek.Monday => "MON",
+                        DayOfWeek.Tuesday => "TUE",
+                        DayOfWeek.Wednesday => "WED",
+                        DayOfWeek.Thursday => "THU",
+                        DayOfWeek.Friday => "FRI",
+                        DayOfWeek.Saturday => "SAT",
+                        DayOfWeek.Sunday => "SUN",
+                        _ => dayOfWeek.ToString().Substring(0, 3).ToUpper()
+                    };
+                    
                     progressList.Add(new WeeklyHabitProgressDTO
                     {
                         Date = date,
-                        Day = date.DayOfWeek.ToString(),
-                        IsCompleted = habitRecord != null && habitRecord.IsCompleted && !habitRecord.IsDeleted
+                        Day = dayOfWeek.ToString(),
+                        DayAbbreviation = dayAbbreviation,
+                        DayNumber = date.Day,
+                        IsCompleted = habitRecord != null && habitRecord.IsCompleted && !habitRecord.IsDeleted,
+                        IsToday = date.Date == today
                     });
                 }
                 return Result<ICollection<WeeklyHabitProgressDTO>>.SuccessResult(progressList, "Weekly habit progress retrieved successfully.");
@@ -689,6 +721,67 @@ namespace GrowDay.Persistance.Services
                 _logger.LogError(ex, "Error retrieving weekly habit progress");
                 return Result<ICollection<WeeklyHabitProgressDTO>>.FailureResult("An error occurred while retrieving weekly habit progress.");
             }
+        }
+
+        public async Task<Result<int>> GetUserHabitsCountAsync(string userId)
+        {
+            try
+            {
+                var count = await _readUserHabitRepository.GetUserHabitsCountAsync(userId);
+                return Result<int>.SuccessResult(count, "User habits count retrieved successfully.");
+            }
+
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error retrieving user habits count");
+                return Result<int>.FailureResult("An error occurred while retrieving user habits count.");
+            }
+        }
+
+        public async Task<Result<ICollection<UserHabitDTO>>> GetUserHabitsByFrequencyAsync(string userId, HabitFrequency frequencyType)
+        {
+            try
+            {
+                var userHabits = await _readUserHabitRepository.GetByUserIdAsync(userId);
+                if (userHabits == null || !userHabits.Any())
+                {
+                    return Result<ICollection<UserHabitDTO>>.FailureResult("No user habits found.");
+                }
+                var filteredHabits = userHabits
+                    .Where(uh => (uh.Frequency.HasValue && uh.Frequency.Value == frequencyType) ||
+                                 (!uh.Frequency.HasValue && uh.Habit != null && uh.Habit.Frequency == frequencyType))
+                    .Select(uh => new UserHabitDTO
+                    {
+                        UserHabitId = uh.Id,
+                        UserId = uh.UserId,
+                        HabitId = uh.HabitId,
+                        Title = !string.IsNullOrEmpty(uh.Title) ? uh.Title : uh.Habit?.Title,
+                        Description = !string.IsNullOrEmpty(uh.Description) ? uh.Description : uh.Habit?.Description,
+                        Frequency = uh.Frequency ?? uh.Habit?.Frequency,
+                        IsActive = !uh.IsDeleted,
+                        StartDate = uh.CreatedAt,
+                        EndDate = uh.EndDate,
+                        CurrentValue = uh.CurrentValue,
+                        TargetValue = uh.TargetValue,
+                        IncrementValue = uh.IncrementValue,
+                        Unit = uh.Unit,
+                        ProgressPercentage = (uh.TargetValue.HasValue && uh.TargetValue.Value > 0)
+                            ? (uh.CurrentValue / uh.TargetValue.Value) * 100 : 0,
+                        CurrentStreak = uh.CurrentStreak,
+                        LongestStreak = uh.LongestStreak,
+                        NotificationTime = uh.NotificationTime,
+                        DurationInMinutes = uh.DurationInMinutes,
+                        LastCompletedDate = uh.LastCompletedDate,
+                    }).ToList();
+                return Result<ICollection<UserHabitDTO>>.SuccessResult(filteredHabits, "User habits by frequency retrieved successfully.");
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error retrieving user habits by frequency");
+                return Result<ICollection<UserHabitDTO>>.FailureResult("An error occurred while retrieving user habits by frequency.");
+            }
+
         }
     }
 }

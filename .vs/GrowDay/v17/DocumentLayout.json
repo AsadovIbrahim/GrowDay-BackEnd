@@ -3,20 +3,96 @@
   "WorkspaceRootPath": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CE44F028-975A-4085-B2A2-C15B9834A624}|GrowDay.Presentation\\GrowDay.Presentation.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.presentation\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CE44F028-975A-4085-B2A2-C15B9834A624}|GrowDay.Presentation\\GrowDay.Presentation.csproj|solutionrelative:growday.presentation\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.persistance\\repositories\\notification\\readnotificationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|solutionrelative:growday.persistance\\repositories\\notification\\readnotificationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C80FADED-CC18-4E34-866C-17798A02FBD6}|GrowDay.Domain\\GrowDay.Domain.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.domain\\entities\\concretes\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C80FADED-CC18-4E34-866C-17798A02FBD6}|GrowDay.Domain\\GrowDay.Domain.csproj|solutionrelative:growday.domain\\entities\\concretes\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE44F028-975A-4085-B2A2-C15B9834A624}|GrowDay.Presentation\\GrowDay.Presentation.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.presentation\\controllers\\notificationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CE44F028-975A-4085-B2A2-C15B9834A624}|GrowDay.Presentation\\GrowDay.Presentation.csproj|solutionrelative:growday.presentation\\controllers\\notificationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.persistance\\services\\statisticservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|solutionrelative:growday.persistance\\services\\statisticservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE44F028-975A-4085-B2A2-C15B9834A624}|GrowDay.Presentation\\GrowDay.Presentation.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.presentation\\controllers\\statisticcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CE44F028-975A-4085-B2A2-C15B9834A624}|GrowDay.Presentation\\GrowDay.Presentation.csproj|solutionrelative:growday.presentation\\controllers\\statisticcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE44F028-975A-4085-B2A2-C15B9834A624}|GrowDay.Presentation\\GrowDay.Presentation.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.presentation\\controllers\\userhabitcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CE44F028-975A-4085-B2A2-C15B9834A624}|GrowDay.Presentation\\GrowDay.Presentation.csproj|solutionrelative:growday.presentation\\controllers\\userhabitcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE44F028-975A-4085-B2A2-C15B9834A624}|GrowDay.Presentation\\GrowDay.Presentation.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.presentation\\registerservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CE44F028-975A-4085-B2A2-C15B9834A624}|GrowDay.Presentation\\GrowDay.Presentation.csproj|solutionrelative:growday.presentation\\registerservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.persistance\\services\\userhabitservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|solutionrelative:growday.persistance\\services\\userhabitservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.persistance\\services\\notificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|solutionrelative:growday.persistance\\services\\notificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.persistance\\repositories\\userhabit\\readuserhabitrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|solutionrelative:growday.persistance\\repositories\\userhabit\\readuserhabitrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E031645-A37F-4EFC-A49C-8EDD14EC21AB}|GrowDay.Application\\GrowDay.Application.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.application\\repositories\\userhabit\\ireaduserhabitrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E031645-A37F-4EFC-A49C-8EDD14EC21AB}|GrowDay.Application\\GrowDay.Application.csproj|solutionrelative:growday.application\\repositories\\userhabit\\ireaduserhabitrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E031645-A37F-4EFC-A49C-8EDD14EC21AB}|GrowDay.Application\\GrowDay.Application.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.application\\services\\iuserhabitservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E031645-A37F-4EFC-A49C-8EDD14EC21AB}|GrowDay.Application\\GrowDay.Application.csproj|solutionrelative:growday.application\\services\\iuserhabitservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.persistance\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|solutionrelative:growday.persistance\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE44F028-975A-4085-B2A2-C15B9834A624}|GrowDay.Presentation\\GrowDay.Presentation.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.presentation\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{CE44F028-975A-4085-B2A2-C15B9834A624}|GrowDay.Presentation\\GrowDay.Presentation.csproj|solutionrelative:growday.presentation\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.persistance\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|solutionrelative:growday.persistance\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{CE44F028-975A-4085-B2A2-C15B9834A624}|GrowDay.Presentation\\GrowDay.Presentation.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.presentation\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{CE44F028-975A-4085-B2A2-C15B9834A624}|GrowDay.Presentation\\GrowDay.Presentation.csproj|solutionrelative:growday.presentation\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE44F028-975A-4085-B2A2-C15B9834A624}|GrowDay.Presentation\\GrowDay.Presentation.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.presentation\\controllers\\habitcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CE44F028-975A-4085-B2A2-C15B9834A624}|GrowDay.Presentation\\GrowDay.Presentation.csproj|solutionrelative:growday.presentation\\controllers\\habitcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{CE44F028-975A-4085-B2A2-C15B9834A624}|GrowDay.Presentation\\GrowDay.Presentation.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.presentation\\controllers\\userpreferencescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CE44F028-975A-4085-B2A2-C15B9834A624}|GrowDay.Presentation\\GrowDay.Presentation.csproj|solutionrelative:growday.presentation\\controllers\\userpreferencescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.persistance\\services\\notificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|solutionrelative:growday.persistance\\services\\notificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F52A2FB2-5202-4301-9009-B484409603D4}|GrowDay.Infrastructure\\GrowDay.Infrastructure.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.infrastructure\\backgroundservices\\notificationbackgroundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F52A2FB2-5202-4301-9009-B484409603D4}|GrowDay.Infrastructure\\GrowDay.Infrastructure.csproj|solutionrelative:growday.infrastructure\\backgroundservices\\notificationbackgroundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE44F028-975A-4085-B2A2-C15B9834A624}|GrowDay.Presentation\\GrowDay.Presentation.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.presentation\\controllers\\useractivitycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CE44F028-975A-4085-B2A2-C15B9834A624}|GrowDay.Presentation\\GrowDay.Presentation.csproj|solutionrelative:growday.presentation\\controllers\\useractivitycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.persistance\\services\\suggestedhabitservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|solutionrelative:growday.persistance\\services\\suggestedhabitservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.persistance\\services\\userpreferencesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|solutionrelative:growday.persistance\\services\\userpreferencesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE44F028-975A-4085-B2A2-C15B9834A624}|GrowDay.Presentation\\GrowDay.Presentation.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.presentation\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CE44F028-975A-4085-B2A2-C15B9834A624}|GrowDay.Presentation\\GrowDay.Presentation.csproj|solutionrelative:growday.presentation\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.persistance\\repositories\\user\\readuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -25,14 +101,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{1E031645-A37F-4EFC-A49C-8EDD14EC21AB}|GrowDay.Application\\GrowDay.Application.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.application\\repositories\\user\\ireaduserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1E031645-A37F-4EFC-A49C-8EDD14EC21AB}|GrowDay.Application\\GrowDay.Application.csproj|solutionrelative:growday.application\\repositories\\user\\ireaduserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.persistance\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|solutionrelative:growday.persistance\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C80FADED-CC18-4E34-866C-17798A02FBD6}|GrowDay.Domain\\GrowDay.Domain.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.domain\\helpers\\result.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C80FADED-CC18-4E34-866C-17798A02FBD6}|GrowDay.Domain\\GrowDay.Domain.csproj|solutionrelative:growday.domain\\helpers\\result.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.persistance\\repositories\\common\\readgenericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -49,22 +117,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{C80FADED-CC18-4E34-866C-17798A02FBD6}|GrowDay.Domain\\GrowDay.Domain.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.domain\\dto\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C80FADED-CC18-4E34-866C-17798A02FBD6}|GrowDay.Domain\\GrowDay.Domain.csproj|solutionrelative:growday.domain\\dto\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.persistance\\configurations\\userconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|solutionrelative:growday.persistance\\configurations\\userconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CE44F028-975A-4085-B2A2-C15B9834A624}|GrowDay.Presentation\\GrowDay.Presentation.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.presentation\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{CE44F028-975A-4085-B2A2-C15B9834A624}|GrowDay.Presentation\\GrowDay.Presentation.csproj|solutionrelative:growday.presentation\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.persistance\\services\\userpreferencesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|solutionrelative:growday.persistance\\services\\userpreferencesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CE44F028-975A-4085-B2A2-C15B9834A624}|GrowDay.Presentation\\GrowDay.Presentation.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.presentation\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CE44F028-975A-4085-B2A2-C15B9834A624}|GrowDay.Presentation\\GrowDay.Presentation.csproj|solutionrelative:growday.presentation\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CE44F028-975A-4085-B2A2-C15B9834A624}|GrowDay.Presentation\\GrowDay.Presentation.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.presentation\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -95,28 +147,12 @@
       "RelativeMoniker": "D:0:0:{1E031645-A37F-4EFC-A49C-8EDD14EC21AB}|GrowDay.Application\\GrowDay.Application.csproj|solutionrelative:growday.application\\services\\iaccountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE44F028-975A-4085-B2A2-C15B9834A624}|GrowDay.Presentation\\GrowDay.Presentation.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.presentation\\controllers\\userhabitcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CE44F028-975A-4085-B2A2-C15B9834A624}|GrowDay.Presentation\\GrowDay.Presentation.csproj|solutionrelative:growday.presentation\\controllers\\userhabitcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F52A2FB2-5202-4301-9009-B484409603D4}|GrowDay.Infrastructure\\GrowDay.Infrastructure.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.infrastructure\\backgroundservices\\missedhabitbackgroundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F52A2FB2-5202-4301-9009-B484409603D4}|GrowDay.Infrastructure\\GrowDay.Infrastructure.csproj|solutionrelative:growday.infrastructure\\backgroundservices\\missedhabitbackgroundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1E031645-A37F-4EFC-A49C-8EDD14EC21AB}|GrowDay.Application\\GrowDay.Application.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.application\\services\\iachievementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1E031645-A37F-4EFC-A49C-8EDD14EC21AB}|GrowDay.Application\\GrowDay.Application.csproj|solutionrelative:growday.application\\services\\iachievementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F52A2FB2-5202-4301-9009-B484409603D4}|GrowDay.Infrastructure\\GrowDay.Infrastructure.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.infrastructure\\hubs\\notificationhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F52A2FB2-5202-4301-9009-B484409603D4}|GrowDay.Infrastructure\\GrowDay.Infrastructure.csproj|solutionrelative:growday.infrastructure\\hubs\\notificationhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F52A2FB2-5202-4301-9009-B484409603D4}|GrowDay.Infrastructure\\GrowDay.Infrastructure.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.infrastructure\\backgroundservices\\notificationbackgroundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F52A2FB2-5202-4301-9009-B484409603D4}|GrowDay.Infrastructure\\GrowDay.Infrastructure.csproj|solutionrelative:growday.infrastructure\\backgroundservices\\notificationbackgroundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.persistance\\services\\suggestedhabitservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|solutionrelative:growday.persistance\\services\\suggestedhabitservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0043EDC2-14DF-49CE-9F70-2B84EA4005D3}|GrowDay.Persistance\\GrowDay.Persistance.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.persistance\\services\\taskservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -129,14 +165,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{F52A2FB2-5202-4301-9009-B484409603D4}|GrowDay.Infrastructure\\GrowDay.Infrastructure.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.infrastructure\\registerservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F52A2FB2-5202-4301-9009-B484409603D4}|GrowDay.Infrastructure\\GrowDay.Infrastructure.csproj|solutionrelative:growday.infrastructure\\registerservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CE44F028-975A-4085-B2A2-C15B9834A624}|GrowDay.Presentation\\GrowDay.Presentation.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.presentation\\registerservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CE44F028-975A-4085-B2A2-C15B9834A624}|GrowDay.Presentation\\GrowDay.Presentation.csproj|solutionrelative:growday.presentation\\registerservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CE44F028-975A-4085-B2A2-C15B9834A624}|GrowDay.Presentation\\GrowDay.Presentation.csproj|c:\\users\\user\\source\\repos\\growday-backend\\growday.presentation\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{CE44F028-975A-4085-B2A2-C15B9834A624}|GrowDay.Presentation\\GrowDay.Presentation.csproj|solutionrelative:growday.presentation\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/DESKTOP_PQSDDF2_SQLEXPRESS/GrowDay/True/SqlTable/dbo.AspNetUsers.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
@@ -181,410 +209,164 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "IReadUserRepository.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Application\\Repositories\\User\\IReadUserRepository.cs",
-              "RelativeDocumentMoniker": "GrowDay.Application\\Repositories\\User\\IReadUserRepository.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Application\\Repositories\\User\\IReadUserRepository.cs",
-              "RelativeToolTip": "GrowDay.Application\\Repositories\\User\\IReadUserRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-18T21:14:43.689Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "NotificationService.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Services\\NotificationService.cs",
-              "RelativeDocumentMoniker": "GrowDay.Persistance\\Services\\NotificationService.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Services\\NotificationService.cs",
-              "RelativeToolTip": "GrowDay.Persistance\\Services\\NotificationService.cs",
-              "ViewState": "AgIAAHYAAAAAAAAAAAAswGcAAABLAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-05T03:23:39.785Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Result.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Domain\\Helpers\\Result.cs",
-              "RelativeDocumentMoniker": "GrowDay.Domain\\Helpers\\Result.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Domain\\Helpers\\Result.cs",
-              "RelativeToolTip": "GrowDay.Domain\\Helpers\\Result.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAA7wA0AAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T14:47:10.005Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "UserService.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Services\\UserService.cs",
-              "RelativeDocumentMoniker": "GrowDay.Persistance\\Services\\UserService.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Services\\UserService.cs",
-              "RelativeToolTip": "GrowDay.Persistance\\Services\\UserService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEcAAAAIAAAAAAAAAA==",
+              "Title": "Notification.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Domain\\Entities\\Concretes\\Notification.cs",
+              "RelativeDocumentMoniker": "GrowDay.Domain\\Entities\\Concretes\\Notification.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Domain\\Entities\\Concretes\\Notification.cs",
+              "RelativeToolTip": "GrowDay.Domain\\Entities\\Concretes\\Notification.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-18T20:52:09.733Z",
+              "WhenOpened": "2026-01-01T20:48:14.806Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ReadNotificationRepository.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Repositories\\Notification\\ReadNotificationRepository.cs",
+              "RelativeDocumentMoniker": "GrowDay.Persistance\\Repositories\\Notification\\ReadNotificationRepository.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Repositories\\Notification\\ReadNotificationRepository.cs",
+              "RelativeToolTip": "GrowDay.Persistance\\Repositories\\Notification\\ReadNotificationRepository.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwBgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-01T20:47:37.48Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "UserPreferencesController.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Presentation\\Controllers\\UserPreferencesController.cs",
-              "RelativeDocumentMoniker": "GrowDay.Presentation\\Controllers\\UserPreferencesController.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Presentation\\Controllers\\UserPreferencesController.cs",
-              "RelativeToolTip": "GrowDay.Presentation\\Controllers\\UserPreferencesController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAfAAAAAAAAAA==",
+              "Title": "NotificationController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Presentation\\Controllers\\NotificationController.cs",
+              "RelativeDocumentMoniker": "GrowDay.Presentation\\Controllers\\NotificationController.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Presentation\\Controllers\\NotificationController.cs",
+              "RelativeToolTip": "GrowDay.Presentation\\Controllers\\NotificationController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-07T16:29:10.568Z",
+              "WhenOpened": "2026-01-01T20:47:27.495Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ReadGenericRepository.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Repositories\\Common\\ReadGenericRepository.cs",
-              "RelativeDocumentMoniker": "GrowDay.Persistance\\Repositories\\Common\\ReadGenericRepository.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Repositories\\Common\\ReadGenericRepository.cs",
-              "RelativeToolTip": "GrowDay.Persistance\\Repositories\\Common\\ReadGenericRepository.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAowBYAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T14:07:21.33Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Presentation\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "GrowDay.Presentation\\Controllers\\UserController.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Presentation\\Controllers\\UserController.cs",
-              "RelativeToolTip": "GrowDay.Presentation\\Controllers\\UserController.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA0AAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-18T20:55:04.237Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ReadUserRepository.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Repositories\\User\\ReadUserRepository.cs",
-              "RelativeDocumentMoniker": "GrowDay.Persistance\\Repositories\\User\\ReadUserRepository.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Repositories\\User\\ReadUserRepository.cs",
-              "RelativeToolTip": "GrowDay.Persistance\\Repositories\\User\\ReadUserRepository.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAxwBMAAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-18T21:15:18.632Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "RegisterServices.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\RegisterServices.cs",
-              "RelativeDocumentMoniker": "GrowDay.Persistance\\RegisterServices.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\RegisterServices.cs",
-              "RelativeToolTip": "GrowDay.Persistance\\RegisterServices.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAxwB8AAAA8AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-13T11:44:06.211Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "IUserService.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Application\\Services\\IUserService.cs",
-              "RelativeDocumentMoniker": "GrowDay.Application\\Services\\IUserService.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Application\\Services\\IUserService.cs",
-              "RelativeToolTip": "GrowDay.Application\\Services\\IUserService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAkAAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-18T20:48:55.772Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "UserDTO.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Domain\\DTO\\UserDTO.cs",
-              "RelativeDocumentMoniker": "GrowDay.Domain\\DTO\\UserDTO.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Domain\\DTO\\UserDTO.cs",
-              "RelativeToolTip": "GrowDay.Domain\\DTO\\UserDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-18T20:50:07.457Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "AuthService.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Services\\AuthService.cs",
-              "RelativeDocumentMoniker": "GrowDay.Persistance\\Services\\AuthService.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Services\\AuthService.cs",
-              "RelativeToolTip": "GrowDay.Persistance\\Services\\AuthService.cs",
-              "ViewState": "AgIAAF4AAAAAAAAAAAAkwDoAAABCAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-04T18:39:20.619Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "UserConfiguration.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Configurations\\UserConfiguration.cs",
-              "RelativeDocumentMoniker": "GrowDay.Persistance\\Configurations\\UserConfiguration.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Configurations\\UserConfiguration.cs",
-              "RelativeToolTip": "GrowDay.Persistance\\Configurations\\UserConfiguration.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAAwBkAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-18T20:38:21.586Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "launchSettings.json",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Presentation\\Properties\\launchSettings.json",
-              "RelativeDocumentMoniker": "GrowDay.Presentation\\Properties\\launchSettings.json",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Presentation\\Properties\\launchSettings.json",
-              "RelativeToolTip": "GrowDay.Presentation\\Properties\\launchSettings.json",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-12-18T20:18:09.124Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "UserPreferencesService.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Services\\UserPreferencesService.cs",
-              "RelativeDocumentMoniker": "GrowDay.Persistance\\Services\\UserPreferencesService.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Services\\UserPreferencesService.cs",
-              "RelativeToolTip": "GrowDay.Persistance\\Services\\UserPreferencesService.cs",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAYwAQAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-08T07:38:01.163Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "LoginDTO.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Domain\\DTO\\LoginDTO.cs",
-              "RelativeDocumentMoniker": "GrowDay.Domain\\DTO\\LoginDTO.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Domain\\DTO\\LoginDTO.cs",
-              "RelativeToolTip": "GrowDay.Domain\\DTO\\LoginDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAYAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-04T18:18:06.701Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "IReadUserTokenRepository.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Application\\Repositories\\UserToken\\IReadUserTokenRepository.cs",
-              "RelativeDocumentMoniker": "GrowDay.Application\\Repositories\\UserToken\\IReadUserTokenRepository.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Application\\Repositories\\UserToken\\IReadUserTokenRepository.cs",
-              "RelativeToolTip": "GrowDay.Application\\Repositories\\UserToken\\IReadUserTokenRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-24T15:07:04.796Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Presentation\\Program.cs",
-              "RelativeDocumentMoniker": "GrowDay.Presentation\\Program.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Presentation\\Program.cs",
-              "RelativeToolTip": "GrowDay.Presentation\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEQAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-22T19:20:02.814Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "IWriteUserTokenRepository.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Application\\Repositories\\UserToken\\IWriteUserTokenRepository.cs",
-              "RelativeDocumentMoniker": "GrowDay.Application\\Repositories\\UserToken\\IWriteUserTokenRepository.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Application\\Repositories\\UserToken\\IWriteUserTokenRepository.cs",
-              "RelativeToolTip": "GrowDay.Application\\Repositories\\UserToken\\IWriteUserTokenRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-24T15:07:10.1Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Presentation\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "GrowDay.Presentation\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Presentation\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "GrowDay.Presentation\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAA7wBwAAABGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-23T03:58:32.329Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "ITokenService.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Application\\Services\\ITokenService.cs",
-              "RelativeDocumentMoniker": "GrowDay.Application\\Services\\ITokenService.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Application\\Services\\ITokenService.cs",
-              "RelativeToolTip": "GrowDay.Application\\Services\\ITokenService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-24T15:07:17.804Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "TokenService.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Infrastructure\\Services\\TokenService.cs",
-              "RelativeDocumentMoniker": "GrowDay.Infrastructure\\Services\\TokenService.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Infrastructure\\Services\\TokenService.cs",
-              "RelativeToolTip": "GrowDay.Infrastructure\\Services\\TokenService.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAQwBAAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-24T15:07:32.883Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "IAccountService.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Application\\Services\\IAccountService.cs",
-              "RelativeDocumentMoniker": "GrowDay.Application\\Services\\IAccountService.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Application\\Services\\IAccountService.cs",
-              "RelativeToolTip": "GrowDay.Application\\Services\\IAccountService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-13T11:39:56.156Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "NotificationBackgroundService.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Infrastructure\\BackgroundServices\\NotificationBackgroundService.cs",
-              "RelativeDocumentMoniker": "GrowDay.Infrastructure\\BackgroundServices\\NotificationBackgroundService.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Infrastructure\\BackgroundServices\\NotificationBackgroundService.cs",
-              "RelativeToolTip": "GrowDay.Infrastructure\\BackgroundServices\\NotificationBackgroundService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-13T11:45:54.759Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "IAchievementService.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Application\\Services\\IAchievementService.cs",
-              "RelativeDocumentMoniker": "GrowDay.Application\\Services\\IAchievementService.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Application\\Services\\IAchievementService.cs",
-              "RelativeToolTip": "GrowDay.Application\\Services\\IAchievementService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T14:27:08.546Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "NotificationHub.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Infrastructure\\Hubs\\NotificationHub.cs",
-              "RelativeDocumentMoniker": "GrowDay.Infrastructure\\Hubs\\NotificationHub.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Infrastructure\\Hubs\\NotificationHub.cs",
-              "RelativeToolTip": "GrowDay.Infrastructure\\Hubs\\NotificationHub.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-13T11:49:18.92Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "UserHabitController.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Presentation\\Controllers\\UserHabitController.cs",
-              "RelativeDocumentMoniker": "GrowDay.Presentation\\Controllers\\UserHabitController.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Presentation\\Controllers\\UserHabitController.cs",
-              "RelativeToolTip": "GrowDay.Presentation\\Controllers\\UserHabitController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-13T11:47:59.02Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "MissedHabitBackgroundService.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Infrastructure\\BackgroundServices\\MissedHabitBackgroundService.cs",
-              "RelativeDocumentMoniker": "GrowDay.Infrastructure\\BackgroundServices\\MissedHabitBackgroundService.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Infrastructure\\BackgroundServices\\MissedHabitBackgroundService.cs",
-              "RelativeToolTip": "GrowDay.Infrastructure\\BackgroundServices\\MissedHabitBackgroundService.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAQwCQAAABgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-13T11:44:42.904Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "TaskService.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Services\\TaskService.cs",
-              "RelativeDocumentMoniker": "GrowDay.Persistance\\Services\\TaskService.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Services\\TaskService.cs",
-              "RelativeToolTip": "GrowDay.Persistance\\Services\\TaskService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-18T09:28:27.31Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "SuggestedHabitService.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Services\\SuggestedHabitService.cs",
-              "RelativeDocumentMoniker": "GrowDay.Persistance\\Services\\SuggestedHabitService.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Services\\SuggestedHabitService.cs",
-              "RelativeToolTip": "GrowDay.Persistance\\Services\\SuggestedHabitService.cs",
-              "ViewState": "AgIAAJQAAAAAAAAAAAAqwLcAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-18T09:28:27.984Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "AchievementService.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Services\\AchievementService.cs",
-              "RelativeDocumentMoniker": "GrowDay.Persistance\\Services\\AchievementService.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Services\\AchievementService.cs",
-              "RelativeToolTip": "GrowDay.Persistance\\Services\\AchievementService.cs",
-              "ViewState": "AgIAAFgAAAAAAAAAAAAkwCsAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-13T11:47:06.656Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "RegisterServices.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Infrastructure\\RegisterServices.cs",
-              "RelativeDocumentMoniker": "GrowDay.Infrastructure\\RegisterServices.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Infrastructure\\RegisterServices.cs",
-              "RelativeToolTip": "GrowDay.Infrastructure\\RegisterServices.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAAwCMAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-13T11:44:18.264Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
               "Title": "RegisterServices.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Presentation\\RegisterServices.cs",
               "RelativeDocumentMoniker": "GrowDay.Presentation\\RegisterServices.cs",
               "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Presentation\\RegisterServices.cs",
               "RelativeToolTip": "GrowDay.Presentation\\RegisterServices.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAQwBQAAABoAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-13T11:43:49.455Z"
+              "WhenOpened": "2026-01-01T15:48:01.145Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 3,
+              "Title": "StatisticService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Services\\StatisticService.cs",
+              "RelativeDocumentMoniker": "GrowDay.Persistance\\Services\\StatisticService.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Services\\StatisticService.cs",
+              "RelativeToolTip": "GrowDay.Persistance\\Services\\StatisticService.cs",
+              "ViewState": "AgIAAF4AAAAAAAAAAAAAAG4AAABkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-01T15:46:09.54Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "StatisticController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Presentation\\Controllers\\StatisticController.cs",
+              "RelativeDocumentMoniker": "GrowDay.Presentation\\Controllers\\StatisticController.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Presentation\\Controllers\\StatisticController.cs",
+              "RelativeToolTip": "GrowDay.Presentation\\Controllers\\StatisticController.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAYwCAAAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-01T15:43:56.56Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UserHabitController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Presentation\\Controllers\\UserHabitController.cs",
+              "RelativeDocumentMoniker": "GrowDay.Presentation\\Controllers\\UserHabitController.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Presentation\\Controllers\\UserHabitController.cs",
+              "RelativeToolTip": "GrowDay.Presentation\\Controllers\\UserHabitController.cs",
+              "ViewState": "AgIAALYAAAAAAAAAAAAmwDoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-13T11:47:59.02Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UserHabitService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Services\\UserHabitService.cs",
+              "RelativeDocumentMoniker": "GrowDay.Persistance\\Services\\UserHabitService.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Services\\UserHabitService.cs",
+              "RelativeToolTip": "GrowDay.Persistance\\Services\\UserHabitService.cs",
+              "ViewState": "AgIAAF0CAAAAAAAAAAAwwIoCAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-28T19:29:02.726Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "NotificationService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Services\\NotificationService.cs",
+              "RelativeDocumentMoniker": "GrowDay.Persistance\\Services\\NotificationService.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Services\\NotificationService.cs",
+              "RelativeToolTip": "GrowDay.Persistance\\Services\\NotificationService.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAYwEUAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T03:23:39.785Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "IUserHabitService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Application\\Services\\IUserHabitService.cs",
+              "RelativeDocumentMoniker": "GrowDay.Application\\Services\\IUserHabitService.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Application\\Services\\IUserHabitService.cs",
+              "RelativeToolTip": "GrowDay.Application\\Services\\IUserHabitService.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAxwBIAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-28T19:27:49.477Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ReadUserHabitRepository.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Repositories\\UserHabit\\ReadUserHabitRepository.cs",
+              "RelativeDocumentMoniker": "GrowDay.Persistance\\Repositories\\UserHabit\\ReadUserHabitRepository.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Repositories\\UserHabit\\ReadUserHabitRepository.cs",
+              "RelativeToolTip": "GrowDay.Persistance\\Repositories\\UserHabit\\ReadUserHabitRepository.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAADAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-28T19:31:02.059Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "IReadUserHabitRepository.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Application\\Repositories\\UserHabit\\IReadUserHabitRepository.cs",
+              "RelativeDocumentMoniker": "GrowDay.Application\\Repositories\\UserHabit\\IReadUserHabitRepository.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Application\\Repositories\\UserHabit\\IReadUserHabitRepository.cs",
+              "RelativeToolTip": "GrowDay.Application\\Repositories\\UserHabit\\IReadUserHabitRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-28T19:30:19.225Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Presentation\\appsettings.json",
               "RelativeDocumentMoniker": "GrowDay.Presentation\\appsettings.json",
@@ -596,16 +378,352 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "HabitController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Presentation\\Controllers\\HabitController.cs",
+              "RelativeDocumentMoniker": "GrowDay.Presentation\\Controllers\\HabitController.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Presentation\\Controllers\\HabitController.cs",
+              "RelativeToolTip": "GrowDay.Presentation\\Controllers\\HabitController.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAAwBgAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-23T10:30:04.762Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "GrowDay.Persistance\\Services\\UserService.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Services\\UserService.cs",
+              "RelativeToolTip": "GrowDay.Persistance\\Services\\UserService.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAAAgwD4AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T20:52:09.733Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "UserActivityController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Presentation\\Controllers\\UserActivityController.cs",
+              "RelativeDocumentMoniker": "GrowDay.Presentation\\Controllers\\UserActivityController.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Presentation\\Controllers\\UserActivityController.cs",
+              "RelativeToolTip": "GrowDay.Presentation\\Controllers\\UserActivityController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-19T19:52:41.428Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "GrowDay.Persistance\\Services\\AuthService.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Services\\AuthService.cs",
+              "RelativeToolTip": "GrowDay.Persistance\\Services\\AuthService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAE4AAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-19T20:24:02.551Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "NotificationBackgroundService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Infrastructure\\BackgroundServices\\NotificationBackgroundService.cs",
+              "RelativeDocumentMoniker": "GrowDay.Infrastructure\\BackgroundServices\\NotificationBackgroundService.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Infrastructure\\BackgroundServices\\NotificationBackgroundService.cs",
+              "RelativeToolTip": "GrowDay.Infrastructure\\BackgroundServices\\NotificationBackgroundService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-13T11:45:54.759Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "UserPreferencesController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Presentation\\Controllers\\UserPreferencesController.cs",
+              "RelativeDocumentMoniker": "GrowDay.Presentation\\Controllers\\UserPreferencesController.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Presentation\\Controllers\\UserPreferencesController.cs",
+              "RelativeToolTip": "GrowDay.Presentation\\Controllers\\UserPreferencesController.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwBoAAABUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-07T16:29:10.568Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Presentation\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "GrowDay.Presentation\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Presentation\\Properties\\launchSettings.json",
+              "RelativeToolTip": "GrowDay.Presentation\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABcAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-12-18T20:18:09.124Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "SuggestedHabitService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Services\\SuggestedHabitService.cs",
+              "RelativeDocumentMoniker": "GrowDay.Persistance\\Services\\SuggestedHabitService.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Services\\SuggestedHabitService.cs",
+              "RelativeToolTip": "GrowDay.Persistance\\Services\\SuggestedHabitService.cs",
+              "ViewState": "AgIAAKgAAAAAAAAAAADwv7QAAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-18T09:28:27.984Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "UserPreferencesService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Services\\UserPreferencesService.cs",
+              "RelativeDocumentMoniker": "GrowDay.Persistance\\Services\\UserPreferencesService.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Services\\UserPreferencesService.cs",
+              "RelativeToolTip": "GrowDay.Persistance\\Services\\UserPreferencesService.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAYwD0AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-08T07:38:01.163Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Presentation\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "GrowDay.Presentation\\Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Presentation\\Controllers\\UserController.cs",
+              "RelativeToolTip": "GrowDay.Presentation\\Controllers\\UserController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T20:55:04.237Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "ReadGenericRepository.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Repositories\\Common\\ReadGenericRepository.cs",
+              "RelativeDocumentMoniker": "GrowDay.Persistance\\Repositories\\Common\\ReadGenericRepository.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Repositories\\Common\\ReadGenericRepository.cs",
+              "RelativeToolTip": "GrowDay.Persistance\\Repositories\\Common\\ReadGenericRepository.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAowBYAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T14:07:21.33Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "IReadUserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Application\\Repositories\\User\\IReadUserRepository.cs",
+              "RelativeDocumentMoniker": "GrowDay.Application\\Repositories\\User\\IReadUserRepository.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Application\\Repositories\\User\\IReadUserRepository.cs",
+              "RelativeToolTip": "GrowDay.Application\\Repositories\\User\\IReadUserRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T21:14:43.689Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "ReadUserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Repositories\\User\\ReadUserRepository.cs",
+              "RelativeDocumentMoniker": "GrowDay.Persistance\\Repositories\\User\\ReadUserRepository.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Repositories\\User\\ReadUserRepository.cs",
+              "RelativeToolTip": "GrowDay.Persistance\\Repositories\\User\\ReadUserRepository.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwBMAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T21:15:18.632Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "RegisterServices.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\RegisterServices.cs",
+              "RelativeDocumentMoniker": "GrowDay.Persistance\\RegisterServices.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\RegisterServices.cs",
+              "RelativeToolTip": "GrowDay.Persistance\\RegisterServices.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAxwB8AAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-13T11:44:06.211Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "IUserService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Application\\Services\\IUserService.cs",
+              "RelativeDocumentMoniker": "GrowDay.Application\\Services\\IUserService.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Application\\Services\\IUserService.cs",
+              "RelativeToolTip": "GrowDay.Application\\Services\\IUserService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAkAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T20:48:55.772Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "UserDTO.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Domain\\DTO\\UserDTO.cs",
+              "RelativeDocumentMoniker": "GrowDay.Domain\\DTO\\UserDTO.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Domain\\DTO\\UserDTO.cs",
+              "RelativeToolTip": "GrowDay.Domain\\DTO\\UserDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T20:50:07.457Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "LoginDTO.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Domain\\DTO\\LoginDTO.cs",
+              "RelativeDocumentMoniker": "GrowDay.Domain\\DTO\\LoginDTO.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Domain\\DTO\\LoginDTO.cs",
+              "RelativeToolTip": "GrowDay.Domain\\DTO\\LoginDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAYAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-04T18:18:06.701Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "IReadUserTokenRepository.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Application\\Repositories\\UserToken\\IReadUserTokenRepository.cs",
+              "RelativeDocumentMoniker": "GrowDay.Application\\Repositories\\UserToken\\IReadUserTokenRepository.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Application\\Repositories\\UserToken\\IReadUserTokenRepository.cs",
+              "RelativeToolTip": "GrowDay.Application\\Repositories\\UserToken\\IReadUserTokenRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T15:07:04.796Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 34,
-              "Title": "dbo.AspNetUsers.sql",
+              "Title": "IWriteUserTokenRepository.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Application\\Repositories\\UserToken\\IWriteUserTokenRepository.cs",
+              "RelativeDocumentMoniker": "GrowDay.Application\\Repositories\\UserToken\\IWriteUserTokenRepository.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Application\\Repositories\\UserToken\\IWriteUserTokenRepository.cs",
+              "RelativeToolTip": "GrowDay.Application\\Repositories\\UserToken\\IWriteUserTokenRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T15:07:10.1Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Presentation\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "GrowDay.Presentation\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Presentation\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "GrowDay.Presentation\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAA7wBwAAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-23T03:58:32.329Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "ITokenService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Application\\Services\\ITokenService.cs",
+              "RelativeDocumentMoniker": "GrowDay.Application\\Services\\ITokenService.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Application\\Services\\ITokenService.cs",
+              "RelativeToolTip": "GrowDay.Application\\Services\\ITokenService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T15:07:17.804Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "TokenService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Infrastructure\\Services\\TokenService.cs",
+              "RelativeDocumentMoniker": "GrowDay.Infrastructure\\Services\\TokenService.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Infrastructure\\Services\\TokenService.cs",
+              "RelativeToolTip": "GrowDay.Infrastructure\\Services\\TokenService.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAQwBAAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T15:07:32.883Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "IAccountService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Application\\Services\\IAccountService.cs",
+              "RelativeDocumentMoniker": "GrowDay.Application\\Services\\IAccountService.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Application\\Services\\IAccountService.cs",
+              "RelativeToolTip": "GrowDay.Application\\Services\\IAccountService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-13T11:39:56.156Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "IAchievementService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Application\\Services\\IAchievementService.cs",
+              "RelativeDocumentMoniker": "GrowDay.Application\\Services\\IAchievementService.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Application\\Services\\IAchievementService.cs",
+              "RelativeToolTip": "GrowDay.Application\\Services\\IAchievementService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T14:27:08.546Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "NotificationHub.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Infrastructure\\Hubs\\NotificationHub.cs",
+              "RelativeDocumentMoniker": "GrowDay.Infrastructure\\Hubs\\NotificationHub.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Infrastructure\\Hubs\\NotificationHub.cs",
+              "RelativeToolTip": "GrowDay.Infrastructure\\Hubs\\NotificationHub.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-13T11:49:18.92Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "TaskService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Services\\TaskService.cs",
+              "RelativeDocumentMoniker": "GrowDay.Persistance\\Services\\TaskService.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Services\\TaskService.cs",
+              "RelativeToolTip": "GrowDay.Persistance\\Services\\TaskService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-18T09:28:27.31Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "AchievementService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Services\\AchievementService.cs",
+              "RelativeDocumentMoniker": "GrowDay.Persistance\\Services\\AchievementService.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Services\\AchievementService.cs",
+              "RelativeToolTip": "GrowDay.Persistance\\Services\\AchievementService.cs",
+              "ViewState": "AgIAAFgAAAAAAAAAAAAkwCsAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-13T11:47:06.656Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "RegisterServices.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Infrastructure\\RegisterServices.cs",
+              "RelativeDocumentMoniker": "GrowDay.Infrastructure\\RegisterServices.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Infrastructure\\RegisterServices.cs",
+              "RelativeToolTip": "GrowDay.Infrastructure\\RegisterServices.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAwCMAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-13T11:44:18.264Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "dbo.AspNetUsers [Data]",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/DESKTOP_PQSDDF2_SQLEXPRESS/GrowDay/True/SqlTable/dbo.AspNetUsers.sql",
-              "ToolTip": "ViewDataWindow_MSSQL__/DESKTOP_PQSDDF2_SQLEXPRESS/GrowDay/True/SqlTable/dbo.AspNetUsers.sql",
+              "ToolTip": "dbo.AspNetUsers [Data]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
               "WhenOpened": "2025-11-13T11:43:22.469Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 42,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Domain\\Entities\\Concretes\\User.cs",
               "RelativeDocumentMoniker": "GrowDay.Domain\\Entities\\Concretes\\User.cs",
@@ -617,7 +735,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 43,
               "Title": "AccountService.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Services\\AccountService.cs",
               "RelativeDocumentMoniker": "GrowDay.Persistance\\Services\\AccountService.cs",
@@ -625,12 +743,11 @@
               "RelativeToolTip": "GrowDay.Persistance\\Services\\AccountService.cs",
               "ViewState": "AgIAAC0AAAAAAAAAAAAYwBEAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-13T11:40:18.35Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-13T11:40:18.35Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 44,
               "Title": "HabitService.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Services\\HabitService.cs",
               "RelativeDocumentMoniker": "GrowDay.Persistance\\Services\\HabitService.cs",
@@ -642,7 +759,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 45,
               "Title": "HabitRecordService.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Services\\HabitRecordService.cs",
               "RelativeDocumentMoniker": "GrowDay.Persistance\\Services\\HabitRecordService.cs",
@@ -654,7 +771,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 46,
               "Title": "IHabitRecordService.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Application\\Services\\IHabitRecordService.cs",
               "RelativeDocumentMoniker": "GrowDay.Application\\Services\\IHabitRecordService.cs",
@@ -666,7 +783,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 47,
               "Title": "IGenericRepository.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Application\\Repositories\\Common\\IGenericRepository.cs",
               "RelativeDocumentMoniker": "GrowDay.Application\\Repositories\\Common\\IGenericRepository.cs",
@@ -678,7 +795,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 48,
               "Title": "WriteGenericRepository.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Repositories\\Common\\WriteGenericRepository.cs",
               "RelativeDocumentMoniker": "GrowDay.Persistance\\Repositories\\Common\\WriteGenericRepository.cs",
@@ -690,7 +807,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 49,
               "Title": "GenericRepository.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\GrowDay-BackEnd\\GrowDay.Persistance\\Repositories\\Common\\GenericRepository.cs",
               "RelativeDocumentMoniker": "GrowDay.Persistance\\Repositories\\Common\\GenericRepository.cs",

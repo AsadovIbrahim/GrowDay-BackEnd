@@ -281,7 +281,7 @@
         "IsRequired": false
       },
       {
-        "Name": "pageSIze",
+        "Name": "pageSize",
         "Type": "System.Int32",
         "IsRequired": false
       }
@@ -552,6 +552,22 @@
   },
   {
     "ContainingType": "GrowDay.Presentation.Controllers.StatisticController",
+    "Method": "GetDailyStatistics",
+    "RelativePath": "api/Statistic/daily",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "date",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.StatisticController",
     "Method": "GetMonthlyStatistics",
     "RelativePath": "api/Statistic/monthly",
     "HttpMethod": "GET",
@@ -581,7 +597,7 @@
     "Parameters": [
       {
         "Name": "weekStart",
-        "Type": "System.DateTime",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": false
       }
     ],
@@ -1115,6 +1131,32 @@
   },
   {
     "ContainingType": "GrowDay.Presentation.Controllers.UserHabitController",
+    "Method": "GetUserHabitsByFrequency",
+    "RelativePath": "api/UserHabit/GetUserHabitByFrequency",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "frequency",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.UserHabitController",
+    "Method": "GetUserHabitCount",
+    "RelativePath": "api/UserHabit/getuserhabitcount",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GrowDay.Presentation.Controllers.UserHabitController",
     "Method": "GetWeeklyProgress",
     "RelativePath": "api/UserHabit/GetWeeklyProgress/{userHabitId}",
     "HttpMethod": "GET",
@@ -1125,6 +1167,11 @@
         "Name": "userHabitId",
         "Type": "System.String",
         "IsRequired": true
+      },
+      {
+        "Name": "weekStartDate",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

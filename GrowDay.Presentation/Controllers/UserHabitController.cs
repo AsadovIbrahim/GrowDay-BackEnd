@@ -1,5 +1,6 @@
 ﻿using GrowDay.Application.Services;
 using GrowDay.Domain.DTO;
+using GrowDay.Domain.Enums;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -18,7 +19,7 @@ namespace GrowDay.Presentation.Controllers
         }
         [HttpGet("GetMyHabits")]
 
-        public async Task<IActionResult> GetAllUserHabits([FromQuery]int pageIndex = 0, [FromQuery]int pageSize=10)
+        public async Task<IActionResult> GetAllUserHabits([FromQuery]int pageIndex = 0, [FromQuery]int pageSize=3)
         {
             var userHabits = await _userHabitService.GetAllUserHabitAsync(pageIndex,pageSize);
             return Ok(userHabits);
@@ -32,6 +33,21 @@ namespace GrowDay.Presentation.Controllers
                 return BadRequest("User ID is required.");
             }
             var result = await _userHabitService.GetUserHabitByIdAsync(userId, userHabitId);
+            if (!result.Success)
+            {
+                return BadRequest(result.Message);
+            }
+            return Ok(result);
+        }
+        [HttpGet("getuserhabitcount")]
+        public async Task<IActionResult> GetUserHabitCount()
+        {
+            var userId = GetUserId();
+            if (string.IsNullOrEmpty(userId))
+            {
+                return BadRequest("User ID is required.");
+            }
+            var result = await _userHabitService.GetUserHabitsCountAsync(userId);
             if (!result.Success)
             {
                 return BadRequest(result.Message);
@@ -141,6 +157,21 @@ namespace GrowDay.Presentation.Controllers
             }
             return Ok(result);
         }
+        [HttpGet("GetUserHabitByFrequency")]
+        public async Task<IActionResult> GetUserHabitsByFrequency([FromQuery] HabitFrequency frequency)
+        {
+            var userId = GetUserId();
+            if (string.IsNullOrEmpty(userId))
+            {
+                return BadRequest("User ID is required.");
+            }
+            var result = await _userHabitService.GetUserHabitsByFrequencyAsync(userId, frequency);
+            if (!result.Success)
+            {
+                return BadRequest(result.Message);
+            }
+            return Ok(result);
+        }
         [HttpDelete("ClearMyHabits")]
         public async Task<IActionResult> ClearUserHabits()
         {
@@ -173,14 +204,14 @@ namespace GrowDay.Presentation.Controllers
             return Ok(result);
         }
         [HttpGet("GetWeeklyProgress/{userHabitId}")]
-        public async Task<IActionResult> GetWeeklyProgress(string userHabitId)
+        public async Task<IActionResult> GetWeeklyProgress(string userHabitId, [FromQuery] DateTime? weekStartDate = null)
         {
             var userId = GetUserId();
             if (string.IsNullOrEmpty(userId))
             {
                 return BadRequest("User ID is required.");
             }
-            var result = await _userHabitService.GetWeeklyHabitProgressAsync(userId,userHabitId);
+            var result = await _userHabitService.GetWeeklyHabitProgressAsync(userId, userHabitId, weekStartDate);
             if (!result.Success)
             {
                 return BadRequest(result.Message);

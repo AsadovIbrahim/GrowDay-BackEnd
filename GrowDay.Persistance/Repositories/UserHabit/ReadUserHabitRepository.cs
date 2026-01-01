@@ -1,5 +1,6 @@
 ﻿using GrowDay.Application.Repositories;
 using GrowDay.Domain.Entities.Concretes;
+using GrowDay.Domain.Enums;
 using GrowDay.Persistance.DbContexts;
 using GrowDay.Persistance.Repositories.Common;
 using Microsoft.EntityFrameworkCore;
@@ -45,6 +46,14 @@ namespace GrowDay.Persistance.Repositories
                 .Include(uh => uh.Habit)
                 .Where(uh => uh.UserId == userId && !uh.IsDeleted)
                 .ToListAsync();
+        }
+
+        public async Task<int> GetUserHabitsCountAsync(string userId)
+        {
+            return await _table
+                .Include(uh => uh.Habit)
+                .Where(uh => uh.UserId == userId && !uh.IsDeleted)
+                .CountAsync();
         }
     }
 }

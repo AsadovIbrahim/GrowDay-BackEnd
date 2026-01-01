@@ -370,12 +370,12 @@
             }
           },
           {
-            "name": "pageSIze",
+            "name": "pageSize",
             "in": "query",
             "schema": {
               "type": "integer",
               "format": "int32",
-              "default": 10
+              "default": 3
             }
           }
         ],
@@ -871,6 +871,28 @@
         "parameters": [
           {
             "name": "weekStart",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Statistic/daily": {
+      "get": {
+        "tags": [
+          "Statistic"
+        ],
+        "parameters": [
+          {
+            "name": "date",
             "in": "query",
             "schema": {
               "type": "string",
@@ -1456,7 +1478,7 @@
             "schema": {
               "type": "integer",
               "format": "int32",
-              "default": 10
+              "default": 3
             }
           }
         ],
@@ -1541,6 +1563,18 @@
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/UserHabit/getuserhabitcount": {
+      "get": {
+        "tags": [
+          "UserHabit"
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -1716,6 +1750,27 @@
         }
       }
     },
+    "/api/UserHabit/GetUserHabitByFrequency": {
+      "get": {
+        "tags": [
+          "UserHabit"
+        ],
+        "parameters": [
+          {
+            "name": "frequency",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/HabitFrequency"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/UserHabit/ClearMyHabits": {
       "delete": {
         "tags": [
@@ -1740,6 +1795,14 @@
             "required": true,
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "weekStartDate",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
             }
           }
         ],

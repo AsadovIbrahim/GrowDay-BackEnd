@@ -7,6 +7,7 @@ namespace GrowDay.Application.Services
     {
         Task<Result<StatisticDTO>>CalculateStatisticsAsync(string userId,DateTime startDate,DateTime endDate);
         Task<Result<StatisticDTO>>GetMonthlyStatisticsAsync(string userId,int year, int month);
-        Task<Result<StatisticDTO>>GetWeeklyStatisticAsync(string userId, DateTime weekStart);
+        Task<Result<StatisticDTO>>GetWeeklyStatisticAsync(string userId, DateTime? weekStart = null);
+        Task<Result<StatisticDTO>>GetDailyStatisticAsync(string userId, DateTime? date = null);
     }
 }
